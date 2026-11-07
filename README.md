@@ -263,4 +263,4 @@ before destroying that native client. Android `observeNetworkRequests` is in the
 optional `matrix-rust-android` module on this candidate branch; SDK5 is not yet published.
 
 All226 JVM/Android-host/Wasm cases pass freshly; Apple klibs and the six-case native
-fixture compile. The new native reset case has not executed yet. [Exact evidence](docs/measurements/inspection-lifetime-local-2026-11-07.json).
+fixture compile. All six actual x86_64 JNI scenarios now pass, including reset during a gated request. [Native evidence and retained fixture failures](docs/measurements/inspection-lifetime-native-2026-11-07.json). [Exact evidence](docs/measurements/inspection-lifetime-local-2026-11-07.json).

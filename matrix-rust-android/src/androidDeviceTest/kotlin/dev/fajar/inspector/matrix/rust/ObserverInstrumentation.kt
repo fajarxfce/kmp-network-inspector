@@ -13,6 +13,8 @@ import java.net.ServerSocket
 import java.net.Socket
 import java.net.URLDecoder
 import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.concurrent.thread
 import kotlinx.coroutines.*
@@ -70,6 +72,11 @@ class ObserverInstrumentation : Instrumentation() {
             // Do not emit native errors, request data or stack traces through instrumentation.
             result.put("failed", true)
             result.put("failureType", failure.javaClass.simpleName.take(80))
+            // A source line from this fixture is enough to locate a failed assertion. Never
+            // include exception messages, SDK frames or request metadata in failure output.
+            failure.stackTrace
+                .firstOrNull { it.fileName == "ObserverInstrumentation.kt" }
+                ?.let { result.put("fixtureLine", it.lineNumber) }
         } finally {
             result.put("passed", success)
             finish(
@@ -209,9 +216,19 @@ class ObserverInstrumentation : Instrumentation() {
             opened.receive()
             val previous = checkNotNull(inspection.recorders.value)
             val pending = async { client.getProfile("@reset-delayed:fixture.invalid") }
-            withTimeout(5_000) { previous.snapshots.first { it.traces.isNotEmpty() } }
+            withTimeout(5_000) {
+                previous.snapshots.first { snapshot ->
+                    snapshot.traces.any {
+                        "reset-delayed" in it.request.endpoint.path &&
+                            it.transfer == NetworkTransfer.InProgress
+                    }
+                }
+            }
+            check(!pending.isCompleted)
             inspection.reset()
             opened.receive()
+            check(!pending.isCompleted)
+            fixture.releaseResetResponse()
             check(pending.await().displayName == "Original profile")
             check(previous.snapshots.value.closed && previous.snapshots.value.traces.isEmpty())
             val current = checkNotNull(inspection.recorders.value)
@@ -220,16 +237,24 @@ class ObserverInstrumentation : Instrumentation() {
             val captured =
                 withTimeout(5_000) {
                     current.snapshots.first { value ->
-                        value.traces.any { it.transfer is NetworkTransfer.Complete }
+                        value.traces.any {
+                            "reset-new" in it.request.endpoint.path &&
+                                it.transfer is NetworkTransfer.Complete
+                        }
                     }
                 }
-            check(captured.traces.single().outcome == NetworkOutcome.Response(200))
-            check("reset-new" in captured.traces.single().request.endpoint.path)
+            // SDK discovery requests may accompany a profile request. Select the observed HTTP
+            // attempt itself instead of treating one SDK operation as exactly one HTTP request.
+            val profile = captured.traces.single { "reset-new" in it.request.endpoint.path }
+            check(profile.outcome == NetworkOutcome.Response(200))
+            check(profile.responseBytes == LoopbackFixture.BODY.size.toLong())
+            check(captured.traces.none { "reset-delayed" in it.request.endpoint.path })
             check(fixture.count("reset-delayed") == 1 && fixture.count("reset-new") == 1)
             inspection.close()
             collector.join()
             check(handles.size == 2 && handles.all { it.uniffiIsDestroyed })
         } finally {
+            fixture.releaseResetResponse()
             collector.cancelAndJoin()
             inspection.close()
             opened.close()
@@ -259,6 +284,7 @@ class ObserverInstrumentation : Instrumentation() {
 private class LoopbackFixture : AutoCloseable {
     private val server = ServerSocket(0, 8, InetAddress.getByName("127.0.0.1"))
     private val counts = ConcurrentHashMap<String, AtomicInteger>()
+    private val resetResponse = CountDownLatch(1)
     @Volatile private var active: Socket? = null
     @Volatile private var closed = false
     val url = "http://127.0.0.1:${server.localPort}"
@@ -283,8 +309,9 @@ private class LoopbackFixture : AutoCloseable {
                                 "UTF-8",
                             )
                         counts.computeIfAbsent(path) { AtomicInteger() }.incrementAndGet()
-                        if (path.contains("@delayed:") || path.contains("@reset-delayed:"))
-                            Thread.sleep(150)
+                        if (path.contains("@delayed:")) Thread.sleep(150)
+                        if (path.contains("@reset-delayed:"))
+                            check(resetResponse.await(10, TimeUnit.SECONDS))
                         val body = if (path.endsWith("/versions")) VERSIONS else BODY
                         val response =
                             "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n" +
@@ -311,8 +338,11 @@ private class LoopbackFixture : AutoCloseable {
             .filter { it.key.endsWith("/@$user:fixture.invalid") }
             .sumOf { it.value.get() }
 
+    fun releaseResetResponse() = resetResponse.countDown()
+
     override fun close() {
         closed = true
+        releaseResetResponse()
         active?.close()
         server.close()
         worker.join(3_000)

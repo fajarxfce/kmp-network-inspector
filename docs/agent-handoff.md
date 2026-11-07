@@ -1,5 +1,31 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## Actual reset acceptance — 7 November 2026, 21:37 UTC
+
+Six real x86_64 JNI/loopback scenarios now pass, including capture replacement while
+a profile HTTP response is held. The first sixth-case failures were fixture errors:
+waiting for any start could select discovery, and one SDK operation can have multiple
+HTTP requests. The fixture now waits for its target start, gates its response until
+reset opens the replacement, verifies old metadata remains erased, and selects the
+fresh profile attempt explicitly. Core, adapters, Rust and native bytes are unchanged.
+[Exact native evidence and retained failures](measurements/inspection-lifetime-native-2026-11-07.json).
+Final fixture6b3488b7bfddbb3d7f7821a600b137c75c1d01a8f43d543f9960002011209b77,
+all6cases passed7.071s including installation/cleanup; this is NOT latency/overhead.
+Device-reset-fix-2/64090 passed22.421s/43stableinputs, REAPED. Earlier226case gate reused
+with every prior tracked input hash unchanged except the instrumentation fixture.
+Native runner83985, owned emulator94859 and stop50548 are REAPED. Fixture removed,
+original HRIS56/userdata/keys retained; no phone action or extra HRIS message in this test.
+
+Phone56 is installed and verified, Mobile796585ad is pushed. Mobile has UNACCEPTED
+host integration changes on feat/network-inspector-20261107 (separate composite checkout,
+SDK5 candidate, Dev Ktor/Matrix capture, Settings viewer, account/container lifetime tests).
+No Mobile host compile/capture acceptance yet; keep primarybe2fe021 healthy. SDK5 remains
+unpublished, Apple corrected42413788416 still pending. Private visibility unanswered.
+Next finish Mobile integration/overhead/Apple, install validated progress, port Starter,
+and continue composer and all54 original PRD groups. None complete. Older running job
+statements below are historical. No heavy local compiler/emulator remains at this checkpoint.
+
+
 ## Capture lifetime locally accepted — 7 November2026,21:08UTC
 
 NetworkInspection reset/close, dynamic Ktor recorder lookup and client-owned Matrix

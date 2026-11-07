@@ -1,0 +1,201 @@
+{
+  "at": "2026-11-07T21:36:06.468003+00:00",
+  "scope": "Actual JNI reset during one gated profile HTTP request; original request survives, old captures stay erased, fresh requests remain observable.",
+  "native": {
+    "at": "2026-11-07T21:34:50.664038+00:00",
+    "serial": "emulator-5562",
+    "package": "dev.fajar.inspector.matrix.rust.test",
+    "apkSha256": "6b3488b7bfddbb3d7f7821a600b137c75c1d01a8f43d543f9960002011209b77",
+    "native": {
+      "lib/x86_64/libjnidispatch.so": "288eafff19a70e833498201071c3d724f03f32ee8ff64a14fca50b57d975db70",
+      "lib/x86_64/libmatrix_sdk_ffi.so": "03e23ca8c98038f5fc408855471e9d7278fcf7a6b38ef8013e033f7738dcd67d"
+    },
+    "phoneTouched": false,
+    "originalHrisBuild": 56,
+    "passed": true,
+    "instrumentationExitCode": 0,
+    "nativeResult": {
+      "originalResponseAndCapture": true,
+      "pendingReadStoppedAndDisposed": true,
+      "replacementClosesExactOldHandle": true,
+      "captureCancellationPreservesRequest": true,
+      "boundedCapturePreservesAllRequests": true,
+      "resetReplacesCaptureWithoutChangingRequest": true,
+      "passed": true
+    },
+    "fixtureUninstalled": true,
+    "originalHrisBuildRetained": true,
+    "seconds": 7.071
+  },
+  "artifact": {
+    "sha256": "6b3488b7bfddbb3d7f7821a600b137c75c1d01a8f43d543f9960002011209b77",
+    "bytes": 244550259,
+    "nativeLibraries": {
+      "lib/x86_64/libjnidispatch.so": "288eafff19a70e833498201071c3d724f03f32ee8ff64a14fca50b57d975db70",
+      "lib/x86_64/libmatrix_sdk_ffi.so": "03e23ca8c98038f5fc408855471e9d7278fcf7a6b38ef8013e033f7738dcd67d"
+    }
+  },
+  "compiler": {
+    "command": [
+      "xvfb-run",
+      "-a",
+      "./gradlew",
+      "--no-daemon",
+      "--no-parallel",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx1536m",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "--stacktrace",
+      "--dependency-verification",
+      "strict",
+      ":matrix-rust-android:assembleAndroidDeviceTest",
+      "-PmatrixObserverTestAbi=x86_64",
+      "-PmatrixSdkRepository=/home/fajar/hris/kmp-network-inspector/.work/matrix-android-2026-11-07/sdk-repository"
+    ],
+    "startedAt": "2026-11-07T21:33:09.914125+00:00",
+    "seconds": 22.421,
+    "exitCode": 0,
+    "sourcesUnchanged": true,
+    "sourceCount": 43
+  },
+  "sourceChangesSince226CaseGate": [
+    "matrix-rust-android/src/androidDeviceTest/kotlin/dev/fajar/inspector/matrix/rust/ObserverInstrumentation.kt"
+  ],
+  "portableTestsReused": 226,
+  "emulatorStop": {
+    "pid": 2643813,
+    "startTicks": "176392235",
+    "stopped": true,
+    "dataRetained": true,
+    "phoneTouched": false,
+    "at": "2026-11-07T21:35:13.094778+00:00"
+  },
+  "retainedFailedAttempts": [
+    {
+      "at": "2026-11-07T21:19:25.700516+00:00",
+      "serial": "emulator-5562",
+      "package": "dev.fajar.inspector.matrix.rust.test",
+      "apkSha256": "75ead5bd55a12615550410d00c6d09c8308cb9c6afe514f88b0a1465444a4d10",
+      "native": {
+        "lib/x86_64/libjnidispatch.so": "288eafff19a70e833498201071c3d724f03f32ee8ff64a14fca50b57d975db70",
+        "lib/x86_64/libmatrix_sdk_ffi.so": "03e23ca8c98038f5fc408855471e9d7278fcf7a6b38ef8013e033f7738dcd67d"
+      },
+      "phoneTouched": false,
+      "originalHrisBuild": 56,
+      "passed": false,
+      "instrumentationExitCode": 0,
+      "nativeResult": {
+        "activeScenario": "inspection-reset",
+        "originalResponseAndCapture": true,
+        "pendingReadStoppedAndDisposed": true,
+        "replacementClosesExactOldHandle": true,
+        "captureCancellationPreservesRequest": true,
+        "boundedCapturePreservesAllRequests": true,
+        "failed": true,
+        "failureType": "IllegalStateException",
+        "passed": false
+      },
+      "fixtureUninstalled": true,
+      "originalHrisBuildRetained": true,
+      "seconds": 3.996
+    },
+    {
+      "at": "2026-11-07T21:26:44.362591+00:00",
+      "serial": "emulator-5562",
+      "package": "dev.fajar.inspector.matrix.rust.test",
+      "apkSha256": "651b0996149295b4b597f95aad705c58d3129f34a5a98a8ba5bf151487aafb03",
+      "native": {
+        "lib/x86_64/libjnidispatch.so": "288eafff19a70e833498201071c3d724f03f32ee8ff64a14fca50b57d975db70",
+        "lib/x86_64/libmatrix_sdk_ffi.so": "03e23ca8c98038f5fc408855471e9d7278fcf7a6b38ef8013e033f7738dcd67d"
+      },
+      "phoneTouched": false,
+      "originalHrisBuild": 56,
+      "passed": false,
+      "instrumentationExitCode": 0,
+      "nativeResult": {
+        "activeScenario": "inspection-reset",
+        "originalResponseAndCapture": true,
+        "pendingReadStoppedAndDisposed": true,
+        "replacementClosesExactOldHandle": true,
+        "captureCancellationPreservesRequest": true,
+        "boundedCapturePreservesAllRequests": true,
+        "failed": true,
+        "failureType": "IllegalStateException",
+        "fixtureLine": 223,
+        "passed": false
+      },
+      "fixtureUninstalled": true,
+      "originalHrisBuildRetained": true,
+      "seconds": 18.883
+    },
+    {
+      "at": "2026-11-07T21:29:32.255276+00:00",
+      "serial": "emulator-5562",
+      "package": "dev.fajar.inspector.matrix.rust.test",
+      "apkSha256": "56744cca700b89909d980e7ee91e54fe887349744523ecce1809f15850546048",
+      "native": {
+        "lib/x86_64/libjnidispatch.so": "288eafff19a70e833498201071c3d724f03f32ee8ff64a14fca50b57d975db70",
+        "lib/x86_64/libmatrix_sdk_ffi.so": "03e23ca8c98038f5fc408855471e9d7278fcf7a6b38ef8013e033f7738dcd67d"
+      },
+      "phoneTouched": false,
+      "originalHrisBuild": 56,
+      "passed": false,
+      "instrumentationExitCode": 0,
+      "nativeResult": {
+        "activeScenario": "inspection-reset",
+        "originalResponseAndCapture": true,
+        "pendingReadStoppedAndDisposed": true,
+        "replacementClosesExactOldHandle": true,
+        "captureCancellationPreservesRequest": true,
+        "boundedCapturePreservesAllRequests": true,
+        "resetNewTraceCount": 1,
+        "resetDelayedTraceCount": 1,
+        "resetVersionTraceCount": 0,
+        "resetDelayedRequestCount": 1,
+        "resetOldNativeDisposed": true,
+        "failed": true,
+        "failureType": "IllegalStateException",
+        "fixtureLine": 228,
+        "passed": false
+      },
+      "fixtureUninstalled": true,
+      "originalHrisBuildRetained": true,
+      "seconds": 39.549
+    },
+    {
+      "at": "2026-11-07T21:32:01.476696+00:00",
+      "serial": "emulator-5562",
+      "package": "dev.fajar.inspector.matrix.rust.test",
+      "apkSha256": "b4d93865e79b005f3e89b2d791f92a3ecbd54c9043652f97eba4a37c8665a376",
+      "native": {
+        "lib/x86_64/libjnidispatch.so": "288eafff19a70e833498201071c3d724f03f32ee8ff64a14fca50b57d975db70",
+        "lib/x86_64/libmatrix_sdk_ffi.so": "03e23ca8c98038f5fc408855471e9d7278fcf7a6b38ef8013e033f7738dcd67d"
+      },
+      "phoneTouched": false,
+      "originalHrisBuild": 56,
+      "passed": false,
+      "instrumentationExitCode": 0,
+      "nativeResult": {
+        "activeScenario": "inspection-reset",
+        "originalResponseAndCapture": true,
+        "pendingReadStoppedAndDisposed": true,
+        "replacementClosesExactOldHandle": true,
+        "captureCancellationPreservesRequest": true,
+        "boundedCapturePreservesAllRequests": true,
+        "failed": true,
+        "failureType": "IllegalArgumentException",
+        "fixtureLine": 243,
+        "passed": false
+      },
+      "fixtureUninstalled": true,
+      "originalHrisBuildRetained": true,
+      "seconds": 29.637
+    }
+  ],
+  "correction": "The original fixture reset after any HTTP start and assumed one SDK operation produced one HTTP request. Wait for the target profile attempt, gate its response until the replacement subscription opens, and select that exact profile from later capture. Core/adapters/Rust/native bytes are unchanged.",
+  "limits": [
+    "No transport ACK/latency/overhead benchmark.",
+    "No Apple native adapter, published SDK5, or actual Mobile host integration acceptance.",
+    "Private CI billing remains unresolved; repository visibility unchanged."
+  ]
+}
