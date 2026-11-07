@@ -1,0 +1,38 @@
+{
+  "at": "2026-11-07T22:38:59.660209+00:00",
+  "librarySourceCommit": "a8d7d60fa3873a53f646eb17708c8df49f7a3512",
+  "consumerSource": "52df4ee1e9239505719ac31d260a66e19f093299",
+  "consumerEvidence": "https://github.com/fajarxfce/hris-mobile/blob/feat/network-inspector-20261107/docs/measurements/network-inspector-host-device-2026-11-07.json",
+  "consumerVersion": 57,
+  "apkSha256": "0f046ac6a6a079e08b5d3b0176faf0c365faaa145fafcd04ba8eaf1e09a09738",
+  "actualCapture": {
+    "ktor": true,
+    "matrixRust": true,
+    "sourceAndSearchFilters": true,
+    "detailAndBack": true,
+    "clearErasesPriorCapture": true,
+    "bodiesAndQueryValuesCaptured": false
+  },
+  "sample": {
+    "matrixAttempts": 1,
+    "responseMillis": 239,
+    "transferMillis": 240,
+    "responseBytes": 59,
+    "pendingUiPollSeconds": 2.876,
+    "sentUiPollSeconds": 5.071
+  },
+  "consumerContinuesAfterOfflineProcessRestart": true,
+  "samePhoneApplicationIdentity": true,
+  "phoneInstallationOnly": true,
+  "screenshotsInspected": 9,
+  "videoStoryboardsInspected": 3,
+  "ownedEmulatorStopped": true,
+  "librarySourcesChangedForThisProof": false,
+  "published": false,
+  "limits": [
+    "Only this Android host integration is accepted. Apple library binding and an actual Apple inspector consumer remain pending.",
+    "The actual request and UI observations have different boundaries. No benchmark of capture overhead or resolution of phone send latency is claimed.",
+    "Private repository visibility is unchanged; publication and reusable Starter integration remain pending.",
+    "There is no body/query value capture, pause/resume or export API in this increment."
+  ]
+}

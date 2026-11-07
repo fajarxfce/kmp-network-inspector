@@ -1,5 +1,30 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## Android consumer installed — 7 November 2026, 22:39 UTC
+
+Mobile source52df4ee1/build57 is accepted and installed on the authorized phone; exact
+APK0f046ac6a6a079e08b5d3b0176faf0c365faaa145fafcd04ba8eaf1e09a09738 preserves app identity/data.
+The consumer uses inspectora8d7d60 and unpublishedSDK5. Actual Ktor and Rust Matrix
+capture, filters, detail/back and Clear passed alongside one real original-account
+send and cold offline history/preview continuity. Nine screenshots/three storyboards
+inspected; no crash/duplicate bubble observed. [Evidence](measurements/android-consumer-2026-11-07.json).
+No library code changed for this acceptance. Android metadata consumer is accepted;
+body/query values, pause/resume/export, overhead and Apple bridge remain unimplemented
+or unaccepted as applicable. One request239ms/transfer240ms is not phone latency or
+capture overhead. Mobile keyboard/durable editor handoff remains open.
+
+Mobile e500691f records full package/device evidence. Full host gate38121 passed5645
+fresh cases/4424stable app inputs, root/Android/Wasm/iOS source/quality checks. All Mobile
+build/install/emulator jobs are REAPED. Private visibility question remains unanswered.
+Apple SDK6866251a records4actual macOS Swift/native cases passing; this is not the
+library's Apple bridge. SDK5 and library remain unpublished; main remains388a1cb.
+
+Starter has an UNACCEPTED generic owner/viewer/Ktor port on new
+feat/network-inspector-20261107 fromb11437a. No Matrix/HRIS policy is copied; six exact
+Mobile files plus the adapted Starter session test fixture. Independent checks are next
+and will freeze Starter/library sources. Original54communications PRD groups continue;
+none complete. No local compiler/emulator is active at this checkpoint.
+
 ## Actual reset acceptance — 7 November 2026, 21:37 UTC
 
 Six real x86_64 JNI/loopback scenarios now pass, including capture replacement while

@@ -2,7 +2,7 @@
 
 A transport-independent network inspector for Kotlin Multiplatform applications.
 
-**Status: metadata core, Ktor adapter, Compose viewer and Android Matrix binding locally verified. Apple Matrix binding and application integration remain in progress. No library release yet.**
+**Status: metadata core, Ktor adapter, Compose viewer, Android Matrix binding and an Android consumer are verified. Apple Matrix binding, overhead measurement and distribution remain in progress. No library release yet.**
 
 The intended modules are a bounded event/store API, Ktor instrumentation, a Matrix
 Rust SDK observer adapter and an optional Compose Multiplatform viewer. Target
@@ -264,3 +264,18 @@ optional `matrix-rust-android` module on this candidate branch; SDK5 is not yet 
 
 All226 JVM/Android-host/Wasm cases pass freshly; Apple klibs and the six-case native
 fixture compile. All six actual x86_64 JNI scenarios now pass, including reset during a gated request. [Native evidence and retained fixture failures](docs/measurements/inspection-lifetime-native-2026-11-07.json). [Exact evidence](docs/measurements/inspection-lifetime-local-2026-11-07.json).
+
+## Android consumer acceptance
+
+HRIS Mobile build57 uses the separate library checkout and verified SDK5 candidate.
+Actual Ktor/API and Rust Matrix HTTP requests appear in one bounded viewer. Source and
+search filters, detail/back and Clear pass on the owned emulator; original encrypted
+chat history and its preview remain readable after a cold offline restart. The same
+APK is installed on the authorized phone without driving its UI or resetting data.
+Nine screenshots and three sampled video storyboards were inspected.
+
+One captured Matrix attempt took239ms to headers and240ms through its59-byte response.
+A pending UI poll at2.876s and sent poll at5.071s measure different boundaries. This is
+not an overhead benchmark or proof that message latency is solved. Apple library
+binding, independent Starter integration and publication remain open.
+[Exact consumer evidence](docs/measurements/android-consumer-2026-11-07.json).
