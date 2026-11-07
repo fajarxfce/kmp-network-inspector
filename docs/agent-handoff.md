@@ -1,5 +1,28 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## Public repository authorized — 7 November 2026, 23:39 UTC
+
+The user explicitly answered “Jadikan public”. Repository visibility is now PUBLIC,
+verified through GitHub after reviewing all143 tracked history blobs for credential
+patterns and confirming private .work files are absent. [Exact operation](measurements/public-repository-2026-11-07.json).
+The earlier unanswered-approval/private-CI statements below are historical. Keep their
+failed first-run evidence, but the condition has changed: open the current branch as a
+draft PR and run its first portable/Apple checks. SDK5 and library are still unpublished;
+public source availability does not prove artifact distribution or Apple bridge acceptance.
+
+Mobile09e7eaf7/build58 passed actual Android local phase capture:711/294/211/85ms for
+flush/prepare/queue/confirm, shared trace and four distinct spans. Actual one Matrix
+sendHTTP200 takes225ms to headers/229ms transfer. All nine screenshots/three storyboards
+were inspected; offline restart retains history/latest preview, with one visible outgoing
+row. One observation loss is explicitly shown; capture is not claimed complete. Keyboard
+still closes during save. Original emulator is stopped and reaped; phone57→58 installation
+is in progress. No compiler/emulator runs. Mobile owns full device/install evidence.
+
+Starterb4d6aa4 inspector port is accepted/pushed; generic result timing port follows
+Mobile device acceptance. Continue Apple binding/overhead/distribution and Mobile
+composer/latency plus original54PRDgroups. No group is newly complete, and live API,
+worker, schema116.1 and disabled Group routing remain unchanged.
+
 ## Android consumer installed — 7 November 2026, 22:39 UTC
 
 Mobile source52df4ee1/build57 is accepted and installed on the authorized phone; exact
