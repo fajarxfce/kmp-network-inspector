@@ -202,15 +202,25 @@ native binding integration, Apple runtime, HRIS capture/overhead and publication
 ## Experimental generated Android binding
 
 The `feat/matrix-rust-bindings-20261107` branch adds `matrix-rust-android` on top of
-the portable Matrix collector. Its SDK dependency is an **unpublished ARM64 candidate**.
-Local checks require `-PmatrixSdkRepository=/absolute/path/to/verified/candidate/repository`.
-The library main branch remains the portable base while paired SDK artifacts and native
-execution are verified. Thirteen Android host cases pass; the real JNI fixture is compiled
-but has not run. See the [binding evidence](docs/measurements/matrix-android-binding-local-2026-11-07.json).
+our portable Matrix collector. It currently requires the **unpublished four-ABI SDK
+candidate 26.10.23-hris.5**. Local builds supply its verified artifact directory with
+`-PmatrixSdkRepository=/absolute/path/to/candidate/repository`. Main remains portable
+until distribution and cross-platform integration are ready.
 
-With a compatible generated SDK, the host opens `client.observeNetworkRequests()`
-and passes it to `captureMatrixHttp` in an owned, supervised diagnostics coroutine.
-Create the subscription inside that coroutine so a never-started job cannot leak it.
-Cancel/join collection before clearing the store or disposing the client. The adapter
-stops and disposes only its own native subscription. It does not authenticate, start
-sync, retry requests, or turn HTTP success into message acknowledgements.
+Thirteen Android host cases and five real x86_64 JNI/loopback scenarios pass. They
+cover native metadata/timing, stop/disposal, replacement, preserving an active request
+when capture is cancelled, and preserving all100 requests when the capture queue fills.
+[Evidence and limits](docs/measurements/matrix-android-native-2026-11-07.json).
+No Apple native bridge or Mobile integration is accepted yet.
+
+The host opens `client.observeNetworkRequests()` and passes it to `captureMatrixHttp`
+in an owned, supervised diagnostics coroutine. Create the subscription inside that
+coroutine so a never-started job cannot leak it. Cancel/join collection before clearing
+the store or disposing the client. The adapter stops/disposes only its own subscription;
+it does not authenticate, start sync, retry, or turn HTTP status into delivery receipts.
+
+The device fixture is assembled with `:matrix-rust-android:assembleAndroidDeviceTest`.
+`-PmatrixObserverTestAbi=x86_64` limits the test APK to the selected ABI. Read the package
+from compiled output metadata; Android library tests use `dev.fajar.inspector.matrix.rust.test`.
+Its runner is `dev.fajar.inspector.matrix.rust.ObserverInstrumentation`. It uses only an
+owned loopback server and no HRIS account or data. Compile before starting the emulator.

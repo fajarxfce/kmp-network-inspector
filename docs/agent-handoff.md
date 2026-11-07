@@ -1,5 +1,36 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## Real Android observer accepted — 07 November 2026, 20:34 UTC
+
+Five real x86_64 JNI/loopback scenarios now pass against the four-ABI SDK candidate:
+original response/capture, stop/disposal, replacement, cancellation preserving an
+active request, and a full capture queue preserving100 requests. Thirteen host cases
+are reused with unchanged sources and identical SDK classes.jar hashes. Source changes
+only select the full SDK and optional test ABI. The first harness package mismatch was
+caught before invocation; exact installed APK ownership was verified before cleanup.
+[Evidence](measurements/matrix-android-native-2026-11-07.json).
+
+SDK26.10.23-hris.5 AAR185971020B/5bffa2f4318d1edc7518ad21dc156393ef8a7e2610fd42320a67c12ab645ba5c
+is packaged but UNPUBLISHED. Matrix observer SDK branch0c87cc35 records all four original
+ABI artifacts and native acceptance. The local mirror remains .work/matrix-android-2026-11-07/sdk-repository.
+Device-x86-1/43743 passed37.310s and device-x86-2/87130 passed18.358s/38 stable inputs;
+the final APK is byte-identical to the one actually tested. Both compiler jobs are REAPED.
+
+Native probe86647 passed2.880s including install/test/cleanup; this is not a transport
+latency or overhead benchmark. Fixture uninstalled; emulatorPID2190705 stopped20:29:16Z
+and start/stop sessions77109/38846 are REAPED. HRIS55 and original userdata remain; no
+phone action occurred. No heavy local job or emulator is running. Apple first SDK
+CI42408920984 still runs, with no Apple-native acceptance yet.
+
+Next integrate observer/viewer into Mobile, measure retained original sends/overhead,
+finish Apple binding/owner cancellation verification, deliver a validated APK and port
+to Starter. Main388a1cb remains portable; stay on this candidate branch until SDK
+publication/integration are ready. Private CI billing and public-visibility question
+remain unresolved; do not copy private source into public Mobile as a workaround.
+Original54-group PRD scope remains active, none complete. Phone and stopped Bima stay55;
+bb106154 viewport fix awaits56, composer/latency remain open. Bothbb106 first CI archives
+are downloaded with zero reported failures, but detailed native audit write-up is pending.
+
 ## Android binding candidate — 7 November 2026, 20:14 UTC
 
 The separate native-binding branch contains matrix-rust-android. It maps the actual

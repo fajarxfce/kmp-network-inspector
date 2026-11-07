@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-07",
+  "sdkVersion": "26.10.23-hris.5",
+  "sdkAarSha256": "5bffa2f4318d1edc7518ad21dc156393ef8a7e2610fd42320a67c12ab645ba5c",
+  "sdkAarBytes": 185971020,
+  "sdkClassesSha256": "2718b789a1ac4ad1ffbe840fbb2addf7ef1a0efd22a43c215b891047a4bcd1a2",
+  "hostTests": {
+    "passed": 13,
+    "reusedUnchangedProductionAndTestSource": true,
+    "oldAndNewSdkClassesIdentical": true
+  },
+  "builds": {
+    "device-x86-1": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        "-PmatrixSdkRepository=/home/fajar/hris/kmp-network-inspector/.work/matrix-android-2026-11-07/sdk-repository",
+        "-PmatrixObserverTestAbi=x86_64",
+        ":matrix-rust-android:testAndroidHostTest",
+        ":matrix-rust-android:assembleAndroidDeviceTest"
+      ],
+      "startedAt": "2026-11-07T20:24:18.810447+00:00",
+      "seconds": 37.31,
+      "exitCode": 0,
+      "sourcesUnchanged": true,
+      "sourceCount": 38,
+      "freshReports": {}
+    },
+    "device-x86-2": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        "-PmatrixSdkRepository=/home/fajar/hris/kmp-network-inspector/.work/matrix-android-2026-11-07/sdk-repository",
+        "-PmatrixObserverTestAbi=x86_64",
+        ":matrix-rust-android:testAndroidHostTest",
+        ":matrix-rust-android:assembleAndroidDeviceTest"
+      ],
+      "startedAt": "2026-11-07T20:32:21.178294+00:00",
+      "seconds": 18.358,
+      "exitCode": 0,
+      "sourcesUnchanged": true,
+      "sourceCount": 38,
+      "freshReports": {}
+    }
+  },
+  "firstAttempt": {
+    "at": "2026-11-07T20:28:40.141837+00:00",
+    "passed": false,
+    "scope": "Harness failed before invoking native instrumentation",
+    "requestedPackage": "dev.fajar.inspector.matrix.rust.proof",
+    "actualManifestPackage": "dev.fajar.inspector.matrix.rust.test",
+    "nativeExecuted": false,
+    "installedApkSha256Verified": "f48b30350fdae1c40bee57c017d4f91848b4cf6248993cccd2f5e06192da65be",
+    "fixtureUninstalled": true,
+    "originalHrisBuildRetained": 55,
+    "phoneTouched": false
+  },
+  "native": {
+    "at": "2026-11-07T20:28:40.868372+00:00",
+    "serial": "emulator-5562",
+    "package": "dev.fajar.inspector.matrix.rust.test",
+    "apkSha256": "f48b30350fdae1c40bee57c017d4f91848b4cf6248993cccd2f5e06192da65be",
+    "native": {
+      "lib/x86_64/libmatrix_sdk_ffi.so": "03e23ca8c98038f5fc408855471e9d7278fcf7a6b38ef8013e033f7738dcd67d"
+    },
+    "phoneTouched": false,
+    "originalHrisBuild": 55,
+    "passed": true,
+    "instrumentationExitCode": 0,
+    "nativeResult": {
+      "originalResponseAndCapture": true,
+      "pendingReadStoppedAndDisposed": true,
+      "replacementClosesExactOldHandle": true,
+      "captureCancellationPreservesRequest": true,
+      "boundedCapturePreservesAllRequests": true,
+      "passed": true
+    },
+    "fixtureUninstalled": true,
+    "originalHrisBuildRetained": true,
+    "seconds": 2.88
+  },
+  "packagingAfterRemovingIneffectiveApplicationIdByteIdentical": true,
+  "published": false,
+  "appleRuntimeAccepted": false,
+  "mobileIntegrationAccepted": false,
+  "notes": [
+    "The Android library device-test package is namespace.test; the first harness addressed a nonexistent .proof package. Its installed APK hash was checked before cleanup.",
+    "The corrected runner completed five actual native scenarios against owned loopback HTTP, including all 100 requests during capture queue saturation.",
+    "Five native cases and thirteen host cases are distinct. The second build changed only an ineffective applicationId setting and produced the byte-identical tested APK.",
+    "The new four-ABI SDK candidate and inspector remain unpublished. Remote artifact resolution/Apple acceptance and Mobile host integration are still required."
+  ]
+}
