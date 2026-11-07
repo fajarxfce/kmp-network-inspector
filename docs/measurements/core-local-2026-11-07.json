@@ -1,0 +1,255 @@
+{
+  "recordedAt": "2026-11-07T17:03:46.093210+00:00",
+  "scope": "Bounded metadata-only core; no adapters/viewer/application integration",
+  "sourceSha256": {
+    "core/src/commonTest/kotlin/dev/fajar/inspector/NetworkTraceStoreTest.kt": "8856c7e57b033f5940663c3e945ae3a4576b7c94da5f29eef8abff0a79546411",
+    "core/src/commonTest/kotlin/dev/fajar/inspector/NetworkCapturePolicyTest.kt": "f39e950ba2ddf41644c5dcc5dd3a6baf3cafba3ec8bef8f6b9216c4034c0b431",
+    "core/src/commonMain/kotlin/dev/fajar/inspector/NetworkTrace.kt": "d0d37b2de7ffa037d462ff4efcb9750dcd4a5f2284771daa83740a2c4b1ee3f2",
+    "core/src/commonMain/kotlin/dev/fajar/inspector/NetworkCapturePolicy.kt": "2845fb82ed0fd034f7469357e7041fbfdff884a6e1cb9720f6ede22f297a91e0",
+    "core/src/commonMain/kotlin/dev/fajar/inspector/NetworkTraceStore.kt": "e10b4f6a826772af5aa7387071a5d28a772c28907e01b409371246c96ba26f63"
+  },
+  "bootstrap": {
+    "command": [
+      "xvfb-run",
+      "-a",
+      "./gradlew",
+      "--no-daemon",
+      "--no-parallel",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx1536m",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "--stacktrace",
+      "--write-verification-metadata",
+      "sha256",
+      ":core:dependencies"
+    ],
+    "startedAt": "2026-11-07T16:57:20.558765+00:00",
+    "seconds": 31.758,
+    "exitCode": 0,
+    "sourcesUnchanged": true,
+    "sourceCount": 16,
+    "freshReports": {}
+  },
+  "firstStrict": {
+    "command": [
+      "xvfb-run",
+      "-a",
+      "./gradlew",
+      "--no-daemon",
+      "--no-parallel",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx1536m",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "--stacktrace",
+      "--dependency-verification",
+      "strict",
+      ":core:jvmTest",
+      ":core:testAndroidHostTest",
+      ":core:wasmJsBrowserTest",
+      ":core:assemble"
+    ],
+    "startedAt": "2026-11-07T16:58:49.885528+00:00",
+    "seconds": 10.337,
+    "exitCode": 1,
+    "sourcesUnchanged": true,
+    "sourceCount": 17,
+    "freshReports": {}
+  },
+  "portableTests": {
+    "command": [
+      "xvfb-run",
+      "-a",
+      "./gradlew",
+      "--no-daemon",
+      "--no-parallel",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx1536m",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "--stacktrace",
+      "--dependency-verification",
+      "strict",
+      ":core:jvmTest",
+      ":core:testAndroidHostTest",
+      ":core:wasmJsBrowserTest",
+      ":core:assemble"
+    ],
+    "startedAt": "2026-11-07T17:00:33.733982+00:00",
+    "seconds": 42.268,
+    "exitCode": 1,
+    "sourcesUnchanged": true,
+    "sourceCount": 17,
+    "freshReports": {
+      "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "completedStrictAssembly": {
+    "command": [
+      "xvfb-run",
+      "-a",
+      "./gradlew",
+      "--no-daemon",
+      "--no-parallel",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx1536m",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "--stacktrace",
+      "--dependency-verification",
+      "strict",
+      ":core:jvmTest",
+      ":core:testAndroidHostTest",
+      ":core:wasmJsBrowserTest",
+      ":core:assemble"
+    ],
+    "startedAt": "2026-11-07T17:01:55.135019+00:00",
+    "seconds": 21.065,
+    "exitCode": 0,
+    "sourcesUnchanged": true,
+    "sourceCount": 17,
+    "freshReports": {}
+  },
+  "actualReportCounts": {
+    "jvmTest": {
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "testAndroidHostTest": {
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "wasmJsBrowserTest": {
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "dependencyAudit": {
+    "matchedExistingMobileComponents": 210,
+    "additionalPreviouslyVerifiedArtifacts": 12,
+    "newComponents": [
+      [
+        "com.android.kotlin.multiplatform.library",
+        "com.android.kotlin.multiplatform.library.gradle.plugin",
+        "9.1.0"
+      ],
+      [
+        "org.jetbrains.kotlin.multiplatform",
+        "org.jetbrains.kotlin.multiplatform.gradle.plugin",
+        "2.3.21"
+      ]
+    ],
+    "mobileMetadataSha256": "eb6e153a9e7aa8e1cc4bc2224adb881c0cab6959853492e9178dd3a515b204dd",
+    "resultMetadataSha256": "99346f617e26324451488d6480b7f1cc53070b66d64aee81e30f8c1f636531f0",
+    "unknownComponentsOrigin": "Bootstrap resolutions from configured Maven Central/Google/Gradle plugin repositories; no implicit trusted artifact patterns added."
+  },
+  "additionalToolVerification": {
+    "previouslyVerifiedToolComponents": [
+      [
+        "com.android.tools",
+        "play-sdk-proto",
+        "32.1.0"
+      ],
+      [
+        "com.android.tools.external.com-intellij",
+        "intellij-core",
+        "32.1.0"
+      ],
+      [
+        "com.android.tools.external.com-intellij",
+        "kotlin-compiler",
+        "32.1.0"
+      ],
+      [
+        "com.android.tools.external.org-jetbrains",
+        "uast",
+        "32.1.0"
+      ],
+      [
+        "com.android.tools.lint",
+        "lint",
+        "32.1.0"
+      ],
+      [
+        "com.android.tools.lint",
+        "lint-api",
+        "32.1.0"
+      ],
+      [
+        "com.android.tools.lint",
+        "lint-checks",
+        "32.1.0"
+      ],
+      [
+        "com.android.tools.lint",
+        "lint-gradle",
+        "32.1.0"
+      ],
+      [
+        "org.apache.httpcomponents",
+        "httpclient",
+        "4.5.6"
+      ],
+      [
+        "org.codehaus.groovy",
+        "groovy",
+        "3.0.22"
+      ],
+      [
+        "org.jetbrains.kotlin",
+        "kotlin-reflect",
+        "2.2.10"
+      ],
+      [
+        "org.jetbrains.kotlin",
+        "kotlin-stdlib",
+        "2.2.10"
+      ]
+    ]
+  },
+  "aar": {
+    "bytes": 31931,
+    "sha256": "1e85e114cc259d2d494bc0a6a09c26808aee4cb95bb5e948182c2ea3133f3e76"
+  },
+  "appleRuntimeTested": false,
+  "ciOnlyChangeAfterLocalGates": "Apple job selects Xcode 26.3; no Kotlin/build source changed after passing assembly.",
+  "releasePublished": false
+}

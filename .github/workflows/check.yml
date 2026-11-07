@@ -1,0 +1,70 @@
+name: Multiplatform core
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: core-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  portable:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: android-actions/setup-android@v3
+      - run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+      - name: Check JVM, Android host and actual Wasm browser
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+        run: >-
+          xvfb-run -a ./gradlew --dependency-verification strict
+          :core:jvmTest :core:testAndroidHostTest :core:wasmJsBrowserTest :core:assemble
+          --no-daemon --no-parallel --max-workers=1
+      - run: python3 tools/check_test_results.py jvmTest testAndroidHostTest wasmJsBrowserTest
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: portable-results
+          path: |
+            core/build/test-results/
+            core/build/reports/tests/
+  apple:
+    runs-on: macos-15
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode 26.3
+        run: sudo xcode-select -s /Applications/Xcode_26.3.app/Contents/Developer
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Check actual Apple simulator and compile device library
+        run: >-
+          ./gradlew --dependency-verification strict
+          :core:iosSimulatorArm64Test :core:compileKotlinIosArm64
+          --no-daemon --no-parallel --max-workers=1
+      - run: python3 tools/check_test_results.py iosSimulatorArm64Test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: apple-results
+          path: |
+            core/build/test-results/
+            core/build/reports/tests/

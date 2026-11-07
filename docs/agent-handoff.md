@@ -1,17 +1,36 @@
-# Continuation — 7 November 2026
+# Continuation — 7 November 2026, 17:04 UTC
 
-Repository initialized from the user's explicit request for a reusable cross-platform
-network inspector including Matrix Rust traffic. README/design/AGENTS only: NO CODE,
-NO BUILD, NO RELEASE, NO APPLICATION INTEGRATION yet. Next implement portable core and
-its tests, then Ktor/viewer/real Matrix bridge as listed in design.md.
+The metadata-only core is locally accepted in this commit. Five common Kotlin
+source/test files, KMP Gradle scaffold, pinned wrapper/checksums, npm lock and first
+portable/Apple CI are included. Core has14 actual passing cases on JVM,14 Android
+host and14 Wasm browser, zero failures/errors/skips. First Apple simulator CI remains
+pending; declared/cross-compiled targets are not runtime acceptance.
 
-Parent workspace is /home/fajar/hris. HRIS Mobile recovery accepted pending-preview
-commit f76f5f50 (50 focused;3,760 full;20 actual Browser cases;zero failures/errors/skips).
-Its separate five-file remote-echo fix is FROZEN while focused74451 runs. Do not start
-another heavy build until that job and the required Mobile full gate are reaped.
-The owned Bima emulator is stopped; preserve its original store/keys/message IDs.
-No build54 exists yet. The current phone53 remains unchanged.
+Bootstrap56466 passed31.758s. First strict52497 failed before tests because default
+Yarn setup tried adding a project repository under FAIL_ON_PROJECT_REPOS. Switched
+to npm. Strict97570 ran all42 tests successfully but assemble lacked12 Android tool
+verification components. Copied their exact previously verified hashes from Mobile;
+strict58565 passed assembly21.065s on unchanged core, reusing those test reports.
+All jobs are REAPED. No compiler or emulator is running. Exact evidence and original
+failures are in docs/measurements/core-local-2026-11-07.json. No source tests rerun
+merely to turn reused reports into new evidence. The final CI-only change selects
+Xcode26.3; no Kotlin implementation change after acceptance.
 
-The original user's long-run HRIS communications/PRD objective remains active. This
-library task supplements chat list, send latency and viewport fixes; it does not
-replace them. No proactive sub-agent delegation is authorized in this session.
+No published artifact/release, Ktor adapter, Matrix Rust HTTP bridge, Compose viewer,
+body capture, export or application integration yet. Add actual Ktor instrumentation
+with bounded ingress and cancellation/streaming tests, then a state-driven viewer.
+SDK4 has no FFI HTTP observer and is immutable: a real bridge needs a new separately
+versioned SDK release, never a relabelled Ktor log. See design.md. The repository is
+private; portable distribution to public consumer CI still needs a supported choice.
+
+Parent HRIS Mobile recovery e936d052 records build54's failed device acceptance;
+implementation700a8a21 is primary. Pending/draft previews survive cold offline restart,
+but delivery does not resume after reconnection until foreground re-entry, recovery
+shows a transient duplicate, and local save dismisses the keyboard. Original Bima
+emulator is STOPPED with54 installed and both exact test sends retained. Do not reset,
+restore a backup, re-enroll or recreate SDK keys/transaction IDs. Phone still53 and
+must only receive validated builds with explicit serial and --install-only.
+
+The original long-run communications/54-group PRD objective remains active. This
+library supplements those fixes; it does not replace them. One heavy local job and
+no compiler/emulator overlap. No proactive agent delegation is authorized.
