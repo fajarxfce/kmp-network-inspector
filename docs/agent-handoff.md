@@ -1,5 +1,20 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## First Compose CI — 7 November2026,18:58UTC
+
+Viewer implementationf71f308c9530657c393514e2b930c6015c3a737a is pushed. First run
+42403768313 failed before either job ran any step; GitHub reported the same billing/
+spending-limit block. No CI or Apple runtime tests executed. [Annotations](measurements/compose-first-ci-2026-11-07.json).
+The repository remains private and the visibility question is pending. Local evidence
+is unchanged; do not retry unchanged blocked CI or infer visibility approval.
+
+Rust core-1 (75358) is REAPED:14/15 tests passed in180.080s including fresh compilation;
+one body-cancellation fixture dropped its only client owner and therefore correctly
+cleared the observation channel. The fixture now retains a separate client clone.
+Sole heavy core-2 is running; no SDK acceptance or second compiler/emulator yet.
+Mobile first3308 CI artifacts are downloaded/hash-verified, awaiting proof review;
+primarybb106154 first control42403266288/native42403266310 are pending.
+
 ## Current increment — 7 November2026,18:56UTC
 
 The optional Compose viewer is locally accepted in this implementation commit.
