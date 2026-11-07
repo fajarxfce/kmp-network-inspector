@@ -27,6 +27,8 @@ jobs:
           node-version: '24'
       - uses: gradle/actions/setup-gradle@v4
       - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
       - run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
       - run: sudo apt-get install -y fonts-dejavu-core
       - name: Check JVM, Android host and actual Wasm browser
