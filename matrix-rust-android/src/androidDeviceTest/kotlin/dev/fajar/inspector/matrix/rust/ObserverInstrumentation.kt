@@ -3,6 +3,7 @@ package dev.fajar.inspector.matrix.rust
 import android.app.Activity
 import android.app.Instrumentation
 import android.os.Bundle
+import dev.fajar.inspector.NetworkInspection
 import dev.fajar.inspector.NetworkOutcome
 import dev.fajar.inspector.NetworkTraceStore
 import dev.fajar.inspector.NetworkTransfer
@@ -15,6 +16,7 @@ import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.concurrent.thread
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.first
 import org.json.JSONObject
 import org.matrix.rustcomponents.sdk.Client
@@ -53,6 +55,9 @@ class ObserverInstrumentation : Instrumentation() {
                             result.put("activeScenario", "bounded-capture")
                             boundedUnconsumedCapture(client, fixture)
                             result.put("boundedCapturePreservesAllRequests", true)
+                            result.put("activeScenario", "inspection-reset")
+                            inspectionReset(client, fixture)
+                            result.put("resetReplacesCaptureWithoutChangingRequest", true)
                         } finally {
                             client.close()
                         }
@@ -187,6 +192,50 @@ class ObserverInstrumentation : Instrumentation() {
         }
     }
 
+    private suspend fun inspectionReset(client: Client, fixture: LoopbackFixture) = coroutineScope {
+        val inspection = NetworkInspection()
+        val opened = Channel<Unit>(2)
+        val handles = mutableListOf<org.matrix.rustcomponents.sdk.HttpObservationSubscription>()
+        val collector = launch {
+            captureMatrixHttp(inspection) {
+                check(handles.all { it.uniffiIsDestroyed })
+                val native = client.observeHttpRequests()
+                handles += native
+                check(opened.trySend(Unit).isSuccess)
+                MatrixRustHttpSubscription(native)
+            }
+        }
+        try {
+            opened.receive()
+            val previous = checkNotNull(inspection.recorders.value)
+            val pending = async { client.getProfile("@reset-delayed:fixture.invalid") }
+            withTimeout(5_000) { previous.snapshots.first { it.traces.isNotEmpty() } }
+            inspection.reset()
+            opened.receive()
+            check(pending.await().displayName == "Original profile")
+            check(previous.snapshots.value.closed && previous.snapshots.value.traces.isEmpty())
+            val current = checkNotNull(inspection.recorders.value)
+            check(current.snapshots.value.traces.isEmpty())
+            check(client.getProfile("@reset-new:fixture.invalid").displayName == "Original profile")
+            val captured =
+                withTimeout(5_000) {
+                    current.snapshots.first { value ->
+                        value.traces.any { it.transfer is NetworkTransfer.Complete }
+                    }
+                }
+            check(captured.traces.single().outcome == NetworkOutcome.Response(200))
+            check("reset-new" in captured.traces.single().request.endpoint.path)
+            check(fixture.count("reset-delayed") == 1 && fixture.count("reset-new") == 1)
+            inspection.close()
+            collector.join()
+            check(handles.size == 2 && handles.all { it.uniffiIsDestroyed })
+        } finally {
+            collector.cancelAndJoin()
+            inspection.close()
+            opened.close()
+        }
+    }
+
     private suspend fun buildClient(url: String): Client {
         var builder = ClientBuilder()
         fun replace(change: (ClientBuilder) -> ClientBuilder) {
@@ -234,7 +283,8 @@ private class LoopbackFixture : AutoCloseable {
                                 "UTF-8",
                             )
                         counts.computeIfAbsent(path) { AtomicInteger() }.incrementAndGet()
-                        if (path.contains("@delayed:")) Thread.sleep(150)
+                        if (path.contains("@delayed:") || path.contains("@reset-delayed:"))
+                            Thread.sleep(150)
                         val body = if (path.endsWith("/versions")) VERSIONS else BODY
                         val response =
                             "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n" +

@@ -2,7 +2,7 @@
 
 A transport-independent network inspector for Kotlin Multiplatform applications.
 
-**Status: metadata core, Ktor adapter, portable Matrix collector and Compose viewer locally verified. Native Matrix bindings and application integration remain in progress. No library release yet.**
+**Status: metadata core, Ktor adapter, Compose viewer and Android Matrix binding locally verified. Apple Matrix binding and application integration remain in progress. No library release yet.**
 
 The intended modules are a bounded event/store API, Ktor instrumentation, a Matrix
 Rust SDK observer adapter and an optional Compose Multiplatform viewer. Target
@@ -224,3 +224,43 @@ The device fixture is assembled with `:matrix-rust-android:assembleAndroidDevice
 from compiled output metadata; Android library tests use `dev.fajar.inspector.matrix.rust.test`.
 Its runner is `dev.fajar.inspector.matrix.rust.ObserverInstrumentation`. It uses only an
 owned loopback server and no HRIS account or data. Compile before starting the emulator.
+
+## Reset and application ownership
+
+`NetworkInspection` owns a replaceable recorder without allocating a coroutine or
+transport. Use it when the host offers Clear or changes accounts. Reset closes and
+erases the previous store before publishing a new one. Closing cannot be undone by
+a late reset. Request IDs belong to a recorder: reset the viewer's selection when
+the recorder changes.
+
+```kotlin
+val inspection = NetworkInspection(capacity = 200)
+val client = HttpClient(yourEngine) {
+    install(KtorNetworkInspector) {
+        recorderProvider = { inspection.recorders.value }
+    }
+}
+// Each actual Matrix client has its own supervised, client-owned lifetime.
+val capture = sdkClientScope.launch {
+    captureMatrixHttp(inspection) { matrixClient.observeNetworkRequests() }
+}
+// Clear or account replacement: buffered/late old events cannot populate the new store.
+inspection.reset()
+// Application disposal ends collection and releases the subscription; never the SDK client.
+inspection.close()
+capture.join()
+```
+
+The Ktor provider is a nonblocking lookup evaluated once per engine attempt. Each
+attempt retains its original recorder through completion, retry and redirect. Null
+skips capture; provider failures cannot alter the request. A fixed `recorder` remains
+supported; configure exactly one option.
+
+The Matrix overload cancels and joins the previous collector before creating a fresh
+subscription. Source failure waits for a reset without a retry loop. Closing the
+inspection ends collection. The host must still cancel and join a client's capture
+before destroying that native client. Android `observeNetworkRequests` is in the
+optional `matrix-rust-android` module on this candidate branch; SDK5 is not yet published.
+
+All226 JVM/Android-host/Wasm cases pass freshly; Apple klibs and the six-case native
+fixture compile. The new native reset case has not executed yet. [Exact evidence](docs/measurements/inspection-lifetime-local-2026-11-07.json).

@@ -1,5 +1,42 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## Capture lifetime locally accepted — 7 November2026,21:08UTC
+
+NetworkInspection reset/close, dynamic Ktor recorder lookup and client-owned Matrix
+source rotation are locally accepted. Reset fences old stores and buffered events;
+Matrix cancels/joins the old collector before subscribing again. Source failure waits
+for reset, never retries HTTP. Closing one client's job leaves other clients intact.
+
+Strict-1/42291 is REAPED:191.568s/42 stable inputs, all226 cases fresh with zero failures,
+errors or skips. Core84/Ktor51/Compose21/Matrix57/native-adapter-host13. Apple main/test
+klibs and the six-case Android fixture compile. Additional manifest hashes match the
+accepted base. Initial artifact audit omitted inherited JNA; the complete native map
+matches the exact previously accepted APK. [Evidence](measurements/inspection-lifetime-local-2026-11-07.json).
+Fixture75ead5bd55a12615550410d00c6d09c8308cb9c6afe514f88b0a1465444a4d10/244550259B
+contains exact SDK5 x86_6403e23... and inherited JNA288e... . The NEW sixth native reset
+case has NOT run yet. Earlier five actual JNI scenarios at9e710f0 remain accepted.
+
+Sole heavy local job56645 now builds Mobile56 from accepted/pushedbe2fe021 on SDK4;
+Mobile sources are FROZEN until reaped. No emulator runs. Phone and original stopped
+Bima remain55. After build verification, run the native six-case fixture and actual
+viewport/continuity check on the owned emulator, then deliver validated progress to
+phone with --install-only. No56 artifact/acceptance/install exists yet.
+
+Mobile primary and feat/network-inspector-20261107 arebe2fe021, pushed. New first control
+42414100643/native42414100684 jobs started21:04:42–43. Previousbb106 first CI is fully
+audited in Mobile Git. SDK branch9673eb1f is pushed; Apple42413788416 runs after the
+first-linker failure and locally-tested primary-object grouping correction. No Apple
+runtime/link acceptance or SDK5 publication. Private visibility remains unanswered.
+
+Next actual reset fixture, Mobile integration via the separate library checkout,
+real capture/overhead, validated install, Starter port and composer/latency. The staged
+ApplicationNetworkInspection in Mobile .work is uncompiled; host integration is NOT
+implemented yet. Original54-group PRD remains active, none complete. Main9460e62c and
+Group80a43b9e are pushed (Group's first remote push failed; verified unchanged remote,
+second succeeded). No live API/schema/Group routing changes. Do not copy private sources
+into public Mobile or infer approval to change visibility. Older sections are historical.
+
+
 ## Real Android observer accepted — 07 November 2026, 20:34 UTC
 
 Five real x86_64 JNI/loopback scenarios now pass against the four-ABI SDK candidate:

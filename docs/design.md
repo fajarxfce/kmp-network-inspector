@@ -1,5 +1,19 @@
 # Design
 
+## Replaceable capture lifetime
+
+NetworkInspection publishes one recorder per capture. Reset closes the old recorder
+before publishing the replacement, fencing both buffered starts and late finishes.
+Ktor captures the exact recorder/handle pair once per engine attempt. Matrix uses a
+client-owned collector that cancels and joins its old subscription before creating
+another. A closed inspection cannot restart, even after a late reset request.
+
+No scope or transport belongs to this core owner. Each Matrix client's scope remains
+separate, and application composition decides when account changes or explicit Clear
+reset the capture. The viewer must reset selected request identity with the recorder;
+IDs from different recorders are not interchangeable. [Local acceptance](measurements/inspection-lifetime-local-2026-11-07.json).
+
+
 ## Portable Matrix collection — 7 November 2026
 
 The optional `matrix` module now owns the common subscription contract and collector.
