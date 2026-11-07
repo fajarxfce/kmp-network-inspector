@@ -1,5 +1,35 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## Android binding candidate — 7 November 2026, 20:14 UTC
+
+The separate native-binding branch contains matrix-rust-android. It maps the actual
+observer records, retains native timing/attempts, rejects incompatible unsigned ranges
+and bounds, and owns stop-before-disposal. Concurrent readers are rejected. Closing
+wakes the read before disposing the handle; diagnostic collection never owns the client.
+
+Local host13 cases pass in19.312s on36 stable inputs (strict-3/77851, REAPED). Strict-1
+missing inherited checksums and strict-2 fixture exception-copy failure are preserved.
+The Android instrumentation fixture compiles:device-2/32912 passed16.104s/38 stable inputs.
+It has five real JNI/loopback scenarios but NONE have executed yet. Device-3/27627
+passed17.211s/38 stable inputs after keepDebugSymbols. The rebuilt APK contains the
+exact accepted native hash. All local compiler jobs are reaped; no emulator is running.
+[Exact evidence](measurements/matrix-android-binding-local-2026-11-07.json).
+
+The module uses an explicitly unpublished ARM64 candidate coordinate. Its local mirror
+is .work/matrix-android-2026-11-07/sdk-repository, supplied with -PmatrixSdkRepository.
+Do not merge into library main/publish before replacing it with the accepted paired SDK.
+One native fixture APK is compiled only; it has not been installed anywhere. The actual
+JNI test needs the x86_64 ABI from original Android CI42408652180 (all four jobs started).
+Apple CI42408920984 at81a82bf9 is also building; no target acceptance claimed. Sources and
+build drivers live in Mobile branch feat/matrix-http-observer-20261107, current2f45785f.
+
+Inspector main388a1cb remains the accepted portable base. Its first CI42407765072 ran
+zero steps due to billing; evidence is included here. Visibility question remains pending.
+No private source may be copied into public Mobile to bypass billing. Phone/stopped
+original Bima emulator remain55. Sourcebb106154 viewport fix is accepted but uninstalled;
+composer/latency and original54 PRD groups remain active. Next build four-ABI SDK, execute
+actual observer fixture, integrate the viewer/transport into Mobile, then port to Starter.
+
 ## Current continuation — 7 November 2026, 19:44 UTC
 
 The portable Matrix subscription/collector is locally accepted in this commit. It

@@ -198,3 +198,19 @@ Matrix's 13 scenarios run on JVM, Android host and a real Wasm browser using bou
 subscription fixtures. Android AARs and Apple main/test klibs compile. Actual generated
 native binding integration, Apple runtime, HRIS capture/overhead and publication remain.
 [Exact evidence](docs/measurements/matrix-bridge-local-2026-11-07.json).
+
+## Experimental generated Android binding
+
+The `feat/matrix-rust-bindings-20261107` branch adds `matrix-rust-android` on top of
+the portable Matrix collector. Its SDK dependency is an **unpublished ARM64 candidate**.
+Local checks require `-PmatrixSdkRepository=/absolute/path/to/verified/candidate/repository`.
+The library main branch remains the portable base while paired SDK artifacts and native
+execution are verified. Thirteen Android host cases pass; the real JNI fixture is compiled
+but has not run. See the [binding evidence](docs/measurements/matrix-android-binding-local-2026-11-07.json).
+
+With a compatible generated SDK, the host opens `client.observeNetworkRequests()`
+and passes it to `captureMatrixHttp` in an owned, supervised diagnostics coroutine.
+Create the subscription inside that coroutine so a never-started job cannot leak it.
+Cancel/join collection before clearing the store or disposing the client. The adapter
+stops and disposes only its own native subscription. It does not authenticate, start
+sync, retry requests, or turn HTTP success into message acknowledgements.

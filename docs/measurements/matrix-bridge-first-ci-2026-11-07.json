@@ -1,0 +1,26 @@
+{
+  "run": 42407765072,
+  "head": "388a1cb78084f4d94ff00dfc85e3815fc95d78c6",
+  "jobs": [
+    {
+      "id": 128509061034,
+      "name": "portable",
+      "steps": 0,
+      "conclusion": "failure",
+      "annotations": [
+        "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings"
+      ]
+    },
+    {
+      "id": 128509061443,
+      "name": "apple",
+      "steps": 0,
+      "conclusion": "failure",
+      "annotations": [
+        "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+        "Due to capacity constraints, jobs targeting macOS arm64 runners may experience longer queue times."
+      ]
+    }
+  ],
+  "interpretation": "First source CI could not start because of the GitHub billing/spending-limit restriction. No CI/Apple runtime acceptance; visibility remains private."
+}

@@ -11,6 +11,24 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        exclusiveContent {
+            forRepository {
+                ivy(
+                    providers
+                        .gradleProperty("matrixSdkRepository")
+                        .orElse("https://github.com/fajarxfce/hris-mobile/releases/download")
+                        .get()
+                ) {
+                    name = "Matrix observer SDK"
+                    patternLayout {
+                        ivy("matrix-sdk-[revision]/[module]-[revision].ivy.xml")
+                        artifact("matrix-sdk-[revision]/[artifact]-[revision].[ext]")
+                    }
+                    metadataSources { ivyDescriptor() }
+                }
+            }
+            filter { includeModule("dev.fajar.hris.matrix", "sdk-android") }
+        }
         ivy("https://github.com/WebAssembly/binaryen/releases/download") {
             name = "Binaryen distributions"
             patternLayout {
@@ -24,4 +42,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "kmp-network-inspector"
 
-include(":core", ":ktor", ":compose", ":matrix")
+include(":core", ":ktor", ":compose", ":matrix", ":matrix-rust-android")
