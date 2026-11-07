@@ -2,7 +2,7 @@
 
 A transport-independent network inspector for Kotlin Multiplatform applications.
 
-**Status: metadata core implemented and locally verified; adapters/viewer in progress. No library release or application integration yet.**
+**Status: metadata core and Ktor adapter locally verified; Matrix bridge/viewer in progress. No library release or application integration yet.**
 
 The intended modules are a bounded event/store API, Ktor instrumentation, a Matrix
 Rust SDK observer adapter and an optional Compose Multiplatform viewer. Target
@@ -64,3 +64,37 @@ ran. See the [CI evidence](docs/measurements/core-first-ci-2026-11-07.json) and 
 [exact checks and initial build failures](docs/measurements/core-local-2026-11-07.json).
 Run `./gradlew :core:jvmTest :core:testAndroidHostTest :core:wasmJsBrowserTest :core:assemble`
 on Linux with JDK21, Android SDK36, Node24 and Chrome. Apple tests use macOS/Xcode26.3.
+
+## Ktor metadata adapter
+
+```kotlin
+val recorder = NetworkTraceStore()
+val client = HttpClient(yourEngine) {
+    install(KtorNetworkInspector) {
+        this.recorder = recorder
+        // Optional: redact endpoint-specific secret path segments, or return null to exclude.
+        sanitizePath = { encodedPath -> encodedPath }
+    }
+}
+```
+
+Imports are `dev.fajar.inspector.NetworkTraceStore` and
+`dev.fajar.inspector.ktor.KtorNetworkInspector`. Depend on the optional `ktor` module.
+The host owns client/store disposal; closing the store erases metadata and rejects
+late completion without canceling delivery. The plugin allocates no background job
+or monitor subscription and never reads either body.
+
+Each Ktor engine attempt has its own row, including retries and redirects. Timing
+ends at response headers, before validation/body consumption. A401 is retained as
+an HTTP response even if the caller rejects it; a later failed body does not overwrite
+that status. Query values and URL credentials are excluded. Names, paths and headers
+are bounded before retention; header values are redacted by core. Engine-generated
+headers after the observation point may be absent. Body size remains unavailable,
+not inferred from Content-Length. Typed timeout/cancellation are distinguished; other
+engine errors currently use UNKNOWN without retaining exception messages.
+
+Thirteen adapter cases pass on JVM, Android host and an actual Wasm browser (39 total),
+with strict dependencies and Android AAR assembly. Apple klibs compile locally;
+Apple simulator and real HRIS capture/overhead still need acceptance. This adapter
+captures Ktor only; it does not capture the Matrix Rust SDK automatically.
+[Exact results and retained initial failures](docs/measurements/ktor-local-2026-11-07.json).

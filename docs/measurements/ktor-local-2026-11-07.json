@@ -1,0 +1,834 @@
+{
+  "baseCommit": "a0f04f693e757b4d2bd43a16f584faf2a6a0d119",
+  "scope": "Bounded Ktor3.3.3 metadata per engine attempt across retry/redirect; no request or response body reads",
+  "sources": {
+    "gradlew": "aed171fb114f82e6eaea4970a245a200e0582a7dcc8ec0891ca41b6e4a62b754",
+    "gradlew.bat": "fedad02c18e266ec094995a5751b7fe1eb6e74f66bf75db64fae2e50eb22c234",
+    "settings.gradle.kts": "16bfe8f0def407cbf3dae776400a9724dda2713b21e4c6c4ab621408df0858d6",
+    "build.gradle.kts": "b5729945872134bf61f6b031f6ca64aa11686026f3d4210adf0301683bd809bd",
+    "gradle.properties": "69da74989640e551626bd359470a8ad0119996d6bd59c3558b97ab48a067ec7f",
+    "gradle/libs.versions.toml": "cd98f54e20c4bf5a033fbb5b4c93410bb047009b9a224d0825f1b8665f2919fc",
+    "gradle/verification-metadata.xml": "fbab435a39bf16d71e68762296da5a0814c8a8249e097246490ed5268cd11bad",
+    "core/build.gradle.kts": "72809a2e12f2c9de5e5d165e7e1b8cb6c917d24bce962027a7e22b2c8d4b7a33",
+    "tools/check_test_results.py": "ae8075b2e47984521a827a25dba8445651310b1bd565b387e834bbd3da413112",
+    "ktor/build.gradle.kts": "6f4cdb1a7afaa9118573af0ed121b00784f76b7a528925453b3b1927fd19d157",
+    "ktor/src/commonTest/kotlin/dev/fajar/inspector/ktor/KtorNetworkInspectorTest.kt": "6da044bc5da16c44db4bfbba57a4e46b20aa03be98c0592109425a60d9b4939d",
+    "ktor/src/commonMain/kotlin/dev/fajar/inspector/ktor/KtorNetworkInspector.kt": "dcf3591b658063b6cd02f00a77365a2da2a97d0aeee561eb05ee79ecf7ac8270",
+    "ktor/src/commonMain/kotlin/dev/fajar/inspector/ktor/KtorTraceMetadata.kt": "b7c15656c9078ea5af08f92490110948d26dacf4d448fa8b83bb1549f6fa7883",
+    "kotlin-js-store/wasm/package-lock.json": "133fb624febd18b4bad9ea5586168618cf1802a843a993e05d9afac2e2fd4ed6",
+    ".github/workflows/check.yml": "1cd1260060e27b96ea84d4fa10571cf6d3eab00f022184212338072bbe006547",
+    "core/src/commonTest/kotlin/dev/fajar/inspector/NetworkTraceStoreTest.kt": "8856c7e57b033f5940663c3e945ae3a4576b7c94da5f29eef8abff0a79546411",
+    "core/src/commonTest/kotlin/dev/fajar/inspector/NetworkCapturePolicyTest.kt": "f39e950ba2ddf41644c5dcc5dd3a6baf3cafba3ec8bef8f6b9216c4034c0b431",
+    "core/src/commonMain/kotlin/dev/fajar/inspector/NetworkTrace.kt": "d0d37b2de7ffa037d462ff4efcb9750dcd4a5f2284771daa83740a2c4b1ee3f2",
+    "core/src/commonMain/kotlin/dev/fajar/inspector/NetworkCapturePolicy.kt": "2845fb82ed0fd034f7469357e7041fbfdff884a6e1cb9720f6ede22f297a91e0",
+    "core/src/commonMain/kotlin/dev/fajar/inspector/NetworkTraceStore.kt": "e10b4f6a826772af5aa7387071a5d28a772c28907e01b409371246c96ba26f63",
+    "gradle/wrapper/gradle-wrapper.jar": "55243ef57851f12b070ad14f7f5bb8302daceeebc5bce5ece5fa6edb23e1145c",
+    "gradle/wrapper/gradle-wrapper.properties": "13287ffad6cf3064056ddad80d95b855132348930b2dc6c91490588c55b3ac7d"
+  },
+  "runs": {
+    "strict-1": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble"
+      ],
+      "startedAt": "2026-11-07T17:43:30.319093+00:00",
+      "seconds": 19.764,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 21,
+      "freshReports": {}
+    },
+    "strict-2": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble"
+      ],
+      "startedAt": "2026-11-07T17:45:10.235264+00:00",
+      "seconds": 23.322,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 21,
+      "freshReports": {
+        "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+          "tests": 9,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+          "tests": 9,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      }
+    },
+    "lock-1": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        "kotlinWasmUpgradePackageLock"
+      ],
+      "startedAt": "2026-11-07T17:46:41.156699+00:00",
+      "seconds": 11.14,
+      "exitCode": 0,
+      "sourcesUnchanged": true,
+      "sourceCount": 21,
+      "freshReports": {}
+    },
+    "strict-3": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble"
+      ],
+      "startedAt": "2026-11-07T17:48:00.877070+00:00",
+      "seconds": 47.976,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 22,
+      "freshReports": {
+        "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+          "tests": 9,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      }
+    },
+    "strict-4": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble"
+      ],
+      "startedAt": "2026-11-07T17:49:34.449803+00:00",
+      "seconds": 20.068,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 22,
+      "freshReports": {}
+    },
+    "strict-5": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble"
+      ],
+      "startedAt": "2026-11-07T17:50:56.912966+00:00",
+      "seconds": 20.111,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 22,
+      "freshReports": {
+        "ktor/build/test-results/jvmTest/TEST-dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+          "tests": 13,
+          "failures": 11,
+          "errors": 0,
+          "skipped": 0
+        }
+      }
+    },
+    "strict-6": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble"
+      ],
+      "startedAt": "2026-11-07T17:52:19.310883+00:00",
+      "seconds": 51.993,
+      "exitCode": 0,
+      "sourcesUnchanged": true,
+      "sourceCount": 22,
+      "freshReports": {
+        "ktor/build/test-results/jvmTest/TEST-dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+          "tests": 13,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "ktor/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+          "tests": 13,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "ktor/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+          "tests": 13,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      }
+    }
+  },
+  "verifiedReports": {
+    "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+      "sha256": "4998480225408b26904ca7142f2cedaa1ebedea45b8b88575a87093769dfadcb",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+      "sha256": "0505ad3e1d4caf830cff1d0c36c5f8df8817158daa83f1bf672ac5145d4d6ccb",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+      "sha256": "9aec6250a250940cd8a098a9fb62e0efd78f8e04322d60bc84c70b3462f85f37",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+      "sha256": "de07f3c00b4451b7cc1a639894c16d268d6719bd9fb2ab8c3233f115df32533b",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+      "sha256": "c32508e032abbea2d917ebecbd04f21f936351bf477a8c572b1d068d77165b52",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+      "sha256": "cc8a2c502a3f6556e25bfbaa47e43ed03f82e996b6c4e0998788c5e739f9b4b5",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "ktor/build/test-results/jvmTest/TEST-dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+      "sha256": "e9581690e79d3f3d3cab4536574ab66cfa6138158c2e4b235fac50d93bcca624",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "ktor/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+      "sha256": "e8b4ce35f3fd799d4952d791abf78fc2cb10e685e876ca6231974da4c0b2899e",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "ktor/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+      "sha256": "af4ca792098f3c43d824b09cbdfc0655156ed5962c46282c875bfa7c8a3d005a",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "artifacts": {
+    "ktor/build/outputs/aar/ktor.aar": {
+      "bytes": 18587,
+      "sha256": "83ed302dd71cfa5741b649e02c748666c965ee0e1177923a2386d87bb95ebfd5"
+    }
+  },
+  "dependencyAudit": {
+    "dependency-audit.json": {
+      "sourceMobileCommit": "3308a93fc352c511032ed20d5b470274342a7a4a",
+      "sourceMetadataSha256": "eb6e153a9e7aa8e1cc4bc2224adb881c0cab6959853492e9178dd3a515b204dd",
+      "exactComponentsCopied": [
+        [
+          "io.ktor",
+          "ktor-client-core",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-client-core-iosarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-client-core-iossimulatorarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-client-core-jvm",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-client-core-wasm-js",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-client-mock",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-client-mock-iosarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-client-mock-iossimulatorarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-client-mock-jvm",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-client-mock-wasm-js",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-events",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-events-iosarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-events-iossimulatorarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-events-jvm",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-events-wasm-js",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-http",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-http-cio",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-http-cio-iosarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-http-cio-iossimulatorarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-http-cio-jvm",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-http-cio-wasm-js",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-http-iosarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-http-iossimulatorarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-http-jvm",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-http-wasm-js",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-io",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-io-iosarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-io-iossimulatorarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-io-jvm",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-io-wasm-js",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-network",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-network-iosarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-network-iossimulatorarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-network-jvm",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-network-tls",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-network-tls-iosarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-network-tls-iossimulatorarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-serialization",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-serialization-iosarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-serialization-iossimulatorarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-serialization-jvm",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-serialization-wasm-js",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-sse",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-sse-iosarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-sse-iossimulatorarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-sse-jvm",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-sse-wasm-js",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-utils",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-utils-iosarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-utils-iossimulatorarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-utils-jvm",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-utils-wasm-js",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-websocket-serialization",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-websocket-serialization-iosarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-websocket-serialization-iossimulatorarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-websocket-serialization-jvm",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-websocket-serialization-wasm-js",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-websockets",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-websockets-iosarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-websockets-iossimulatorarm64",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-websockets-jvm",
+          "3.3.3"
+        ],
+        [
+          "io.ktor",
+          "ktor-websockets-wasm-js",
+          "3.3.3"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-coroutines-slf4j",
+          "1.10.2"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-io-bytestring",
+          "0.8.0"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-io-bytestring-iosarm64",
+          "0.8.0"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-io-bytestring-iossimulatorarm64",
+          "0.8.0"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-io-bytestring-jvm",
+          "0.8.0"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-io-bytestring-wasm-js",
+          "0.8.0"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-io-core",
+          "0.8.0"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-io-core-iosarm64",
+          "0.8.0"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-io-core-iossimulatorarm64",
+          "0.8.0"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-io-core-jvm",
+          "0.8.0"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-io-core-wasm-js",
+          "0.8.0"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-serialization-core",
+          "1.9.0"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-serialization-core-iosarm64",
+          "1.9.0"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-serialization-core-iossimulatorarm64",
+          "1.9.0"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-serialization-core-jvm",
+          "1.9.0"
+        ],
+        [
+          "org.jetbrains.kotlinx",
+          "kotlinx-serialization-core-wasm-js",
+          "1.9.0"
+        ],
+        [
+          "org.slf4j",
+          "slf4j-api",
+          "2.0.17"
+        ],
+        [
+          "org.slf4j",
+          "slf4j-bom",
+          "2.0.17"
+        ],
+        [
+          "org.slf4j",
+          "slf4j-parent",
+          "2.0.17"
+        ]
+      ]
+    },
+    "wasm-dependency-audit.json": {
+      "firstRun": "strict-1",
+      "failedBeforeTests": true,
+      "exactMobileComponents": [
+        {
+          "group": "org.jetbrains.kotlinx",
+          "name": "atomicfu",
+          "version": "0.29.0"
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "name": "atomicfu-iosarm64",
+          "version": "0.29.0"
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "name": "atomicfu-iossimulatorarm64",
+          "version": "0.29.0"
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "name": "atomicfu-wasm-js",
+          "version": "0.29.0"
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "name": "kotlinx-browser",
+          "version": "0.5.0"
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "name": "kotlinx-browser-wasm-js",
+          "version": "0.5.0"
+        }
+      ]
+    },
+    "bom-dependency-audit.json": {
+      "firstRun": "strict-3",
+      "exactMobileComponent": {
+        "group": "org.jetbrains.kotlinx",
+        "name": "kotlinx-serialization-bom",
+        "version": "1.9.0"
+      }
+    }
+  },
+  "initialFailures": [
+    "strict-1: six missing Wasm dependency checksum artifacts; zero tests",
+    "strict-2: new Ktor module changed npm lock;28 core cases passed before lock task failed",
+    "strict-3: missing serialization BOM checksum;14 core Browser cases passed before Ktor compilation",
+    "strict-4: test CancellationException alias ambiguous; production JVM code compiled",
+    "strict-5:11 of13 JVM cases failed because URLBuilder default port0 was rejected by core; test sentinel also needed to preserve identity through coroutine stacktrace recovery"
+  ],
+  "finalResult": "strict-6:39 fresh Ktor cases passed in51.993s on22 unchanged inputs;42 verified core cases reuse earlier same-source reports; Android AAR and Apple device/simulator klib compilation pass",
+  "limitations": [
+    "No real Apple simulator execution: private CI blocked by account billing",
+    "MockEngine transport seam tested; actual live HRIS capture and overhead measurements pending",
+    "No Matrix HTTP bridge, viewer, body capture, export, application integration or library release",
+    "Durations end at HTTP response headers; later body/application errors do not replace observed status",
+    "Ktor/engine generated headers after the observation point may be absent; declared content length is not measured bytes",
+    "DNS/connection/TLS errors stay UNKNOWN unless a typed timeout/cancellation is observed"
+  ]
+}

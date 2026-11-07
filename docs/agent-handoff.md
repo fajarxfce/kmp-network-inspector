@@ -1,5 +1,37 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## Latest Ktor acceptance — 7 November 2026, 17:54 UTC
+
+Three common Kotlin source/test files add the optional Ktor3.3.3 module. Metadata
+is bounded/redacted before retained records. Public send-pipeline phases surround
+the engine so retries/redirects remain separate regardless of plugin install order;
+response timing stops before validation/body consumption. No body reads, UI wait,
+background job or transport policy change. Host closes the shared store explicitly.
+
+Strict33192/strict-6 passed39 fresh adapter cases (13 each JVM/Android host/actual
+Wasm browser) in51.993s on22 unchanged inputs. Verified42 core cases reuse earlier
+same-source reports. AAR and Apple device/simulator klib compilation pass; no Apple
+runtime test yet. All inspector jobs REAPED. Initial missing-checksum/lock failures,
+ambiguous test alias and11 failing JVM cases are retained in the measurement.
+URLBuilder default port0 needed resolution to the protocol port; a typed fixture
+sentinel avoids coroutine stacktrace copies while testing original error propagation.
+[Exact source/reports/artifacts](measurements/ktor-local-2026-11-07.json).
+
+No library release, Matrix capture, viewer, body preview/export or app integration.
+Private CI is billing-blocked; the question asking permission to make this new library
+public remains unanswered. Do not change visibility without that answer. The next
+implementation source push may have its own blocked first CI; never call it tested.
+
+Mobile95e35b9d is accepted/pushed on recovery with offline authority renewal; primary
+is3308 pending its original native CI. Sole heavy job7746 now builds Mobile55; do not
+start any compiler/emulator alongside it. Original Bima emulator STOPPED54, phone53.
+The new SDK observer has isolated source worktrees:
+../.worktrees/mobile-matrix-http-observer-2026-11-07 (branch feat/matrix-http-observer-20261107)
+and ../.worktrees/matrix-sdk-http-observer-2026-11-07 (SDK4 baseline reconstructed and
+all19 patched hashes match, no observer code yet). Frozen SDK4 inventories are untouched.
+Existing sections below retain earlier context; they are not active job status.
+
+
 The metadata-only core is locally accepted in this commit. Five common Kotlin
 source/test files, KMP Gradle scaffold, pinned wrapper/checksums, npm lock and first
 portable/Apple CI are included. Core has14 actual passing cases on JVM,14 Android

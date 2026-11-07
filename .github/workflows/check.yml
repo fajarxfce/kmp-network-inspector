@@ -1,4 +1,4 @@
-name: Multiplatform core
+name: Multiplatform inspector
 
 on:
   push:
@@ -34,8 +34,10 @@ jobs:
         run: >-
           xvfb-run -a ./gradlew --dependency-verification strict
           :core:jvmTest :core:testAndroidHostTest :core:wasmJsBrowserTest :core:assemble
+          :ktor:jvmTest :ktor:testAndroidHostTest :ktor:wasmJsBrowserTest :ktor:assemble
           --no-daemon --no-parallel --max-workers=1
       - run: python3 tools/check_test_results.py jvmTest testAndroidHostTest wasmJsBrowserTest
+      - run: python3 tools/check_test_results.py --module ktor jvmTest testAndroidHostTest wasmJsBrowserTest
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -43,6 +45,8 @@ jobs:
           path: |
             core/build/test-results/
             core/build/reports/tests/
+            ktor/build/test-results/
+            ktor/build/reports/tests/
   apple:
     runs-on: macos-15
     timeout-minutes: 25
@@ -59,8 +63,10 @@ jobs:
         run: >-
           ./gradlew --dependency-verification strict
           :core:iosSimulatorArm64Test :core:compileKotlinIosArm64
+          :ktor:iosSimulatorArm64Test :ktor:compileKotlinIosArm64
           --no-daemon --no-parallel --max-workers=1
       - run: python3 tools/check_test_results.py iosSimulatorArm64Test
+      - run: python3 tools/check_test_results.py --module ktor iosSimulatorArm64Test
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -68,3 +74,5 @@ jobs:
           path: |
             core/build/test-results/
             core/build/reports/tests/
+            ktor/build/test-results/
+            ktor/build/reports/tests/

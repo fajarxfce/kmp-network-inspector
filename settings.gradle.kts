@@ -24,4 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "kmp-network-inspector"
 
-include(":core")
+include(":core", ":ktor")
