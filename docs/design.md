@@ -58,3 +58,23 @@ support is declared per adapter; unsupported content stays unavailable.
 
 Do not publish a release until source/artifact provenance and actual target results
 are recorded. Each stage remains open until its implementation and checks exist.
+
+## Compose increment — 7 November2026
+
+The optional list/detail surface is implemented independently of capture. Immutable
+snapshots and stable request IDs keep pending-to-response updates in one row. The
+caller owns search/filter persistence, selection, navigation and Clear/Stop actions.
+The transient filter menu is the only internal interaction state. Detail receives
+null when the host can no longer resolve the selected ID, so cleared metadata is
+not retained by the viewer. No new coroutine or transport callback belongs to this UI.
+
+The first screenshot review exposed an oversized search label and a narrow status
+column at font scale2. The final label is bounded to one line, request metadata has
+the full row width, and status/duration flow beneath it. Dark320×640/font2 and
+light720×375/font1 screenshots were inspected. The filter target is explicitly48dp.
+
+Sixteen module tests and strict assembly pass locally. The4 Wasm cases verify filter
+behavior, not canvas interactions. Apple main/test klibs compile; private CI is still
+billing-blocked. No physical/native/browser UI acceptance, automatic sharing, export,
+pause/resume session implementation, or application integration is implied by the
+host-owned controls slot. [Evidence](measurements/compose-local-2026-11-07.json).

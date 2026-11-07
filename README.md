@@ -2,7 +2,7 @@
 
 A transport-independent network inspector for Kotlin Multiplatform applications.
 
-**Status: metadata core and Ktor adapter locally verified; Matrix bridge/viewer in progress. No library release or application integration yet.**
+**Status: metadata core, Ktor adapter and Compose viewer locally verified; Matrix bridge in progress. No library release or application integration yet.**
 
 The intended modules are a bounded event/store API, Ktor instrumentation, a Matrix
 Rust SDK observer adapter and an optional Compose Multiplatform viewer. Target
@@ -98,3 +98,40 @@ with strict dependencies and Android AAR assembly. Apple klibs compile locally;
 Apple simulator and real HRIS capture/overhead still need acceptance. This adapter
 captures Ktor only; it does not capture the Matrix Rust SDK automatically.
 [Exact results and retained initial failures](docs/measurements/ktor-local-2026-11-07.json).
+
+## Optional Compose viewer
+
+The `compose` module exposes `NetworkTraceList`, `NetworkTraceDetail` and
+`NetworkTraceFilter` in `dev.fajar.inspector.compose`. The host supplies a Material3
+`MaterialTheme`, owns snapshot collection and navigation, and keeps selection as an
+ID resolved against the latest snapshot. Pass null to detail after clear/eviction.
+The components perform no networking, dependency injection or lifecycle collection.
+
+```kotlin
+NetworkTraceList(
+    snapshot = snapshot,
+    filter = filter,
+    onFilterChange = onFilterChange,
+    onTraceSelected = onTraceSelected,
+    modifier = Modifier.fillMaxSize(),
+)
+NetworkTraceDetail(snapshot.traces.firstOrNull { it.id == selectedId })
+```
+
+Host controls such as Clear belong in the list's optional `actions` RowScope slot.
+The host also owns stopping capture and clearing it on account change. Source/status
+filters sit behind the icon beside search; the list keeps stable request IDs as
+pending records become responses. Rows wrap for larger text without narrowing the
+endpoint behind a status column. Details show actual status, timing, bounded metadata
+and explicit unavailable fields. This version captures no body content or query values.
+
+Local checks passed16 viewer-module cases: four filter cases on each of JVM,
+Android host and a Wasm browser, plus four desktop Compose interaction/layout cases.
+Android AAR, Wasm code and Apple device/simulator main/test klibs compile. Android and
+Apple device UI and browser UI runtime are **not yet verified**. Apple CI remains
+blocked by the private repository's billing restriction. Linux desktop rendering
+requires a font supported by Compose's generic aliases, such as DejaVu Sans/Mono
+(`fonts-dejavu-core` on Ubuntu, `ttf-dejavu` on Arch).
+
+[Exact checks, retained failures and synthetic screenshots](docs/measurements/compose-local-2026-11-07.json).
+The Matrix observer and HRIS integration remain open; there is no published package yet.

@@ -28,6 +28,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       - uses: android-actions/setup-android@v3
       - run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+      - run: sudo apt-get install -y fonts-dejavu-core
       - name: Check JVM, Android host and actual Wasm browser
         env:
           CHROME_BIN: /usr/bin/google-chrome
@@ -35,9 +36,11 @@ jobs:
           xvfb-run -a ./gradlew --dependency-verification strict
           :core:jvmTest :core:testAndroidHostTest :core:wasmJsBrowserTest :core:assemble
           :ktor:jvmTest :ktor:testAndroidHostTest :ktor:wasmJsBrowserTest :ktor:assemble
+          :compose:jvmTest :compose:testAndroidHostTest :compose:wasmJsBrowserTest :compose:assemble
           --no-daemon --no-parallel --max-workers=1
       - run: python3 tools/check_test_results.py jvmTest testAndroidHostTest wasmJsBrowserTest
       - run: python3 tools/check_test_results.py --module ktor jvmTest testAndroidHostTest wasmJsBrowserTest
+      - run: python3 tools/check_test_results.py --module compose jvmTest testAndroidHostTest wasmJsBrowserTest
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -47,6 +50,9 @@ jobs:
             core/build/reports/tests/
             ktor/build/test-results/
             ktor/build/reports/tests/
+            compose/build/test-results/
+            compose/build/reports/tests/
+            compose/build/reports/screenshots/
   apple:
     runs-on: macos-15
     timeout-minutes: 25
@@ -64,9 +70,11 @@ jobs:
           ./gradlew --dependency-verification strict
           :core:iosSimulatorArm64Test :core:compileKotlinIosArm64
           :ktor:iosSimulatorArm64Test :ktor:compileKotlinIosArm64
+          :compose:iosSimulatorArm64Test :compose:compileKotlinIosArm64
           --no-daemon --no-parallel --max-workers=1
       - run: python3 tools/check_test_results.py iosSimulatorArm64Test
       - run: python3 tools/check_test_results.py --module ktor iosSimulatorArm64Test
+      - run: python3 tools/check_test_results.py --module compose iosSimulatorArm64Test
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -76,3 +84,6 @@ jobs:
             core/build/reports/tests/
             ktor/build/test-results/
             ktor/build/reports/tests/
+            compose/build/test-results/
+            compose/build/reports/tests/
+            compose/build/reports/screenshots/

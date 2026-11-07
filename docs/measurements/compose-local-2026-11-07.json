@@ -1,0 +1,4613 @@
+{
+  "baseCommit": "f7fc606a6bbd4365f26fe9cc98da48ea250e29eb",
+  "acceptedAt": "2026-11-07T18:55:42.398155+00:00",
+  "scope": "State-driven optional Compose request list/detail and bounded source/status/query filtering. No transport or app integration.",
+  "sources": {
+    "gradlew": "aed171fb114f82e6eaea4970a245a200e0582a7dcc8ec0891ca41b6e4a62b754",
+    "gradlew.bat": "fedad02c18e266ec094995a5751b7fe1eb6e74f66bf75db64fae2e50eb22c234",
+    "settings.gradle.kts": "d0baf0905b31f1f327cebc2eb9adef64ecd6a3a9906e660d87a18b3e08aab06c",
+    "build.gradle.kts": "0b56e130bd58ca4fa2ab4364ee5358a5e79f27b1c6edb53d690a86dd031bba49",
+    "gradle.properties": "69da74989640e551626bd359470a8ad0119996d6bd59c3558b97ab48a067ec7f",
+    "gradle/libs.versions.toml": "d7358da2e282bbdd227c327dcb572e852aba183d6d6975d55cc0fcbe92e2d3d5",
+    "gradle/verification-metadata.xml": "679647dbb1247a480c79ef2754ffe07cd2b504f964a89f42c7afb91dfd252483",
+    "core/build.gradle.kts": "72809a2e12f2c9de5e5d165e7e1b8cb6c917d24bce962027a7e22b2c8d4b7a33",
+    "tools/check_test_results.py": "1daae4b3b1e6a1b2ff7e4d655508a6bc7779a63ff1c974878ed0366b4c53784a",
+    "ktor/build.gradle.kts": "6f4cdb1a7afaa9118573af0ed121b00784f76b7a528925453b3b1927fd19d157",
+    "compose/build.gradle.kts": "326da00c8b451e6efb4de63ba5719cc3c045bddeadea9e310cb94cc9a530e6fd",
+    "compose/src/jvmTest/kotlin/dev/fajar/inspector/compose/NetworkInspectorUiTest.kt": "ed7d19b9fed70eff8ba89a122ac17c42c7c0b32806b908b21a609030102e4f69",
+    "compose/src/commonTest/kotlin/dev/fajar/inspector/compose/NetworkTraceFilterTest.kt": "50121d7e145cf5a6c299ebaf810195202a58253e9eccc398ec77340b0b6243cd",
+    "compose/src/commonMain/kotlin/dev/fajar/inspector/compose/NetworkTraceFilter.kt": "71fb858d3d52b0dd4683cedffa5219ef5a39cfa3dc76322248a2d7b2114abee2",
+    "compose/src/commonMain/kotlin/dev/fajar/inspector/compose/NetworkTraceList.kt": "091927fa03e650dd58dff8e3b1f86384b46eb1ed1e19da3a8183c778dd6e3c6c",
+    "compose/src/commonMain/kotlin/dev/fajar/inspector/compose/NetworkTraceDetail.kt": "7e355516600e7f1923c875272bed4b4eec09331b1c7622a7c9070ddd19e698db",
+    "ktor/src/commonTest/kotlin/dev/fajar/inspector/ktor/KtorNetworkInspectorTest.kt": "6da044bc5da16c44db4bfbba57a4e46b20aa03be98c0592109425a60d9b4939d",
+    "ktor/src/commonMain/kotlin/dev/fajar/inspector/ktor/KtorNetworkInspector.kt": "dcf3591b658063b6cd02f00a77365a2da2a97d0aeee561eb05ee79ecf7ac8270",
+    "ktor/src/commonMain/kotlin/dev/fajar/inspector/ktor/KtorTraceMetadata.kt": "b7c15656c9078ea5af08f92490110948d26dacf4d448fa8b83bb1549f6fa7883",
+    "kotlin-js-store/wasm/package-lock.json": "8280040e152fa47f7cc28aa71bbb9d76582b1760b0539d4b2f81fbf945fc6165",
+    ".github/workflows/check.yml": "4fcbf3d3be33b0b1524cab92e9257146651eff1734784f8ef5fad3cb038957ca",
+    "core/src/commonTest/kotlin/dev/fajar/inspector/NetworkTraceStoreTest.kt": "8856c7e57b033f5940663c3e945ae3a4576b7c94da5f29eef8abff0a79546411",
+    "core/src/commonTest/kotlin/dev/fajar/inspector/NetworkCapturePolicyTest.kt": "f39e950ba2ddf41644c5dcc5dd3a6baf3cafba3ec8bef8f6b9216c4034c0b431",
+    "core/src/commonMain/kotlin/dev/fajar/inspector/NetworkTrace.kt": "d0d37b2de7ffa037d462ff4efcb9750dcd4a5f2284771daa83740a2c4b1ee3f2",
+    "core/src/commonMain/kotlin/dev/fajar/inspector/NetworkCapturePolicy.kt": "2845fb82ed0fd034f7469357e7041fbfdff884a6e1cb9720f6ede22f297a91e0",
+    "core/src/commonMain/kotlin/dev/fajar/inspector/NetworkTraceStore.kt": "e10b4f6a826772af5aa7387071a5d28a772c28907e01b409371246c96ba26f63",
+    "gradle/wrapper/gradle-wrapper.jar": "55243ef57851f12b070ad14f7f5bb8302daceeebc5bce5ece5fa6edb23e1145c",
+    "gradle/wrapper/gradle-wrapper.properties": "13287ffad6cf3064056ddad80d95b855132348930b2dc6c91490588c55b3ac7d"
+  },
+  "runs": {
+    "lock-1": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        "kotlinWasmUpgradePackageLock"
+      ],
+      "startedAt": "2026-11-07T18:38:07.721048+00:00",
+      "seconds": 11.089,
+      "exitCode": 0,
+      "sourcesUnchanged": false,
+      "sourceCount": 28,
+      "freshReports": {},
+      "interpretation": "Intentional npm lock update, not a source-frozen test acceptance."
+    },
+    "strict-1": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:29:18.405395+00:00",
+      "seconds": 12.347,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {},
+      "interpretation": "Missing Compose plugin marker checksum."
+    },
+    "strict-10": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:44:26.571447+00:00",
+      "seconds": 24.329,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {
+        "compose/build/test-results/jvmTest/TEST-dev.fajar.inspector.compose.NetworkTraceFilterTest.xml": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "compose/build/test-results/jvmTest/TEST-dev.fajar.inspector.compose.NetworkInspectorUiTest.xml": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "interpretation": "All eight JVM cases passed; missing Android artifact checksums. Screenshot review then found oversized search label and cramped status column with font scale2."
+    },
+    "strict-11": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:46:37.555080+00:00",
+      "seconds": 28.891,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {
+        "compose/build/test-results/jvmTest/TEST-dev.fajar.inspector.compose.NetworkTraceFilterTest.xml": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "compose/build/test-results/jvmTest/TEST-dev.fajar.inspector.compose.NetworkInspectorUiTest.xml": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "interpretation": "Reflowed rows and bounded search label passed all eight JVM cases; missing Android host runtime checksums."
+    },
+    "strict-12": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:47:50.677225+00:00",
+      "seconds": 52.954,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {
+        "compose/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.compose.NetworkTraceFilterTest.xml": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "compose/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.compose.NetworkTraceFilterTest.xml": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "interpretation": "Android host and actual Wasm filter cases passed; missing common metadata artifacts."
+    },
+    "strict-13": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:49:29.646810+00:00",
+      "seconds": 16.458,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {},
+      "interpretation": "Missing Apple arm64 metadata checksums."
+    },
+    "strict-14": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:50:47.372067+00:00",
+      "seconds": 15.753,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {},
+      "interpretation": "Missing Apple simulator metadata checksums."
+    },
+    "strict-15": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:52:02.483489+00:00",
+      "seconds": 21.112,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {},
+      "interpretation": "Missing Apple arm64 klib checksums."
+    },
+    "strict-16": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:53:23.984593+00:00",
+      "seconds": 20.413,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {},
+      "interpretation": "Missing Apple simulator klib checksums."
+    },
+    "strict-17": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:53:45.260364+00:00",
+      "seconds": 21.264,
+      "exitCode": 0,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {},
+      "interpretation": "Strict assembly succeeded; reused verified same-source tests, no fresh tests claimed."
+    },
+    "strict-2": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:31:23.702739+00:00",
+      "seconds": 6.681,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {},
+      "interpretation": "Same missing marker; an earlier failed checksum download did not stop the shell from launching this unnecessary repeat. Preserved as failed, not accepted."
+    },
+    "strict-3": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:32:04.961858+00:00",
+      "seconds": 20.67,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {},
+      "interpretation": "Missing exact Wasm dependency checksums."
+    },
+    "strict-4": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:34:04.003672+00:00",
+      "seconds": 11.64,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {},
+      "interpretation": "Missing exact tool/runtime metadata checksums."
+    },
+    "strict-5": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:37:12.270738+00:00",
+      "seconds": 24.884,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {
+        "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+          "tests": 9,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+          "tests": 9,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "interpretation": "New Compose module changed npm workspace lock; core JVM/host cases passed before failure."
+    },
+    "strict-6": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:38:18.917485+00:00",
+      "seconds": 82.377,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {
+        "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+          "tests": 9,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "ktor/build/test-results/jvmTest/TEST-dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+          "tests": 13,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "ktor/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+          "tests": 13,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "ktor/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+          "tests": 13,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "interpretation": "Missing desktop/Apple metadata checksums."
+    },
+    "strict-7": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:40:08.351416+00:00",
+      "seconds": 24.382,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {},
+      "interpretation": "Missing JVM UI test runtime checksums."
+    },
+    "strict-8": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:41:01.631413+00:00",
+      "seconds": 16.451,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {
+        "compose/build/test-results/jvmTest/TEST-dev.fajar.inspector.compose.NetworkTraceFilterTest.xml": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "compose/build/test-results/jvmTest/TEST-dev.fajar.inspector.compose.NetworkInspectorUiTest.xml": {
+          "tests": 4,
+          "failures": 4,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "interpretation": "Four UI cases failed because this Linux host lacked the generic fonts used by Compose."
+    },
+    "strict-9": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        ":core:jvmTest",
+        ":core:testAndroidHostTest",
+        ":core:wasmJsBrowserTest",
+        ":core:assemble",
+        ":ktor:jvmTest",
+        ":ktor:testAndroidHostTest",
+        ":ktor:wasmJsBrowserTest",
+        ":ktor:assemble",
+        ":compose:jvmTest",
+        ":compose:testAndroidHostTest",
+        ":compose:wasmJsBrowserTest",
+        ":compose:assemble"
+      ],
+      "startedAt": "2026-11-07T18:43:43.601129+00:00",
+      "seconds": 17.002,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 28,
+      "freshReports": {
+        "compose/build/test-results/jvmTest/TEST-dev.fajar.inspector.compose.NetworkTraceFilterTest.xml": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "compose/build/test-results/jvmTest/TEST-dev.fajar.inspector.compose.NetworkInspectorUiTest.xml": {
+          "tests": 4,
+          "failures": 2,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "interpretation": "Fonts installed; two UI cases failed because the filter button was 40dp rather than the required 48dp."
+    }
+  },
+  "reports": [
+    {
+      "file": "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkCapturePolicyTest.xml",
+      "sha256": "5bb151c9d6a68bf183c833d9feadf6e83e34347df6669405880e9a1887e32474",
+      "counts": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "lastFreshPassingRun": "strict-5",
+      "sameCurrentKotlinSources": true
+    },
+    {
+      "file": "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkTraceStoreTest.xml",
+      "sha256": "9742377f95586bbcb48707a9177fc8a9b71653a113718bf69d6843a8a1f8a2fe",
+      "counts": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "lastFreshPassingRun": "strict-5",
+      "sameCurrentKotlinSources": true
+    },
+    {
+      "file": "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkCapturePolicyTest.xml",
+      "sha256": "12f660611553b2fa67e09ec23f57da0bee0eba3f3760865593f7684eac0c34fb",
+      "counts": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "lastFreshPassingRun": "strict-5",
+      "sameCurrentKotlinSources": true
+    },
+    {
+      "file": "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkTraceStoreTest.xml",
+      "sha256": "af53c6fc7a3ec224f8c79c72510a4d1ef5a7c1dcdf463c62953a00c2fc164765",
+      "counts": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "lastFreshPassingRun": "strict-5",
+      "sameCurrentKotlinSources": true
+    },
+    {
+      "file": "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkCapturePolicyTest.xml",
+      "sha256": "32dbbd155fafbcf8755332f88e616967890f624270a9d30eb398b6a6a6f37d0d",
+      "counts": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "lastFreshPassingRun": "strict-6",
+      "sameCurrentKotlinSources": true
+    },
+    {
+      "file": "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkTraceStoreTest.xml",
+      "sha256": "7a6c7895348204769c3f58cb0155ee641813bafdaa9ead535e0d7f5042263f59",
+      "counts": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "lastFreshPassingRun": "strict-6",
+      "sameCurrentKotlinSources": true
+    },
+    {
+      "file": "ktor/build/test-results/jvmTest/TEST-dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml",
+      "sha256": "13dfd6bd5c834dec51524240fa1c7e49cdd38d4eab92bce228cc515ed4619d11",
+      "counts": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "lastFreshPassingRun": "strict-6",
+      "sameCurrentKotlinSources": true
+    },
+    {
+      "file": "ktor/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml",
+      "sha256": "13edf81f5825f874046024e75a777fcdf26d2a1f1c795f2306575d897e629e9a",
+      "counts": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "lastFreshPassingRun": "strict-6",
+      "sameCurrentKotlinSources": true
+    },
+    {
+      "file": "ktor/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml",
+      "sha256": "9abac7c23895732d0f2367a0caded079799f6e79f71e4d72fb8935edae52e57a",
+      "counts": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "lastFreshPassingRun": "strict-6",
+      "sameCurrentKotlinSources": true
+    },
+    {
+      "file": "compose/build/test-results/jvmTest/TEST-dev.fajar.inspector.compose.NetworkInspectorUiTest.xml",
+      "sha256": "30accc43f4318aa9c6d10d73e9fb72b656a92035757df6fdb2a671a24ab54a63",
+      "counts": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "lastFreshPassingRun": "strict-11",
+      "sameCurrentKotlinSources": true
+    },
+    {
+      "file": "compose/build/test-results/jvmTest/TEST-dev.fajar.inspector.compose.NetworkTraceFilterTest.xml",
+      "sha256": "4fe92101940f4ee88d40087541044060a8b00106451547da3a577aca005bc582",
+      "counts": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "lastFreshPassingRun": "strict-11",
+      "sameCurrentKotlinSources": true
+    },
+    {
+      "file": "compose/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.compose.NetworkTraceFilterTest.xml",
+      "sha256": "5e2e206c114ffbc29acc02cacd483c33113f409e6b21b04209fd178a98623bc8",
+      "counts": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "lastFreshPassingRun": "strict-12",
+      "sameCurrentKotlinSources": true
+    },
+    {
+      "file": "compose/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.compose.NetworkTraceFilterTest.xml",
+      "sha256": "77af6b125c19fea53c2feb1ac18d764bac20d8d768e6610fe9da1010c76f7cb9",
+      "counts": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "lastFreshPassingRun": "strict-12",
+      "sameCurrentKotlinSources": true
+    }
+  ],
+  "testCounts": {
+    "core": 42,
+    "ktor": 39,
+    "compose": 16,
+    "all": 97
+  },
+  "testReuse": "Final strict17 assembly reused current-source reports; actual fresh Compose runs were strict11 JVM8 and strict12 Android host4/Wasm browser4. No unchanged test rerun solely to manufacture fresh evidence.",
+  "artifacts": [
+    {
+      "file": "compose/build/outputs/aar/compose.aar",
+      "bytes": 65583,
+      "sha256": "0f035e72ce680ede49aa62526df34d7efe742fba5f9605675e2f8441b5c6135f"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/images/inspector-landscape.png",
+      "sha256": "b4f063955ce84e90deb6dde8ae739a98f3e56feafcb569d5526f3aa31448fa7c",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "docs/images/inspector-narrow-dark-large.png",
+      "sha256": "2bb37f368ac1192ba4ee909e05e32275adb502760b4b2deee203b2c93241353b",
+      "visuallyReviewed": true
+    }
+  ],
+  "checksumProvenance": {
+    "plugin-marker-checksums.json": [
+      {
+        "group": "org.jetbrains.compose",
+        "name": "org.jetbrains.compose.gradle.plugin",
+        "version": "1.9.3",
+        "artifact": "org.jetbrains.compose.gradle.plugin-1.9.3.pom",
+        "sha256": "92aefd7eefe5159fbb120350d8edc3c24de5daa6f658fddbd7b998b4ae66ccb3",
+        "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/org.jetbrains.compose.gradle.plugin/1.9.3/org.jetbrains.compose.gradle.plugin-1.9.3.pom",
+        "publishedSha1": "877310271ed34fb09d478ee80fc94cfe065b589e",
+        "publishedSha1Matches": true,
+        "publishedSha256Available": false
+      },
+      {
+        "group": "org.jetbrains.kotlin.plugin.compose",
+        "name": "org.jetbrains.kotlin.plugin.compose.gradle.plugin",
+        "version": "2.3.21",
+        "artifact": "org.jetbrains.kotlin.plugin.compose.gradle.plugin-2.3.21.pom",
+        "sha256": "49e705db8a543e7e59c40cb1e11633d9bc37348bffe4f115f1979cdf889f9228",
+        "source": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/plugin/compose/org.jetbrains.kotlin.plugin.compose.gradle.plugin/2.3.21/org.jetbrains.kotlin.plugin.compose.gradle.plugin-2.3.21.pom",
+        "publishedSha1": "ca73671fc82853bf928712f4b042f9da03123bbb",
+        "publishedSha1Matches": true,
+        "publishedSha256Available": false
+      }
+    ],
+    "strict-10-resolved-checksums.json": {
+      "mobileMetadataSha256": "eb6e153a9e7aa8e1cc4bc2224adb881c0cab6959853492e9178dd3a515b204dd",
+      "records": [
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-coroutines-android-1.10.2.jar",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2",
+          "hashes": [
+            "e713f1f874244115a07571065cffa0f24f5e78300e9720fea16de3af1d75fd41"
+          ]
+        },
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/compose/material/material-ripple-android/1.9.3/material-ripple-android-1.9.3.aar",
+          "publishedSha1": "c5bdc1ceac779c1e9818da986d8cd1b8cd6c3d8f",
+          "publishedSha1Matches": true,
+          "sha256": "8161fe3ebef7ecf3f40a53b7b69308507bb10b023b3fdc7b58efb31713688479",
+          "bytes": 96342
+        },
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/compose/material3/material3-android/1.4.0/material3-android-1.4.0.aar",
+          "publishedSha1": "6064b108969ab5557a0c19c7e026554f377cecf5",
+          "publishedSha1Matches": true,
+          "sha256": "3a37e8b36df3822fe1e6059f0f9fafda8800388860477624ac1b9422c418a36e",
+          "bytes": 5167765
+        }
+      ]
+    },
+    "strict-11-resolved-checksums.json": {
+      "mobileMetadataSha256": "eb6e153a9e7aa8e1cc4bc2224adb881c0cab6959853492e9178dd3a515b204dd",
+      "records": [
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/activity/activity/1.8.2/activity-1.8.2.aar",
+          "publishedSha1": "bce54c84024b17c34f9d4cdeaf1ce39d3e750c9e",
+          "publishedSha1Matches": true,
+          "sha256": "ecc119262530a6e2f9f373207e472d476306bed3d4b216fe61b1ea42e3bef688",
+          "bytes": 169675
+        },
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/activity/activity/1.8.2/activity-1.8.2.module",
+          "publishedSha1": "21e8f5ac017c622286f8bd8118e55842c81b333e",
+          "publishedSha1Matches": true,
+          "sha256": "c8923871e556cd5467addabac6773e778f3a4d3da19bfc8153bbaee0d145298f",
+          "bytes": 8369
+        },
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/activity/activity-compose/1.8.2/activity-compose-1.8.2.aar",
+          "publishedSha1": "648fbbfd0bd3b85c4de733dd022fc86741477e43",
+          "publishedSha1Matches": true,
+          "sha256": "5a67e984f14ed2afc585aa3a23edff1c1791c80caa2bf68a0f799c1b11a39038",
+          "bytes": 1135179
+        },
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/activity/activity-compose/1.8.2/activity-compose-1.8.2.module",
+          "publishedSha1": "c6857ce78d387d2f9cdcbc85f12da123b71ae69a",
+          "publishedSha1Matches": true,
+          "sha256": "0460c0a46ba9a74f92b180e4a78751745384a78f462de2cc240f32da4cefcf46",
+          "bytes": 7463
+        },
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/activity/activity-ktx/1.8.2/activity-ktx-1.8.2.aar",
+          "publishedSha1": "735d4efd33db4ef032d985415be3e39edbaa65c4",
+          "publishedSha1Matches": true,
+          "sha256": "5c78283d1956b14b22cf6ad70c712a73aa084116b7535526176c3b85e6a9205a",
+          "bytes": 24828
+        },
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/activity/activity-ktx/1.8.2/activity-ktx-1.8.2.module",
+          "publishedSha1": "69f4d0df651b1ca6bdb1e86ec1229e089f324d80",
+          "publishedSha1Matches": true,
+          "sha256": "2c445c6709e5efb061db3551ef3b71f4a53e00db40bbbe782928f5531998980d",
+          "bytes": 8027
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "autofill-1.0.0.aar",
+          "coordinate": "androidx.autofill:autofill:1.0.0",
+          "hashes": [
+            "c9468f56e05006ea151a426c54957cd0799b8b83a579d2846dd22061f33e5ecd"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "autofill-1.0.0.pom",
+          "coordinate": "androidx.autofill:autofill:1.0.0",
+          "hashes": [
+            "3677abead5d4e06cf76cbacb954151e051779c2274494451fb424e375aa9e450"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "concurrent-futures-1.0.0.pom",
+          "coordinate": "androidx.concurrent:concurrent-futures:1.0.0",
+          "hashes": [
+            "4505b9a5e30a9418b59a9ad6702c3e4193aea6e691a3d03cf220c7640ad083e2"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "concurrent-futures-1.1.0.jar",
+          "coordinate": "androidx.concurrent:concurrent-futures:1.1.0",
+          "hashes": [
+            "0ce067c514a0d1049d1bebdf709e344ed3266fe9744275682937cdcb13334e9e"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "concurrent-futures-1.1.0.module",
+          "coordinate": "androidx.concurrent:concurrent-futures:1.1.0",
+          "hashes": [
+            "77639a0b051e22510bad93affcea0ebd781ef124bf9b7621a95749937bcfcdfd"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "core-1.13.1.module",
+          "coordinate": "androidx.core:core:1.13.1",
+          "hashes": [
+            "2a10979bbb3bcd7b25b7f664ab4e9b016fabf2174a26768b677e12e4bea4c7c4"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "core-1.15.0.aar",
+          "coordinate": "androidx.core:core:1.15.0",
+          "hashes": [
+            "432b85a1974076e14b487ece4a28c59a84f1b9efc3fc8be72cd7f05d32055e51"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "core-1.15.0.module",
+          "coordinate": "androidx.core:core:1.15.0",
+          "hashes": [
+            "e8a6c386e1765d870012fed2221173d4a2e8d2fd5aec732c51afb4a9f4684519"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "core-ktx-1.15.0.aar",
+          "coordinate": "androidx.core:core-ktx:1.15.0",
+          "hashes": [
+            "c72c97ff4a32308bcaf3061eea5ddf33455ce413cee4aa1d5c82440c5759d4bc"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "core-ktx-1.15.0.module",
+          "coordinate": "androidx.core:core-ktx:1.15.0",
+          "hashes": [
+            "bee9b44664ff37e2e222ebcde4b30e38294a3f927451edc611fec7f454ffa442"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "core-viewtree-1.0.0.aar",
+          "coordinate": "androidx.core:core-viewtree:1.0.0",
+          "hashes": [
+            "dc1b678d58ebcf2bfa1587be68ff826694ce3d221251b9ef30d4d4b36297e6de"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "core-viewtree-1.0.0.module",
+          "coordinate": "androidx.core:core-viewtree:1.0.0",
+          "hashes": [
+            "11386cfa46cbbfddb6a4059f14354c00691cf65d3d63c3618818a83326ef3c7f"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "customview-poolingcontainer-1.0.0.aar",
+          "coordinate": "androidx.customview:customview-poolingcontainer:1.0.0",
+          "hashes": [
+            "3584102fc49bf399c56e3b7be4bfe12000c46112320cd8cf85cc0a8f93f3e752"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "customview-poolingcontainer-1.0.0.module",
+          "coordinate": "androidx.customview:customview-poolingcontainer:1.0.0",
+          "hashes": [
+            "903034d5152dd2e0162b1468ea25a22e1ca384006b3d282d5a143cc760321a01"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "emoji2-1.3.0.module",
+          "coordinate": "androidx.emoji2:emoji2:1.3.0",
+          "hashes": [
+            "ddc851edba65fd15a7a1bc3ad18648e2f732dd5ad8ef3602224bce0647f5b4d1"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "emoji2-1.4.0.aar",
+          "coordinate": "androidx.emoji2:emoji2:1.4.0",
+          "hashes": [
+            "433febd3434a45667176c76a64f3f205ca6335a6b544c5b5d57f25a38a375242"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "emoji2-1.4.0.module",
+          "coordinate": "androidx.emoji2:emoji2:1.4.0",
+          "hashes": [
+            "92be16cccb757f807bddd92f1fca95a038a810ccca051c4149c11682478954b8"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "graphics-path-1.0.1.aar",
+          "coordinate": "androidx.graphics:graphics-path:1.0.1",
+          "hashes": [
+            "8ca4032b6d79b351f0b59ad4b580eddbb9423e1652f7c958830687f1eee2ec03"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "graphics-path-1.0.1.module",
+          "coordinate": "androidx.graphics:graphics-path:1.0.1",
+          "hashes": [
+            "3f6fc7e96f8a1fd21045da7f2e332aef528aa1f56b6455fb8f25043aafa0e1b8"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "interpolator-1.0.0.aar",
+          "coordinate": "androidx.interpolator:interpolator:1.0.0",
+          "hashes": [
+            "33193135a64fe21fa2c35eec6688f1a76e512606c0fc83dc1b689e37add7732a"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "interpolator-1.0.0.pom",
+          "coordinate": "androidx.interpolator:interpolator:1.0.0",
+          "hashes": [
+            "0ddc07cc39699f48ecd9ec894b5830c0f09e22e82959294edf37217224c88b7b"
+          ]
+        },
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/lifecycle/lifecycle-common-java8/2.8.7/lifecycle-common-java8-2.8.7.module",
+          "publishedSha1": "121be5d7a8c6bd09c743fa41af6398d2784bbf2e",
+          "publishedSha1Matches": true,
+          "sha256": "e27df2ab2f9c1c02fc16fe87e19da0ebb79b4b3f1e2bd2af17364bed59a0a2a9",
+          "bytes": 23112
+        },
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/lifecycle/lifecycle-common-java8/2.9.4/lifecycle-common-java8-2.9.4.jar",
+          "publishedSha1": "86a8e6b9d0ba0c964fdc7223a38b6ce74bcb24dd",
+          "publishedSha1Matches": true,
+          "sha256": "497dd84de9f2fd46324f25f9a3af032d3a23d087e87af515c4b19435f6d6a651",
+          "bytes": 4839
+        },
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/lifecycle/lifecycle-common-java8/2.9.4/lifecycle-common-java8-2.9.4.module",
+          "publishedSha1": "6323f48df3bb4519d71418905f1f59e7400b5dab",
+          "publishedSha1Matches": true,
+          "sha256": "07bab59d012bc806f03debd192f93e312d72bca56b25178234a21a6812daf041",
+          "bytes": 24202
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "listenablefuture-1.0.jar",
+          "coordinate": "com.google.guava:listenablefuture:1.0",
+          "hashes": [
+            "e4ad7607e5c0477c6f890ef26a49cb8d1bb4dffb650bab4502afee64644e3069"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "listenablefuture-1.0.pom",
+          "coordinate": "com.google.guava:listenablefuture:1.0",
+          "hashes": [
+            "53873caf26bc1ed8a567ea6c939ab2aaa3f47a5e32d5cade95ddf5080d23238a"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "profileinstaller-1.4.0.aar",
+          "coordinate": "androidx.profileinstaller:profileinstaller:1.4.0",
+          "hashes": [
+            "d502141fcce902430f62b674c32aecd0f75262e7ee2cd15c74adb617cd13130a"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "profileinstaller-1.4.0.module",
+          "coordinate": "androidx.profileinstaller:profileinstaller:1.4.0",
+          "hashes": [
+            "39bf997a28d8eed2cb319819f6f352a1ba3a78b9c979004fbe05e26b8f7d160b"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "startup-runtime-1.0.0.module",
+          "coordinate": "androidx.startup:startup-runtime:1.0.0",
+          "hashes": [
+            "40effca0d6ee1fde32bc296897e54ebbcc4cf4aa29b0c531036cbd2a824a3c24"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "startup-runtime-1.1.1.aar",
+          "coordinate": "androidx.startup:startup-runtime:1.1.1",
+          "hashes": [
+            "e0a6329a371262fe4c450372b70fdaf33b769ef6917094723787cfce896b1dd3"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "startup-runtime-1.1.1.module",
+          "coordinate": "androidx.startup:startup-runtime:1.1.1",
+          "hashes": [
+            "cfd96cf6450c6e2b697598924729ad9a0495c5a4fcf4ebee7e2f81b07e415865"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "tracing-1.2.0.aar",
+          "coordinate": "androidx.tracing:tracing:1.2.0",
+          "hashes": [
+            "6faa90390d1fdbf0adb9a99bf99de67b94c6c6f35aea9510593a9d17973736a2"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "tracing-1.2.0.module",
+          "coordinate": "androidx.tracing:tracing:1.2.0",
+          "hashes": [
+            "d0d8d486b6bd33206dbf3f1a6d167e9b43c268ea63c3321c886b1543ad05ece3"
+          ]
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/ui/ui-backhandler/1.9.1/ui-backhandler-1.9.1.module",
+          "publishedSha1": "d0e3d3a4a7330ec98e52b139d19116e78ddf1841",
+          "publishedSha1Matches": true,
+          "sha256": "31dfa186cd71b355cb1be78607ffd5256dcc83cff115a260ea4d697492092582",
+          "bytes": 22214
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/ui/ui-backhandler-android/1.9.1/ui-backhandler-android-1.9.1.module",
+          "publishedSha1": "924c8cd83bd35b19d082c05039b2b7312146edea",
+          "publishedSha1Matches": true,
+          "sha256": "c26e597d1878360000d8f66f096e174e7b2a104218d2ffe07e1ae0db13245bef",
+          "bytes": 7463
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/ui/ui-backhandler-android/1.9.1/ui-backhandler-android-1.9.1.aar",
+          "publishedSha1": "58dfa579780b07505efaab0dfa111998b7f54e98",
+          "publishedSha1Matches": true,
+          "sha256": "8f8f37d0eb33f597608bc20f875021b1d80db6f835c138cd7cef9093c7ad4c24",
+          "bytes": 4183
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "versionedparcelable-1.1.1.aar",
+          "coordinate": "androidx.versionedparcelable:versionedparcelable:1.1.1",
+          "hashes": [
+            "57e8d93260d18d5b9007c9eed3c64ad159de90c8609ebfc74a347cbd514535a4"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "versionedparcelable-1.1.1.pom",
+          "coordinate": "androidx.versionedparcelable:versionedparcelable:1.1.1",
+          "hashes": [
+            "5f51e65873ca612de3838fa90d2ee95b8d040efd31b9c390a19bf94d615cdb2f"
+          ]
+        }
+      ]
+    },
+    "strict-12-resolved-checksums.json": {
+      "mobileMetadataSha256": "eb6e153a9e7aa8e1cc4bc2224adb881c0cab6959853492e9178dd3a515b204dd",
+      "records": [
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-metadata-0.27.0.jar",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu:0.27.0",
+          "hashes": [
+            "a2237ad91a3d36494ffb2556f4c59889c81f7ae3b5efb445d12ecd090b37c6e9"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-datetime-metadata-0.7.1.jar",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-datetime:0.7.1",
+          "hashes": [
+            "b3d809d21a41b72ae9de0b32dc5aa194857b17b3f1ee4107bfce33484fa05d05"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-serialization-core-metadata-1.7.3.jar",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.3",
+          "hashes": [
+            "4850682e0e5976862695330d84eb8699f1dc5d50849f625263995cc88bc6f37b"
+          ]
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material/material-ripple/1.9.1/material-ripple-1.9.1.jar",
+          "publishedSha1": "e2418233a667d3fbae1ad5f974fb272159591e19",
+          "publishedSha1Matches": true,
+          "sha256": "292d2b3fbbbcc24bb326f3f642dac9a8cd55e18d5b518365bac6daca23a5cf74",
+          "bytes": 9978
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material3/material3/1.9.0/material3-1.9.0.jar",
+          "publishedSha1": "12343bbabdc611702a52c7cee3766b229e20fb4a",
+          "publishedSha1Matches": true,
+          "sha256": "0be26b1746e5baae437dbf820daefef7e107b648846f97e7b411dcd1de4f6433",
+          "bytes": 294101
+        }
+      ]
+    },
+    "strict-13-resolved-checksums.json": {
+      "mobileMetadataSha256": "eb6e153a9e7aa8e1cc4bc2224adb881c0cab6959853492e9178dd3a515b204dd",
+      "records": [
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-iosarm64-0.27.0-metadata.jar",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu-iosarm64:0.27.0",
+          "hashes": [
+            "8dea861ec419e97ab7f34443b294884d83d70836c1932e2087de62370f01dab2"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-datetime-iosarm64-0.7.1-metadata.jar",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-datetime-iosarm64:0.7.1",
+          "hashes": [
+            "5417abf6308cfbc171c1f5ee9c6719c766226785744430f3b1d10e7dac339a1a"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-serialization-core-iosarm64-1.7.3-metadata.jar",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-core-iosarm64:1.7.3",
+          "hashes": [
+            "ac757004c211c798f41148a0a57925681bc4436f0d03e4bc65050f5c8a970c5b"
+          ]
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material/material-ripple-uikitarm64/1.9.1/material-ripple-uikitarm64-1.9.1-metadata.jar",
+          "publishedSha1": "2ad14aed781c4a73ed4dbb421966d408a0a06686",
+          "publishedSha1Matches": true,
+          "sha256": "c6deada2fac53b8ea6523dbda77597b128006674616f140f04df23264c6d1aa3",
+          "bytes": 261
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material3/material3-uikitarm64/1.9.0/material3-uikitarm64-1.9.0-metadata.jar",
+          "publishedSha1": "09366024b82ece30fb66a4020affab511e032e23",
+          "publishedSha1Matches": true,
+          "sha256": "8bd24d0627934a3018a958c76ddbd64a50b1719424b162a88b50c229bc9f0d0b",
+          "bytes": 6244
+        }
+      ]
+    },
+    "strict-14-resolved-checksums.json": {
+      "mobileMetadataSha256": "eb6e153a9e7aa8e1cc4bc2224adb881c0cab6959853492e9178dd3a515b204dd",
+      "records": [
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-iossimulatorarm64-0.27.0-metadata.jar",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu-iossimulatorarm64:0.27.0",
+          "hashes": [
+            "8dea861ec419e97ab7f34443b294884d83d70836c1932e2087de62370f01dab2"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-datetime-iossimulatorarm64-0.7.1-metadata.jar",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-datetime-iossimulatorarm64:0.7.1",
+          "hashes": [
+            "5417abf6308cfbc171c1f5ee9c6719c766226785744430f3b1d10e7dac339a1a"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-serialization-core-iossimulatorarm64-1.7.3-metadata.jar",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-core-iossimulatorarm64:1.7.3",
+          "hashes": [
+            "ac757004c211c798f41148a0a57925681bc4436f0d03e4bc65050f5c8a970c5b"
+          ]
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material/material-ripple-uikitsimarm64/1.9.1/material-ripple-uikitsimarm64-1.9.1-metadata.jar",
+          "publishedSha1": "2ad14aed781c4a73ed4dbb421966d408a0a06686",
+          "publishedSha1Matches": true,
+          "sha256": "c6deada2fac53b8ea6523dbda77597b128006674616f140f04df23264c6d1aa3",
+          "bytes": 261
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material3/material3-uikitsimarm64/1.9.0/material3-uikitsimarm64-1.9.0-metadata.jar",
+          "publishedSha1": "09366024b82ece30fb66a4020affab511e032e23",
+          "publishedSha1Matches": true,
+          "sha256": "8bd24d0627934a3018a958c76ddbd64a50b1719424b162a88b50c229bc9f0d0b",
+          "bytes": 6244
+        }
+      ]
+    },
+    "strict-15-resolved-checksums.json": {
+      "mobileMetadataSha256": "eb6e153a9e7aa8e1cc4bc2224adb881c0cab6959853492e9178dd3a515b204dd",
+      "records": [
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-iosArm64Cinterop-interopMain-0.27.0.klib",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu-iosarm64:0.27.0",
+          "hashes": [
+            "140afb047b30ceedf9f0c0050008c00e21682fa4fb98a9742936c1f7dad912a1"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-iosArm64Main-0.27.0.klib",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu-iosarm64:0.27.0",
+          "hashes": [
+            "4f29bb613fc64268d7d14b26a65fb1895f64a0d378f83c2ced70c6d3b1a07bb4"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-datetime-iosArm64Main-0.7.1.klib",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-datetime-iosarm64:0.7.1",
+          "hashes": [
+            "98b82c54f1a46e7f7d70fe2fa8ed5e67e19fd48a817c572241b609dc6012f630"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-serialization-core.klib",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-core-iosarm64:1.7.3",
+          "hashes": [
+            "e757d79c55b9551e44fab6809dcd94c0421945479ef91921b66b8eb3b3cb6599"
+          ]
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material/material-ripple-uikitarm64/1.9.1/material-ripple-uikitarm64-1.9.1.klib",
+          "publishedSha1": "186ff8c9a0d81d7226c0b478641711df2e6175ce",
+          "publishedSha1Matches": true,
+          "sha256": "331f2f3eef11a0eecf834e9ce4133657336f93d50d446f0391f15075e0aa2d42",
+          "bytes": 58035,
+          "aliasMetadata": {
+            "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material/material-ripple-uikitarm64/1.9.1/material-ripple-uikitarm64-1.9.1.module",
+            "verifiedSha256": "d7acf5e4b57fe9a254131b4e2257d860aa698700794e3669897f5f9f77935c82",
+            "artifactName": "material-ripple-uikitArm64Main-1.9.1.klib",
+            "publishedName": "material-ripple-uikitarm64-1.9.1.klib"
+          }
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material3/material3-uikitarm64/1.9.0/material3-uikitarm64-1.9.0.klib",
+          "publishedSha1": "81fd85520a640e8d8af5653895d4198b8ef7ac1e",
+          "publishedSha1Matches": true,
+          "sha256": "fa637880ccc0b8f6cae9af6a62159f4abd7c5be33e6d6134a3bc9f865e4437e2",
+          "bytes": 4255326,
+          "aliasMetadata": {
+            "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material3/material3-uikitarm64/1.9.0/material3-uikitarm64-1.9.0.module",
+            "verifiedSha256": "6e1d0b24cb631ed464bf0b043ab8f10ce19fd600eea920150400884ea4d2a368",
+            "artifactName": "material3-uikitArm64Main-1.9.0.klib",
+            "publishedName": "material3-uikitarm64-1.9.0.klib"
+          }
+        }
+      ]
+    },
+    "strict-16-resolved-checksums.json": {
+      "mobileMetadataSha256": "eb6e153a9e7aa8e1cc4bc2224adb881c0cab6959853492e9178dd3a515b204dd",
+      "records": [
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-iosSimulatorArm64Cinterop-interopMain-0.27.0.klib",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu-iossimulatorarm64:0.27.0",
+          "hashes": [
+            "ad8f70f3d7f70c25f74393d5c4ca48b22a2a4815ba73896c0d8b7919377234ec"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-iosSimulatorArm64Main-0.27.0.klib",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu-iossimulatorarm64:0.27.0",
+          "hashes": [
+            "3b43eb770a61853c94db366efca58ca0191dee7fcd8dc135d7ac12e02c823bcf"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-datetime-iosSimulatorArm64Main-0.7.1.klib",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-datetime-iossimulatorarm64:0.7.1",
+          "hashes": [
+            "93536c5776c0d4a6a2d49320b3da8723a0ceb7bd120ad07e02d48db85b2d0688"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-serialization-core.klib",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-core-iossimulatorarm64:1.7.3",
+          "hashes": [
+            "7dbfefcd26b4b71b1b1d0653539e18ef42c92eec60855d92c236c6bdb1755ab8"
+          ]
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material/material-ripple-uikitsimarm64/1.9.1/material-ripple-uikitsimarm64-1.9.1.klib",
+          "publishedSha1": "2da4a0d1b8e9d24d4ea47aa639365231ffe1f873",
+          "publishedSha1Matches": true,
+          "sha256": "4b7eb82e2229e55e1245c21269dfe8383ff8d76b2eea4e4ee4ad77a76ac156f1",
+          "bytes": 58120,
+          "aliasMetadata": {
+            "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material/material-ripple-uikitsimarm64/1.9.1/material-ripple-uikitsimarm64-1.9.1.module",
+            "verifiedSha256": "f0631a3a183c97ca9526a69d2448d4358249565524c25b2257e3a06d336723ec",
+            "artifactName": "material-ripple-uikitSimArm64Main-1.9.1.klib",
+            "publishedName": "material-ripple-uikitsimarm64-1.9.1.klib"
+          }
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material3/material3-uikitsimarm64/1.9.0/material3-uikitsimarm64-1.9.0.klib",
+          "publishedSha1": "ed530723d6e01374ad405d5bd88404bd3164c0a5",
+          "publishedSha1Matches": true,
+          "sha256": "2be9cb12bd12969a953d4ded412fb81acf658188d35f940eff82b32910536e56",
+          "bytes": 4255412,
+          "aliasMetadata": {
+            "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material3/material3-uikitsimarm64/1.9.0/material3-uikitsimarm64-1.9.0.module",
+            "verifiedSha256": "de99364234e8cf8cc213c802400edb0fb37eec1a7bdb97d87fbe385e54defbaa",
+            "artifactName": "material3-uikitSimArm64Main-1.9.0.klib",
+            "publishedName": "material3-uikitsimarm64-1.9.0.klib"
+          }
+        }
+      ]
+    },
+    "strict-3-resolved-checksums.json": {
+      "mobileMetadataSha256": "eb6e153a9e7aa8e1cc4bc2224adb881c0cab6959853492e9178dd3a515b204dd",
+      "records": [
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/animation/animation-core/1.9.1/animation-core-1.9.1.module",
+          "publishedSha1": "f62f94490e0d344d5781a222540a4271ea7a0731",
+          "publishedSha1Matches": true,
+          "sha256": "b0b35c69720dd845aa32bf434d4c8c6a560e1387a52008748ef94678948ea324",
+          "bytes": 25610
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/animation/animation-core-wasm-js/1.9.1/animation-core-wasm-js-1.9.1.module",
+          "publishedSha1": "f72c2606269de8e57cf655b04672e8502e4a1e97",
+          "publishedSha1Matches": true,
+          "sha256": "4a6e191be634a4e9e49b8f7d77b5235d66b22d0d08b73f2afa99e909f8d25582",
+          "bytes": 5015
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-0.23.2.module",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu:0.23.2",
+          "hashes": [
+            "51530de284967a15e211c98563ca9d2356899b8cb331704560b0645adeac6dc0"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-0.27.0.module",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu:0.27.0",
+          "hashes": [
+            "ba679c0757e399e68a99f97d738428b2fb7007717ddff0f1deeba862baf44690"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-wasm-js-0.23.1.module",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu-wasm-js:0.23.1",
+          "hashes": [
+            "da6fa1fb3f67425c87ad4210831c21cfadb4f26482d79d7cd7dc84826ff2c8a6"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-wasm-js-0.23.2.module",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu-wasm-js:0.23.2",
+          "hashes": [
+            "11370d32bb4a7e4d9a1e2d459442378d45fa3a54c49c9c0509ae93e5f7f9fbd5"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-wasm-js-0.27.0.klib",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu-wasm-js:0.27.0",
+          "hashes": [
+            "ec54c477c569f33046863a8906b764fd095ae712e280d341349e906887aaa684"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-wasm-js-0.27.0.module",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu-wasm-js:0.27.0",
+          "hashes": [
+            "3e8b7960128e4d96bb6fb2881e6239099ec9aa6f7941b7d4c66f04c4874e753b"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlin-stdlib-common-2.0.21.module",
+          "coordinate": "org.jetbrains.kotlin:kotlin-stdlib-common:2.0.21",
+          "hashes": [
+            "6f5df8af633600a6b9cfb0fcc764af3d5119f376677677b91b6aee816b1d30ab"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-browser-0.3.1.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-browser:0.3.1",
+          "hashes": [
+            "e0ef12b4b75f649debbdae8a266acc6534e82dbb029d5292016a7763d3c46da8"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-browser-wasm-js-0.3.1.klib",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-browser-wasm-js:0.3.1",
+          "hashes": [
+            "556a61e276f1c3c964322fe994679280d8ea056206859917a551073860e4f527"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-browser-wasm-js-0.3.1.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-browser-wasm-js:0.3.1",
+          "hashes": [
+            "0bc85acd543d0e39aca2dbe797a3f09b6d08a2fc0cb0b3d577fe802a46e16182"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-coroutines-core-1.8.0.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0",
+          "hashes": [
+            "144eecd5365de3e30d7b46226c058051e39955b5c189e31fa4c7cffb99d620ba"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-coroutines-core-1.8.1.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1",
+          "hashes": [
+            "08cbaf3325b54e0f8ef8da85e4eb596f7d946f843e5d1600385463f3268a4ef0"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-coroutines-core-wasm-js-1.8.0.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-coroutines-core-wasm-js:1.8.0",
+          "hashes": [
+            "37e76340326ac4ace902fa9a07f84305a1cdb4f2aa0576b2674e41c2c89d2867"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-coroutines-core-wasm-js-1.8.1.klib",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-coroutines-core-wasm-js:1.8.1",
+          "hashes": [
+            "b19fcc160cbbffc3f1408b99a9abefb82db572ff59cf7946a6f96bb3c562f414"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-coroutines-core-wasm-js-1.8.1.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-coroutines-core-wasm-js:1.8.1",
+          "hashes": [
+            "4188fbf8b33014bc6cf65d01d1d3079ca4e21d4fb0fb21ec4b19ebcdc38e54ff"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-datetime-0.7.1.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-datetime:0.7.1",
+          "hashes": [
+            "474803d6a477b7c395ee8b42c34ccae7665fb5d231fdb05ad08ed3085c24d37a"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-datetime-wasm-js-0.7.1.klib",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-datetime-wasm-js:0.7.1",
+          "hashes": [
+            "f65802db1f945d5c8f99cfed76408d2853076787132cbb7674ac672646eaa99a"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-datetime-wasm-js-0.7.1.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-datetime-wasm-js:0.7.1",
+          "hashes": [
+            "8fc2ad062c870892cab49bf385da7c2990d07cbe47a3fce1d8138f68ec5e8861"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-serialization-core-1.6.2.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.2",
+          "hashes": [
+            "6abcf4813ac94df037012e3167368a3445070fdf8eab21d08d886d4ed9c2fb67"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-serialization-core-1.7.3.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.3",
+          "hashes": [
+            "39d09a6e02df2b32558440a64c628f9c605fae8c4f6090321798334c82177e64"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-serialization-core-wasm-js-1.6.2.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-core-wasm-js:1.6.2",
+          "hashes": [
+            "a16aa07150af7b282418c9dcb47a4564eb3efb9443c4c871c565cc7eacb23fbf"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-serialization-core-wasm-js-1.7.3.klib",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-core-wasm-js:1.7.3",
+          "hashes": [
+            "4737e08c15e6c8bfd5d283152f3b9e56aaa9f1ef881748d3df0f3e8e5f06a3b5"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-serialization-core-wasm-js-1.7.3.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-core-wasm-js:1.7.3",
+          "hashes": [
+            "c3a08a2152f7b6e7208b0dd33442ce8fc862c4faff753972c0be7abe073f32a5"
+          ]
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material/material-ripple/1.9.1/material-ripple-1.9.1.module",
+          "publishedSha1": "3100a1c3e8e8cf1880bfed1e86625cd20992c81c",
+          "publishedSha1Matches": true,
+          "sha256": "898dbe9a0e62c9ca391b375ec1a27b49965743b74a06ad85f6e710a0bbb4a3da",
+          "bytes": 24813
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material/material-ripple-wasm-js/1.9.1/material-ripple-wasm-js-1.9.1.klib",
+          "publishedSha1": "9654de0110653087be7c2f9356fb103f5c24c07f",
+          "publishedSha1Matches": true,
+          "sha256": "bda9643924505945fcc48c3ed297120c59166cb7603c443edb4e75aba1436856",
+          "bytes": 57409
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material/material-ripple-wasm-js/1.9.1/material-ripple-wasm-js-1.9.1.module",
+          "publishedSha1": "a6709c81a39b35352eaef2b838ada82e8dd0af0a",
+          "publishedSha1Matches": true,
+          "sha256": "667f389d3ccc37723154bb0cf59d90ce63f7ce829fd4c9051072f2f85d700d2c",
+          "bytes": 4684
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material3/material3/1.9.0/material3-1.9.0.module",
+          "publishedSha1": "7e3212f69310771d45cbae42b6af8a5eb90d3e76",
+          "publishedSha1Matches": true,
+          "sha256": "fa7a745df9170591d98f3773303bcf53829313acfb43c72c1aa4f8fb99ba45a4",
+          "bytes": 28910
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material3/material3-wasm-js/1.9.0/material3-wasm-js-1.9.0.klib",
+          "publishedSha1": "84302b5c5117b0a9e81b392a09cbbb1bd05a307f",
+          "publishedSha1Matches": true,
+          "sha256": "8049ab369302ed777837903f1b1018ffa3856e59a33b9c78afbd00d8dc34f46c",
+          "bytes": 4275242
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material3/material3-wasm-js/1.9.0/material3-wasm-js-1.9.0.module",
+          "publishedSha1": "d7c65e431daf8d2ea949d75755b0e2c9a421c69c",
+          "publishedSha1Matches": true,
+          "sha256": "e5801ff01796953bd40873866af98d548b093ccecd8bc7f384a962a1dbc72b4b",
+          "bytes": 6553
+        }
+      ]
+    },
+    "strict-4-resolved-checksums.json": {
+      "mobileMetadataSha256": "eb6e153a9e7aa8e1cc4bc2224adb881c0cab6959853492e9178dd3a515b204dd",
+      "records": [
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "jbr-api-1.5.0.pom",
+          "coordinate": "org.jetbrains.runtime:jbr-api:1.5.0",
+          "hashes": [
+            "fe3ce28aa4f419ad06704ad1ca82334d0e871667ca5b113c5157e7517ce1321e"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlin-stdlib-2.1.21.module",
+          "coordinate": "org.jetbrains.kotlin:kotlin-stdlib:2.1.21",
+          "hashes": [
+            "0d3735043d68b7a5afb44d27de65f80a9d2b208462709c2edbb48fd5b395ad8a"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlin-stdlib-common-2.1.21.module",
+          "coordinate": "org.jetbrains.kotlin:kotlin-stdlib-common:2.1.21",
+          "hashes": [
+            "a4d8fc14cedb3779843a47fbce522fd173e9875091964dbac1b8dd7884f6c1f9"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlin-stdlib-jdk7-2.1.21.pom",
+          "coordinate": "org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.21",
+          "hashes": [
+            "0e6f1f8bb0a3c49c4561a99230097473883fd5b2f5db59396d0e5519f276c430"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlin-stdlib-jdk8-2.1.21.pom",
+          "coordinate": "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.21",
+          "hashes": [
+            "f4a9161f62e952af50fd62a1a26081f38d777fecd6947fd8403f1447f8669daa"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-coroutines-bom-1.8.0.pom",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.8.0",
+          "hashes": [
+            "1239e9dbe1397cd5971342956b2511bc3ace7b641842e4372a088dcfa8b9ad55"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-coroutines-bom-1.8.1.pom",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.8.1",
+          "hashes": [
+            "563e4aa29fa8fe09a6e1746d0a5b51308f7c7dedc468dc5a0ca810a485877030"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-coroutines-core-jvm-1.8.1.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.8.1",
+          "hashes": [
+            "09b81c9d11c2deebf133ad87b707927c1f04099cb611ef008c7725b3eb308329"
+          ]
+        }
+      ]
+    },
+    "strict-6-resolved-checksums.json": {
+      "mobileMetadataSha256": "eb6e153a9e7aa8e1cc4bc2224adb881c0cab6959853492e9178dd3a515b204dd",
+      "records": [
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/animation/animation-core-uikitarm64/1.9.1/animation-core-uikitarm64-1.9.1.module",
+          "publishedSha1": "1e6266f1dc3ae387a0ccf588c2bdb6a3a1939ff6",
+          "publishedSha1Matches": true,
+          "sha256": "78e9b90f1c81e76961c62f7913083df87607614675a038a449ae40ad7ccc965a",
+          "bytes": 6714
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/animation/animation-core-uikitsimarm64/1.9.1/animation-core-uikitsimarm64-1.9.1.module",
+          "publishedSha1": "18fe42baa16830dcb1c080b0d41aac67227ccc6b",
+          "publishedSha1Matches": true,
+          "sha256": "ac405bff18ed9322fcd99aa3b16871091f92ad92022c364adaa1483c3ce91109",
+          "bytes": 6771
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-iosarm64-0.27.0.module",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu-iosarm64:0.27.0",
+          "hashes": [
+            "5a0f7fc93af4d96404380248357ea2e5b72d99a2b7d76601e9708c66b2fd033f"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-iossimulatorarm64-0.27.0.module",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu-iossimulatorarm64:0.27.0",
+          "hashes": [
+            "55ac220174251842c4153598a24d9524ba33c350beeea91ef77fb92af2009206"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "jspecify-1.0.0.jar",
+          "coordinate": "org.jspecify:jspecify:1.0.0",
+          "hashes": [
+            "1fad6e6be7557781e4d33729d49ae1cdc8fdda6fe477bb0cc68ce351eafdfbab"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "jspecify-1.0.0.module",
+          "coordinate": "org.jspecify:jspecify:1.0.0",
+          "hashes": [
+            "d307ca77a54e18ac1ef1aaed4e5bbe014bd2f49f29e1d2f813e47c278283195b"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-coroutines-android-1.10.2.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2",
+          "hashes": [
+            "092fe38103eec62e94540ca0cd61039ef8f7d8e46694ec033be1f63f0ea2013d"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-coroutines-android-1.8.1.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1",
+          "hashes": [
+            "f00af0920cb7dc4611205ff592eec5aa0071bc959b3797026abfe43cf14bfad4"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-datetime-iosarm64-0.7.1.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-datetime-iosarm64:0.7.1",
+          "hashes": [
+            "8670890cecacba69637346a3b919c4f61e9ede036a2acf1d4d018b5fd77669b3"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-datetime-iossimulatorarm64-0.7.1.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-datetime-iossimulatorarm64:0.7.1",
+          "hashes": [
+            "4cb9f893ba69e1abbf8c57e5cd75a2f7bcbaacad87de0b396e2bc7efa3a6dd8a"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-serialization-core-iosarm64-1.7.3.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-core-iosarm64:1.7.3",
+          "hashes": [
+            "afce0074defe52b9d0e44574ba42203fa3e862cb86f9e8abf8089aabf250f478"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-serialization-core-iossimulatorarm64-1.7.3.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-core-iossimulatorarm64:1.7.3",
+          "hashes": [
+            "c05860aec5b685d05cdfc314b9ca560466e03572ebbad5129b6fa5cd4417405c"
+          ]
+        },
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/compose/material/material-ripple/1.9.3/material-ripple-1.9.3.module",
+          "publishedSha1": "66036e7cb6fbfe8f3814fa4663b67f440ab893a5",
+          "publishedSha1Matches": true,
+          "sha256": "e45fd0a4df617462edadf92206889935793fbe1c07958f3d5856ba3986403395",
+          "bytes": 9014
+        },
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/compose/material/material-ripple-android/1.9.3/material-ripple-android-1.9.3.module",
+          "publishedSha1": "dd37bc159d063b92579a48269b2d0fa115cfa2c2",
+          "publishedSha1Matches": true,
+          "sha256": "13b29394ffdf4cabe5d32901dbc921c1a54d56896c4b42d0223192a2c350b0e7",
+          "bytes": 4605
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material/material-ripple-desktop/1.9.1/material-ripple-desktop-1.9.1.jar",
+          "publishedSha1": "b0741397d2a9b93d7c9510c68196a27b717c07e9",
+          "publishedSha1Matches": true,
+          "sha256": "2407d9e83c6fd84b90b123cc7ae6291fa7a18bb40938ad210f675e4c86425c8b",
+          "bytes": 72750
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material/material-ripple-desktop/1.9.1/material-ripple-desktop-1.9.1.module",
+          "publishedSha1": "13076f321896eb80d300858d25468f47d6c4950d",
+          "publishedSha1Matches": true,
+          "sha256": "0656a22b588a839b800eac285aa3eb4d035df3d55221c706c5d35fa6297e6d89",
+          "bytes": 4674
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material/material-ripple-uikitarm64/1.9.1/material-ripple-uikitarm64-1.9.1.module",
+          "publishedSha1": "204a926c12e9dbd968cc413dc5962a85fe46f8d1",
+          "publishedSha1Matches": true,
+          "sha256": "d7acf5e4b57fe9a254131b4e2257d860aa698700794e3669897f5f9f77935c82",
+          "bytes": 5710
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material/material-ripple-uikitsimarm64/1.9.1/material-ripple-uikitsimarm64-1.9.1.module",
+          "publishedSha1": "57452f7318a469fece342ea381ebb1bbef1d75f9",
+          "publishedSha1Matches": true,
+          "sha256": "f0631a3a183c97ca9526a69d2448d4358249565524c25b2257e3a06d336723ec",
+          "bytes": 5767
+        },
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/compose/material3/material3/1.4.0/material3-1.4.0.module",
+          "publishedSha1": "a0114a07c3e7d9f74d37f6c61148efe989c5ad73",
+          "publishedSha1Matches": true,
+          "sha256": "757081d128daf8801c1dd9acc431fa5269e656b28a0a490ae98ccee68e9c3452",
+          "bytes": 13368
+        },
+        {
+          "source": "https://dl.google.com/dl/android/maven2/androidx/compose/material3/material3-android/1.4.0/material3-android-1.4.0.module",
+          "publishedSha1": "497c79633dbfa57bb9ed7273cfd6d576c0016bd7",
+          "publishedSha1Matches": true,
+          "sha256": "fccd6a8d0d33fcf7c3277bc43eb452c73803ec620597c81dbc4a79e290a71a97",
+          "bytes": 9920
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material3/material3-desktop/1.9.0/material3-desktop-1.9.0.jar",
+          "publishedSha1": "019004c4eb3dc6618eb66a076bbe3d7e1a2e7b85",
+          "publishedSha1Matches": true,
+          "sha256": "78f0787a1c6d20f9b2460a387f51ecf554e211d3c874b22d66530a540390b811",
+          "bytes": 4436970
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material3/material3-desktop/1.9.0/material3-desktop-1.9.0.module",
+          "publishedSha1": "957de15d9d9457e1164c97b00f30352cfdbed851",
+          "publishedSha1Matches": true,
+          "sha256": "f24ea0bd42174905fd32af88f38a8a4d15d806543cab18b24ffe669f18e7598d",
+          "bytes": 6543
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material3/material3-uikitarm64/1.9.0/material3-uikitarm64-1.9.0.module",
+          "publishedSha1": "f8a4791884a8a76e64ff8827ac01f46215fa0f12",
+          "publishedSha1Matches": true,
+          "sha256": "6e1d0b24cb631ed464bf0b043ab8f10ce19fd600eea920150400884ea4d2a368",
+          "bytes": 8463
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/material3/material3-uikitsimarm64/1.9.0/material3-uikitsimarm64-1.9.0.module",
+          "publishedSha1": "2eaa746d89b9e1017b0ce5c2637c8d2cca2f01e0",
+          "publishedSha1Matches": true,
+          "sha256": "de99364234e8cf8cc213c802400edb0fb37eec1a7bdb97d87fbe385e54defbaa",
+          "bytes": 8520
+        }
+      ]
+    },
+    "strict-7-resolved-checksums.json": {
+      "mobileMetadataSha256": "eb6e153a9e7aa8e1cc4bc2224adb881c0cab6959853492e9178dd3a515b204dd",
+      "records": [
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "animal-sniffer-annotations-1.18.jar",
+          "coordinate": "org.codehaus.mojo:animal-sniffer-annotations:1.18",
+          "hashes": [
+            "47f05852b48ee9baefef80fa3d8cea60efa4753c0013121dd7fe5eef2e5c729d"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "animal-sniffer-annotations-1.18.pom",
+          "coordinate": "org.codehaus.mojo:animal-sniffer-annotations:1.18",
+          "hashes": [
+            "adf522f4839c35f5329ea97c407aebebfa8807b644852dc4d5cd7c97b7a6d2e0"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "animal-sniffer-parent-1.18.pom",
+          "coordinate": "org.codehaus.mojo:animal-sniffer-parent:1.18",
+          "hashes": [
+            "4e9df546a47cf6304a1317c46870100a8726fbea11b0dd18322f957e4070973c"
+          ]
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/compose/animation/animation-core-desktop/1.9.1/animation-core-desktop-1.9.1.module",
+          "publishedSha1": "6351385d9fafee63c146a82da10c68e6d4913adf",
+          "publishedSha1Matches": true,
+          "sha256": "860740aa2f08723f88ab9cbda43c1323fd036ef7ddc35d6d5116b46439c044e7",
+          "bytes": 5005
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-jvm-0.23.2.jar",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu-jvm:0.23.2",
+          "hashes": [
+            "101ff43ff563fca167af5ade98c3b69bf569010eab745013b84d8955034d3b3c"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "atomicfu-jvm-0.23.2.module",
+          "coordinate": "org.jetbrains.kotlinx:atomicfu-jvm:0.23.2",
+          "hashes": [
+            "f5fac91c373a0098e5ccae6221e89bb71a1490cf6a8949ee348d46ee1ca8d3a6"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "auto-parent-7.pom",
+          "coordinate": "com.google.auto:auto-parent:7",
+          "hashes": [
+            "a46426fccb5d32705ad9cbbc996f786bd048cc8cbdd21db046500169f15a4356"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "auto-value-annotations-1.6.3.jar",
+          "coordinate": "com.google.auto.value:auto-value-annotations:1.6.3",
+          "hashes": [
+            "0e951fee8c31f60270bc46553a8586001b7b93dbb12aec06373aa99a150392c0"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "auto-value-annotations-1.6.3.pom",
+          "coordinate": "com.google.auto.value:auto-value-annotations:1.6.3",
+          "hashes": [
+            "e1fc780f7ee025e662b3da72723dbe2ac8dac0a2f8920f265315c4e1be3d765c"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "auto-value-parent-1.6.3.pom",
+          "coordinate": "com.google.auto.value:auto-value-parent:1.6.3",
+          "hashes": [
+            "e59df5732b4cb34d5727181446f9ded9ce4425131a0a1062519eea196de4d8a1"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "checker-compat-qual-2.5.5.jar",
+          "coordinate": "org.checkerframework:checker-compat-qual:2.5.5",
+          "hashes": [
+            "11d134b245e9cacc474514d2d66b5b8618f8039a1465cdc55bbc0b34e0008b7a"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "checker-compat-qual-2.5.5.pom",
+          "coordinate": "org.checkerframework:checker-compat-qual:2.5.5",
+          "hashes": [
+            "42f21ebd9183be049ee5afc822b345403a5da764037875734a039b0d6e0353be"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "diffutils-1.3.0.jar",
+          "coordinate": "com.googlecode.java-diff-utils:diffutils:1.3.0",
+          "hashes": [
+            "61ba4dc49adca95243beaa0569adc2a23aedb5292ae78aa01186fa782ebdc5c2"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "diffutils-1.3.0.pom",
+          "coordinate": "com.googlecode.java-diff-utils:diffutils:1.3.0",
+          "hashes": [
+            "2fe31dd6309b0f5f195bbdc4749cfc0af065d61f06cfe183dfd2f2092ab847b6"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "error_prone_annotations-2.3.3.jar",
+          "coordinate": "com.google.errorprone:error_prone_annotations:2.3.3",
+          "hashes": [
+            "ec59f1b702d9afc09e8c3929f5c42777dec623a6ea2731ac694332c7d7680f5a"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "error_prone_annotations-2.3.3.pom",
+          "coordinate": "com.google.errorprone:error_prone_annotations:2.3.3",
+          "hashes": [
+            "bfd69255a0c0113afee4da0136bb80b1268cbb0d61df0069d8d22b3bef2568d5"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "error_prone_parent-2.3.3.pom",
+          "coordinate": "com.google.errorprone:error_prone_parent:2.3.3",
+          "hashes": [
+            "6b05a6f52e2b65b4efce3cbba5335b081b1dca4b97de690234cd536479a40f32"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "failureaccess-1.0.1.jar",
+          "coordinate": "com.google.guava:failureaccess:1.0.1",
+          "hashes": [
+            "a171ee4c734dd2da837e4b16be9df4661afab72a41adaf31eb84dfdaf936ca26"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "failureaccess-1.0.1.pom",
+          "coordinate": "com.google.guava:failureaccess:1.0.1",
+          "hashes": [
+            "e96042ce78fecba0da2be964522947c87b40a291b5fd3cd672a434924103c4b9"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "guava-28.1-android.jar",
+          "coordinate": "com.google.guava:guava:28.1-android",
+          "hashes": [
+            "e112ce92c0f0733965eede73d94589c59a72128b06b08bba5ebe2f9ea672ef60"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "guava-28.1-android.pom",
+          "coordinate": "com.google.guava:guava:28.1-android",
+          "hashes": [
+            "0196bebabaa26560f108eeb104d62987ad8bea607d9b13eda3f0286b765d6ea6"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "guava-parent-28.1-android.pom",
+          "coordinate": "com.google.guava:guava-parent:28.1-android",
+          "hashes": [
+            "f8afcb43fd24c3b6226e408bdb9cec569173715a4c2c80173ccaedd84e151891"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "j2objc-annotations-1.3.jar",
+          "coordinate": "com.google.j2objc:j2objc-annotations:1.3",
+          "hashes": [
+            "21af30c92267bd6122c0e0b4d20cccb6641a37eaf956c6540ec471d584e64a7b"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "j2objc-annotations-1.3.pom",
+          "coordinate": "com.google.j2objc:j2objc-annotations:1.3",
+          "hashes": [
+            "5faca824ba115bee458730337dfdb2fcea46ba2fd774d4304edbf30fa6a3f055"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "jbr-api-1.5.0.jar",
+          "coordinate": "org.jetbrains.runtime:jbr-api:1.5.0",
+          "hashes": [
+            "657ede7d7f8e175c909b23caa10fcd4d4a511304fd938aa9cc8457b4378950d5"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlin-stdlib-jdk7-2.1.21.jar",
+          "coordinate": "org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.21",
+          "hashes": [
+            "966846172e1052cb5b34d7b34647a64799b33f6da816509f7825c56f55895234"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlin-stdlib-jdk8-2.1.21.jar",
+          "coordinate": "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.21",
+          "hashes": [
+            "87b4f956de27401446227e474ac7a31acff0d0a8087160c54288c1e6f46a67e6"
+          ]
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-test/1.8.0/kotlinx-coroutines-test-1.8.0.module",
+          "publishedSha1": "13c977ed49b93cef0f3ff7e7ae8d6a6462530afb",
+          "publishedSha1Matches": true,
+          "sha256": "0ec3c75ffd99a6a2dfb68f307f2f2f73141c933e58b77b104f1c8cac3afd5394",
+          "bytes": 40691
+        },
+        {
+          "source": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-test-jvm/1.8.0/kotlinx-coroutines-test-jvm-1.8.0.module",
+          "publishedSha1": "e5b73a2a8e6a8528774fdf8c051b4c34a071a1f8",
+          "publishedSha1Matches": true,
+          "sha256": "1d2d1973a2f41a8c0c1263e60b25e7792f638b8c55d7ca1c6d0673b64be57da7",
+          "bytes": 4633
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-datetime-jvm-0.7.1.jar",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-datetime-jvm:0.7.1",
+          "hashes": [
+            "3b8b98657c9aff3be7f6b4b575e9f3fb9a3a1f452a801da0f438901734acdade"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "kotlinx-datetime-jvm-0.7.1.module",
+          "coordinate": "org.jetbrains.kotlinx:kotlinx-datetime-jvm:0.7.1",
+          "hashes": [
+            "da21b5eda63642a4944565c2a8c844ce48f5efe734703ac59182a0941bac8a7a"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "mojo-parent-50.pom",
+          "coordinate": "org.codehaus.mojo:mojo-parent:50",
+          "hashes": [
+            "f819cad1b15b6a7791c8b601e96bde33765e4681395807db4537d2f0dedd493b"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "truth-1.0.1.jar",
+          "coordinate": "com.google.truth:truth:1.0.1",
+          "hashes": [
+            "1ccf4334e7a94cf00a20a619b5462b53acf3274e00b70498bf5b28a3bc1be9b1"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "truth-1.0.1.pom",
+          "coordinate": "com.google.truth:truth:1.0.1",
+          "hashes": [
+            "04686c6eadcd60d8b7b0a4d3f55938a6168760e6e2c2411339036b6bf046a30f"
+          ]
+        },
+        {
+          "source": "HRIS Mobile pinned metadata",
+          "artifact": "truth-parent-1.0.1.pom",
+          "coordinate": "com.google.truth:truth-parent:1.0.1",
+          "hashes": [
+            "1c7fc863832ed9808e43d8c17691ff167d313f11134efc7561ff51d142196d7e"
+          ]
+        }
+      ]
+    },
+    "compose-checksum-provenance.json": {
+      "source": "HRIS Mobile pinned Compose dependencies",
+      "sourceCommit": "f7ba99f55e3aa6d8137ea4a623a99359c9f7ebb3",
+      "sourceSha256": "eb6e153a9e7aa8e1cc4bc2224adb881c0cab6959853492e9178dd3a515b204dd",
+      "addedExactRecords": [
+        [
+          "androidx.activity",
+          "activity",
+          "1.0.0"
+        ],
+        [
+          "androidx.activity",
+          "activity",
+          "1.1.0"
+        ],
+        [
+          "androidx.activity",
+          "activity",
+          "1.10.1"
+        ],
+        [
+          "androidx.activity",
+          "activity",
+          "1.11.0"
+        ],
+        [
+          "androidx.activity",
+          "activity",
+          "1.7.0"
+        ],
+        [
+          "androidx.activity",
+          "activity",
+          "1.8.0"
+        ],
+        [
+          "androidx.activity",
+          "activity-compose",
+          "1.10.1"
+        ],
+        [
+          "androidx.activity",
+          "activity-compose",
+          "1.11.0"
+        ],
+        [
+          "androidx.activity",
+          "activity-ktx",
+          "1.10.1"
+        ],
+        [
+          "androidx.activity",
+          "activity-ktx",
+          "1.11.0"
+        ],
+        [
+          "androidx.activity",
+          "activity-ktx",
+          "1.7.0"
+        ],
+        [
+          "androidx.annotation",
+          "annotation",
+          "1.1.0"
+        ],
+        [
+          "androidx.annotation",
+          "annotation",
+          "1.2.0"
+        ],
+        [
+          "androidx.annotation",
+          "annotation",
+          "1.5.0"
+        ],
+        [
+          "androidx.annotation",
+          "annotation",
+          "1.6.0"
+        ],
+        [
+          "androidx.annotation",
+          "annotation",
+          "1.7.0"
+        ],
+        [
+          "androidx.annotation",
+          "annotation",
+          "1.8.1"
+        ],
+        [
+          "androidx.annotation",
+          "annotation",
+          "1.9.1"
+        ],
+        [
+          "androidx.annotation",
+          "annotation-experimental",
+          "1.0.0"
+        ],
+        [
+          "androidx.annotation",
+          "annotation-experimental",
+          "1.4.0"
+        ],
+        [
+          "androidx.annotation",
+          "annotation-experimental",
+          "1.4.1"
+        ],
+        [
+          "androidx.annotation",
+          "annotation-experimental",
+          "1.5.0"
+        ],
+        [
+          "androidx.annotation",
+          "annotation-iosarm64",
+          "1.9.1"
+        ],
+        [
+          "androidx.annotation",
+          "annotation-iossimulatorarm64",
+          "1.9.1"
+        ],
+        [
+          "androidx.annotation",
+          "annotation-jvm",
+          "1.6.0"
+        ],
+        [
+          "androidx.annotation",
+          "annotation-jvm",
+          "1.7.0"
+        ],
+        [
+          "androidx.annotation",
+          "annotation-jvm",
+          "1.8.1"
+        ],
+        [
+          "androidx.annotation",
+          "annotation-jvm",
+          "1.9.1"
+        ],
+        [
+          "androidx.annotation",
+          "annotation-wasm-js",
+          "1.9.1"
+        ],
+        [
+          "androidx.arch.core",
+          "core-common",
+          "2.0.0"
+        ],
+        [
+          "androidx.arch.core",
+          "core-common",
+          "2.1.0"
+        ],
+        [
+          "androidx.arch.core",
+          "core-common",
+          "2.2.0"
+        ],
+        [
+          "androidx.arch.core",
+          "core-runtime",
+          "2.0.0"
+        ],
+        [
+          "androidx.arch.core",
+          "core-runtime",
+          "2.1.0"
+        ],
+        [
+          "androidx.arch.core",
+          "core-runtime",
+          "2.2.0"
+        ],
+        [
+          "androidx.collection",
+          "collection",
+          "1.0.0"
+        ],
+        [
+          "androidx.collection",
+          "collection",
+          "1.1.0"
+        ],
+        [
+          "androidx.collection",
+          "collection",
+          "1.4.0"
+        ],
+        [
+          "androidx.collection",
+          "collection",
+          "1.4.2"
+        ],
+        [
+          "androidx.collection",
+          "collection",
+          "1.5.0"
+        ],
+        [
+          "androidx.collection",
+          "collection-iosarm64",
+          "1.5.0"
+        ],
+        [
+          "androidx.collection",
+          "collection-iossimulatorarm64",
+          "1.5.0"
+        ],
+        [
+          "androidx.collection",
+          "collection-jvm",
+          "1.4.0"
+        ],
+        [
+          "androidx.collection",
+          "collection-jvm",
+          "1.4.2"
+        ],
+        [
+          "androidx.collection",
+          "collection-jvm",
+          "1.5.0"
+        ],
+        [
+          "androidx.collection",
+          "collection-ktx",
+          "1.1.0"
+        ],
+        [
+          "androidx.collection",
+          "collection-ktx",
+          "1.5.0"
+        ],
+        [
+          "androidx.collection",
+          "collection-wasm-js",
+          "1.5.0"
+        ],
+        [
+          "androidx.compose.animation",
+          "animation",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.animation",
+          "animation-android",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.animation",
+          "animation-core",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.animation",
+          "animation-core-android",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.foundation",
+          "foundation",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.foundation",
+          "foundation-android",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.foundation",
+          "foundation-layout",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.foundation",
+          "foundation-layout-android",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime",
+          "1.7.0"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-android",
+          "1.7.0"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-android",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-annotation",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-annotation-android",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-annotation-iosarm64",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-annotation-iossimulatorarm64",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-annotation-jvm",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-annotation-wasm-js",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-desktop",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-iosarm64",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-iossimulatorarm64",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-saveable",
+          "1.7.0"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-saveable",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-saveable-android",
+          "1.7.0"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-saveable-android",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-saveable-desktop",
+          "1.7.0"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-saveable-desktop",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-saveable-iosarm64",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-saveable-iossimulatorarm64",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-saveable-wasm-js",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.runtime",
+          "runtime-wasm-js",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui",
+          "1.0.1"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-android",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-geometry",
+          "1.0.1"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-geometry",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-geometry-android",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-graphics",
+          "1.0.1"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-graphics",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-graphics-android",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-text",
+          "1.0.1"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-text",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-text-android",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-unit",
+          "1.0.1"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-unit",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-unit-android",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-util",
+          "1.0.1"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-util",
+          "1.9.4"
+        ],
+        [
+          "androidx.compose.ui",
+          "ui-util-android",
+          "1.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common",
+          "2.0.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common",
+          "2.1.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common",
+          "2.2.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common",
+          "2.6.1"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common",
+          "2.6.2"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common",
+          "2.8.5"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common-iosarm64",
+          "2.8.5"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common-iosarm64",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common-iossimulatorarm64",
+          "2.8.5"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common-iossimulatorarm64",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common-java8",
+          "2.3.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common-java8",
+          "2.6.1"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common-java8",
+          "2.6.2"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common-jvm",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-common-wasm-js",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-livedata",
+          "2.0.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-livedata",
+          "2.6.1"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-livedata",
+          "2.6.2"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-livedata",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-livedata-core",
+          "2.0.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-livedata-core",
+          "2.2.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-livedata-core",
+          "2.5.1"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-livedata-core",
+          "2.6.1"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-livedata-core",
+          "2.6.2"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-livedata-core",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-livedata-core-ktx",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-process",
+          "2.3.1"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-process",
+          "2.4.1"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-process",
+          "2.6.1"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-process",
+          "2.6.2"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-process",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime",
+          "2.0.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime",
+          "2.1.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime",
+          "2.2.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime",
+          "2.3.1"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime",
+          "2.6.1"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime",
+          "2.6.2"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime",
+          "2.8.5"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-android",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-compose",
+          "2.8.7"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-compose",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-compose-android",
+          "2.8.7"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-compose-android",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-compose-desktop",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-compose-iosarm64",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-compose-iossimulatorarm64",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-compose-wasm-js",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-desktop",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-iosarm64",
+          "2.8.5"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-iosarm64",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-iossimulatorarm64",
+          "2.8.5"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-iossimulatorarm64",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-ktx",
+          "2.6.1"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-ktx",
+          "2.6.2"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-ktx",
+          "2.8.7"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-ktx",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-ktx-android",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-runtime-wasm-js",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-service",
+          "2.6.2"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-service",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel",
+          "2.0.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel",
+          "2.1.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel",
+          "2.2.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel",
+          "2.6.1"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel",
+          "2.6.2"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel",
+          "2.8.5"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-android",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-compose",
+          "2.9.2"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-compose",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-compose-android",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-desktop",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-iosarm64",
+          "2.8.5"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-iosarm64",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-iossimulatorarm64",
+          "2.8.5"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-iossimulatorarm64",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-ktx",
+          "2.8.7"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-ktx",
+          "2.9.3"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-ktx",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate",
+          "1.0.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate",
+          "2.2.0"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate",
+          "2.6.1"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate",
+          "2.6.2"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate-android",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate-desktop",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate-iosarm64",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate-iossimulatorarm64",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate-wasm-js",
+          "2.9.4"
+        ],
+        [
+          "androidx.lifecycle",
+          "lifecycle-viewmodel-wasm-js",
+          "2.9.4"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate",
+          "1.0.0"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate",
+          "1.1.0"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate",
+          "1.2.1"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate",
+          "1.3.0"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate",
+          "1.3.1"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate",
+          "1.3.3"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-android",
+          "1.3.1"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-android",
+          "1.3.3"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-compose",
+          "1.3.0"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-compose",
+          "1.3.3"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-compose-android",
+          "1.3.3"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-compose-desktop",
+          "1.3.3"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-compose-iosarm64",
+          "1.3.3"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-compose-iossimulatorarm64",
+          "1.3.3"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-compose-wasm-js",
+          "1.3.3"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-desktop",
+          "1.3.3"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-iosarm64",
+          "1.3.3"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-iossimulatorarm64",
+          "1.3.3"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-ktx",
+          "1.2.1"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-ktx",
+          "1.3.3"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-wasm-js",
+          "1.3.1"
+        ],
+        [
+          "androidx.savedstate",
+          "savedstate-wasm-js",
+          "1.3.3"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-common",
+          "2.8.4"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-common",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-common",
+          "2.9.6"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-common-wasm-js",
+          "2.9.6"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime",
+          "2.8.4"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime",
+          "2.9.6"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-compose",
+          "2.8.4"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-compose",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-compose",
+          "2.9.6"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-compose-desktop",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-compose-desktop",
+          "2.9.6"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-compose-uikitarm64",
+          "2.8.4"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-compose-uikitarm64",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-compose-uikitarm64",
+          "2.9.6"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-compose-uikitsimarm64",
+          "2.8.4"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-compose-uikitsimarm64",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-compose-uikitsimarm64",
+          "2.9.6"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-compose-wasm-js",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-compose-wasm-js",
+          "2.9.6"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-wasm-js",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-runtime-wasm-js",
+          "2.9.6"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel",
+          "2.8.4"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel",
+          "2.9.6"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-compose",
+          "2.9.3"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-compose",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-compose-desktop",
+          "2.9.3"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-compose-desktop",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-compose-uikitarm64",
+          "2.9.3"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-compose-uikitarm64",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-compose-uikitsimarm64",
+          "2.9.3"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-compose-uikitsimarm64",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-compose-wasm-js",
+          "2.9.3"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-compose-wasm-js",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate",
+          "2.9.3"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate",
+          "2.9.6"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate-wasm-js",
+          "2.9.3"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate-wasm-js",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-savedstate-wasm-js",
+          "2.9.6"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-wasm-js",
+          "2.9.5"
+        ],
+        [
+          "org.jetbrains.androidx.lifecycle",
+          "lifecycle-viewmodel-wasm-js",
+          "2.9.6"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-common",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-common-desktop",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-common-iosarm64",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-common-iossimulatorarm64",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-common-wasm-js",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-compose",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-compose-desktop",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-compose-uikitarm64",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-compose-uikitsimarm64",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-compose-wasm-js",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-runtime",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-runtime-desktop",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-runtime-iosarm64",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-runtime-iossimulatorarm64",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.navigation",
+          "navigation-runtime-wasm-js",
+          "2.9.1"
+        ],
+        [
+          "org.jetbrains.androidx.savedstate",
+          "savedstate",
+          "1.3.5"
+        ],
+        [
+          "org.jetbrains.androidx.savedstate",
+          "savedstate",
+          "1.3.6"
+        ],
+        [
+          "org.jetbrains.androidx.savedstate",
+          "savedstate-compose",
+          "1.3.5"
+        ],
+        [
+          "org.jetbrains.androidx.savedstate",
+          "savedstate-compose",
+          "1.3.6"
+        ],
+        [
+          "org.jetbrains.androidx.savedstate",
+          "savedstate-compose-desktop",
+          "1.3.5"
+        ],
+        [
+          "org.jetbrains.androidx.savedstate",
+          "savedstate-compose-desktop",
+          "1.3.6"
+        ],
+        [
+          "org.jetbrains.androidx.savedstate",
+          "savedstate-compose-uikitarm64",
+          "1.3.5"
+        ],
+        [
+          "org.jetbrains.androidx.savedstate",
+          "savedstate-compose-uikitarm64",
+          "1.3.6"
+        ],
+        [
+          "org.jetbrains.androidx.savedstate",
+          "savedstate-compose-uikitsimarm64",
+          "1.3.5"
+        ],
+        [
+          "org.jetbrains.androidx.savedstate",
+          "savedstate-compose-uikitsimarm64",
+          "1.3.6"
+        ],
+        [
+          "org.jetbrains.androidx.savedstate",
+          "savedstate-compose-wasm-js",
+          "1.3.5"
+        ],
+        [
+          "org.jetbrains.androidx.savedstate",
+          "savedstate-compose-wasm-js",
+          "1.3.6"
+        ],
+        [
+          "org.jetbrains.androidx.savedstate",
+          "savedstate-wasm-js",
+          "1.3.5"
+        ],
+        [
+          "org.jetbrains.androidx.savedstate",
+          "savedstate-wasm-js",
+          "1.3.6"
+        ],
+        [
+          "org.jetbrains.compose",
+          "compose-gradle-plugin",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-core",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-core",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-core-desktop",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-core-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-core-uikitarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-core-uikitarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-core-uikitsimarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-core-uikitsimarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-core-wasm-js",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-core-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-uikitarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-uikitarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-uikitsimarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-uikitsimarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.animation",
+          "animation-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.annotation-internal",
+          "annotation",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.annotation-internal",
+          "annotation",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.annotation-internal",
+          "annotation-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.collection-internal",
+          "collection",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.collection-internal",
+          "collection",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.collection-internal",
+          "collection-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.components",
+          "components-resources",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.components",
+          "components-resources-android",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.components",
+          "components-resources-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.components",
+          "components-resources-iosArm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.components",
+          "components-resources-iosSimulatorArm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.components",
+          "components-resources-wasmJs",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.desktop",
+          "desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.desktop",
+          "desktop-jvm",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.desktop",
+          "desktop-jvm-linux-x64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.desktop",
+          "desktop-jvm-macos-arm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.desktop",
+          "desktop-jvm-macos-x64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.desktop",
+          "desktop-jvm-windows-x64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation-layout",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation-layout",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation-layout-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation-layout-uikitarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation-layout-uikitarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation-layout-uikitsimarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation-layout-uikitsimarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation-layout-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation-uikitarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation-uikitarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation-uikitsimarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation-uikitsimarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.foundation",
+          "foundation-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.material",
+          "material",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.material",
+          "material-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.material",
+          "material-ripple",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.material",
+          "material-ripple-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime-saveable",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime-saveable",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime-saveable-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime-saveable-uikitarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime-saveable-uikitarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime-saveable-uikitsimarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime-saveable-uikitsimarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime-saveable-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime-uikitarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime-uikitarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime-uikitsimarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime-uikitsimarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.runtime",
+          "runtime-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-backhandler",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-backhandler",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-backhandler-android",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-backhandler-android-debug",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-backhandler-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-backhandler-uikitarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-backhandler-uikitarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-backhandler-uikitsimarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-backhandler-uikitsimarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-backhandler-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-geometry",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-geometry",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-geometry-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-geometry-uikitarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-geometry-uikitarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-geometry-uikitsimarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-geometry-uikitsimarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-geometry-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-graphics",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-graphics",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-graphics-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-graphics-uikitarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-graphics-uikitarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-graphics-uikitsimarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-graphics-uikitsimarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-graphics-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-test",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-test-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-test-junit4",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-test-junit4-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-text",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-text",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-text-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-text-uikitarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-text-uikitarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-text-uikitsimarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-text-uikitsimarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-text-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-tooling-preview",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-tooling-preview-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-uikit",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-uikit",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-uikit-uikitarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-uikit-uikitarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-uikit-uikitsimarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-uikit-uikitsimarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-uikitarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-uikitarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-uikitsimarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-uikitsimarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-unit",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-unit",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-unit-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-unit-uikitarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-unit-uikitarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-unit-uikitsimarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-unit-uikitsimarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-unit-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-util",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-util",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-util-desktop",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-util-uikitarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-util-uikitarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-util-uikitsimarm64",
+          "1.8.2"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-util-uikitsimarm64",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-util-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.compose.ui",
+          "ui-wasm-js",
+          "1.9.3"
+        ],
+        [
+          "org.jetbrains.kotlin",
+          "compose-compiler-gradle-plugin",
+          "2.3.21"
+        ],
+        [
+          "org.jetbrains.kotlin",
+          "kotlin-compose-compiler-plugin-embeddable",
+          "2.3.21"
+        ],
+        [
+          "org.jetbrains.skiko",
+          "skiko",
+          "0.9.22.2"
+        ],
+        [
+          "org.jetbrains.skiko",
+          "skiko",
+          "0.9.4.2"
+        ],
+        [
+          "org.jetbrains.skiko",
+          "skiko-awt",
+          "0.9.22.2"
+        ],
+        [
+          "org.jetbrains.skiko",
+          "skiko-awt-runtime-linux-x64",
+          "0.9.22.2"
+        ],
+        [
+          "org.jetbrains.skiko",
+          "skiko-awt-runtime-macos-arm64",
+          "0.9.22.2"
+        ],
+        [
+          "org.jetbrains.skiko",
+          "skiko-awt-runtime-macos-x64",
+          "0.9.22.2"
+        ],
+        [
+          "org.jetbrains.skiko",
+          "skiko-awt-runtime-windows-x64",
+          "0.9.22.2"
+        ],
+        [
+          "org.jetbrains.skiko",
+          "skiko-iosarm64",
+          "0.9.22.2"
+        ],
+        [
+          "org.jetbrains.skiko",
+          "skiko-iosarm64",
+          "0.9.4.2"
+        ],
+        [
+          "org.jetbrains.skiko",
+          "skiko-iossimulatorarm64",
+          "0.9.22.2"
+        ],
+        [
+          "org.jetbrains.skiko",
+          "skiko-iossimulatorarm64",
+          "0.9.4.2"
+        ],
+        [
+          "org.jetbrains.skiko",
+          "skiko-js-wasm-runtime",
+          "0.9.22.2"
+        ],
+        [
+          "org.jetbrains.skiko",
+          "skiko-wasm-js",
+          "0.9.22.2"
+        ]
+      ],
+      "broadTrustPatternsAdded": false
+    }
+  },
+  "environment": {
+    "jdk": "21",
+    "kotlin": "2.3.21",
+    "compose": "1.9.3",
+    "material3": "1.9.0",
+    "androidCompileSdk": 36,
+    "androidMinSdk": 24,
+    "linuxFonts": "ttf-dejavu 2.37+18+g9b5d1b2f-8 installed from Arch signed package; CI declares fonts-dejavu-core",
+    "fontFailure": "Compose generic Linux font aliases did not include the only preinstalled Liberation/Adwaita fonts."
+  },
+  "limitations": {
+    "appleRuntimeTested": false,
+    "androidDeviceUiTested": false,
+    "wasmUiRuntimeTested": false,
+    "wasmFilterRuntimeTested": true,
+    "appleMainAndTestKlibsCompiled": true,
+    "matrixHttpCapturedByThisModule": false,
+    "applicationIntegrated": false,
+    "released": false,
+    "bodiesOrQueryValuesRetained": false
+  },
+  "initialFetchFailures": [
+    "Maven plugin marker .sha256 URLs returned404; artifact was verified against published SHA-1 then SHA-256 pinned.",
+    "Apple klib Gradle display names differed from published artifact filenames; resolver used the already checksum-verified module metadata to resolve exact names before checking published SHA-1 and pinning SHA-256."
+  ]
+}

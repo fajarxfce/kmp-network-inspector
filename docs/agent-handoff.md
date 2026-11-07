@@ -1,5 +1,43 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## Current increment — 7 November2026,18:56UTC
+
+The optional Compose viewer is locally accepted in this implementation commit.
+Five Kotlin source/test files plus Gradle/CI add list/detail, bounded source/status/
+query filters, stable row identity, selection callbacks and host-owned action slots.
+No transport or lifecycle work is in composables. The two synthetic screenshots in
+`docs/images` were opened after correcting large-text search/row layout and the48dp
+filter target. [Exact evidence](measurements/compose-local-2026-11-07.json).
+
+Strict17 passed21.264s on28 unchanged inputs.16 current-source module cases pass:
+JVM8 (four actual UI), Android host4, actual Wasm browser filter4. Reused core42 and
+Ktor39 cases are verified,97 total. Android AAR65583B SHA256
+0f035e72ce680ede49aa62526df34d7efe742fba5f9605675e2f8441b5c6135f;
+Apple main/test klibs and Wasm compile, with no Apple/native-device/browser UI runtime
+claim. All17 attempts, missing-checksum failures, the font failure,40dp control failure,
+intentional lock update and official checksum provenance are retained. The final run
+reused tests; it did not execute new test cases. All inspector jobs are REAPED.
+
+Repo stays private; the visibility question remains unanswered and billing prevented
+both earlier first CI runs from executing any steps. Do not change visibility or call
+Apple runtime accepted. There is no release, body capture/export, Matrix adapter or
+HRIS/starter integration. The next source push gets its own first CI; no blind rerun.
+
+Matrix observer implementation is now UNACCEPTED in the isolated Rust worktree
+`../.worktrees/matrix-sdk-http-observer-2026-11-07`. Its client-owned bounded pull
+channel, actual Matrix SDK attempt hook, cancellation/body stages and FFI are written.
+Sole heavy job75358 runs core-1 (15 proposed tests) in a fresh target directory; no
+second compiler/emulator may overlap. No Rust test result, generated binding, SDK5
+artifact or publication exists yet. SDK4 and frozen inventories are unchanged.
+
+Mobile recovery and primary arebb106154, pushed. Both95e35b9d original CI runs started
+before promotion; bb106154 first CI is next. Phone and stopped original Bima emulator
+remain55. Pending/draft inbox fix is installed. New bubble first-layout fix is tested
+but not yet built/installed; composer keyboard and latency remain open. Continue the
+original54-group communications scope after these fixes; none of the PRD groups are
+newly declared complete. Historical sections below are not current job status.
+
+
 ## Parent continuation — 7 November 2026, 18:14 UTC
 
 Mobile recovery f7ba99f5 records validated/installed release55; primary95e35b9d has

@@ -7,11 +7,11 @@ import xml.etree.ElementTree as ET
 
 root = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
-parser.add_argument("--module", choices=["core", "ktor"], default="core")
+parser.add_argument("--module", choices=["core", "ktor", "compose"], default="core")
 parser.add_argument("targets", nargs="+")
 args = parser.parse_args()
 targets = args.targets
-expected = {"core": 14, "ktor": 13}[args.module]
+expected_common = {"core": 14, "ktor": 13, "compose": 4}[args.module]
 assert targets and set(targets) <= {
     "jvmTest", "testAndroidHostTest", "wasmJsBrowserTest", "iosSimulatorArm64Test"
 }
@@ -24,6 +24,7 @@ for target in targets:
         suite = ET.parse(file).getroot()
         for key in counts:
             counts[key] += int(suite.get(key, "0"))
+    expected = expected_common + (4 if args.module == "compose" and target == "jvmTest" else 0)
     assert counts["tests"] == expected, (target, counts)
     assert counts["failures"] == counts["errors"] == counts["skipped"] == 0, (target, counts)
     results[target] = counts
