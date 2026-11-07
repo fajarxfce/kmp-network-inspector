@@ -47,6 +47,14 @@ sealed interface NetworkOutcome {
     data class Failed(val category: NetworkFailure) : NetworkOutcome
 }
 
+/** Optional body-transfer observation. Null on a trace means this stage is not captured. */
+sealed interface NetworkTransfer {
+    data object InProgress : NetworkTransfer
+
+    data class Complete(val durationMillis: Long, val failure: NetworkFailure? = null) :
+        NetworkTransfer
+}
+
 data class NetworkTrace(
     val id: Long,
     val startedAtEpochMillis: Long,
@@ -57,15 +65,19 @@ data class NetworkTrace(
     val responseHeaders: List<NetworkHeader> = emptyList(),
     val responseBytes: Long? = null,
     val responseHeadersTruncated: Boolean = false,
+    val transfer: NetworkTransfer? = null,
+    /** The producer reported loss, or completion arrived without the response observation. */
+    val incomplete: Boolean = false,
 ) {
     override fun toString() = "NetworkTrace([redacted])"
 }
 
 data class NetworkTraceSnapshot(
-    /** Newest starts first. Completion changes the existing row without moving it. */
+    /** Most recently received starts first. Completion changes the row without moving it. */
     val traces: List<NetworkTrace> = emptyList(),
     val evictedRequests: Long = 0,
     val closed: Boolean = false,
+    val droppedObservations: Long = 0,
 ) {
     override fun toString() = "NetworkTraceSnapshot([redacted])"
 }

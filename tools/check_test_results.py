@@ -11,7 +11,7 @@ parser.add_argument("--module", choices=["core", "ktor", "compose"], default="co
 parser.add_argument("targets", nargs="+")
 args = parser.parse_args()
 targets = args.targets
-expected_common = {"core": 14, "ktor": 13, "compose": 4}[args.module]
+expected_common = {"core": 22, "ktor": 13, "compose": 5}[args.module]
 assert targets and set(targets) <= {
     "jvmTest", "testAndroidHostTest", "wasmJsBrowserTest", "iosSimulatorArm64Test"
 }
@@ -24,7 +24,7 @@ for target in targets:
         suite = ET.parse(file).getroot()
         for key in counts:
             counts[key] += int(suite.get(key, "0"))
-    expected = expected_common + (4 if args.module == "compose" and target == "jvmTest" else 0)
+    expected = expected_common + (6 if args.module == "compose" and target == "jvmTest" else 0)
     assert counts["tests"] == expected, (target, counts)
     assert counts["failures"] == counts["errors"] == counts["skipped"] == 0, (target, counts)
     results[target] = counts

@@ -29,6 +29,24 @@ class NetworkTraceFilterTest {
     }
 
     @Test
+    fun bodyFailureAndMissingHeadersAreNotClassifiedAsPendingOrFabricatedHttpErrors() {
+        val bodyFailure =
+            trace(NetworkOutcome.Response(200))
+                .copy(transfer = NetworkTransfer.Complete(10, NetworkFailure.CONNECTION))
+        val missingHeaders =
+            trace().copy(transfer = NetworkTransfer.Complete(20), incomplete = true)
+        val pending = NetworkTraceFilter(status = NetworkTraceStatus.PENDING)
+        val transport = NetworkTraceFilter(status = NetworkTraceStatus.TRANSPORT_FAILURE)
+        val httpError = NetworkTraceFilter(status = NetworkTraceStatus.HTTP_ERROR)
+        assertTrue(transport.includes(bodyFailure))
+        assertFalse(transport.includes(missingHeaders))
+        listOf(bodyFailure, missingHeaders).forEach {
+            assertFalse(pending.includes(it))
+            assertFalse(httpError.includes(it))
+        }
+    }
+
+    @Test
     fun sourceQueryAndStatusAreCombinedWithoutChangingTheOriginalRecords() {
         val original = trace(NetworkOutcome.Response(503))
         val selected =

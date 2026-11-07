@@ -16,9 +16,11 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import dev.fajar.inspector.NetworkOutcome
 import dev.fajar.inspector.NetworkSource
 import dev.fajar.inspector.NetworkTrace
 import dev.fajar.inspector.NetworkTraceSnapshot
+import dev.fajar.inspector.NetworkTransfer
 
 /**
  * A state-driven request list. The host owns snapshot collection, filter persistence, selection,
@@ -71,6 +73,14 @@ fun NetworkTraceList(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
+        if (snapshot.droppedObservations > 0) {
+            Text(
+                "${snapshot.droppedObservations} observations missed",
+                Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
         HorizontalDivider()
         if (visible.isEmpty()) {
             Box(
@@ -118,7 +128,23 @@ private fun TraceRow(trace: NetworkTrace, onClick: () -> Unit) {
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
-            TraceOutcome(trace.outcome)
+            TraceOutcome(trace)
+            (trace.transfer as? NetworkTransfer.Complete)
+                ?.failure
+                ?.takeIf { trace.outcome is NetworkOutcome.Response }
+                ?.let {
+                    Text(
+                        failureLabel(it),
+                        color = MaterialTheme.colorScheme.error,
+                        style = MaterialTheme.typography.labelLarge,
+                    )
+                }
+            if (trace.incomplete)
+                Text(
+                    "Capture incomplete",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    style = MaterialTheme.typography.labelLarge,
+                )
             trace.durationMillis?.let {
                 Text(
                     durationLabel(it),

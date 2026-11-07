@@ -3,6 +3,7 @@ package dev.fajar.inspector.compose
 import dev.fajar.inspector.NetworkOutcome
 import dev.fajar.inspector.NetworkSource
 import dev.fajar.inspector.NetworkTrace
+import dev.fajar.inspector.NetworkTransfer
 
 /** Presentation filtering only; never starts capture or changes transport. */
 data class NetworkTraceFilter(
@@ -16,10 +17,13 @@ data class NetworkTraceFilter(
         val statusMatches =
             when (status) {
                 NetworkTraceStatus.ALL -> true
-                NetworkTraceStatus.PENDING -> outcome == null
+                NetworkTraceStatus.PENDING ->
+                    outcome == null && trace.transfer !is NetworkTransfer.Complete
                 NetworkTraceStatus.HTTP_ERROR ->
                     outcome is NetworkOutcome.Response && outcome.status >= 400
-                NetworkTraceStatus.TRANSPORT_FAILURE -> outcome is NetworkOutcome.Failed
+                NetworkTraceStatus.TRANSPORT_FAILURE ->
+                    outcome is NetworkOutcome.Failed ||
+                        (trace.transfer as? NetworkTransfer.Complete)?.failure != null
             }
         if (!statusMatches) return false
         val search = query.take(256).trim()

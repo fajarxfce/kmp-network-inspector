@@ -44,7 +44,8 @@ recorder.close()
 ```
 
 The example is a suspending caller; the optional Ktor adapter is described below.
-Each attempt remains one row, sorted by start time. Durations use a monotonic clock.
+Each attempt remains one row, with most recently received starts first. Completion
+does not move a row. Durations use a monotonic clock.
 Clear fences old handles; close cannot reopen. Capacity is 1–500 requests. Completed
 rows are evicted first, with an eviction count; late completion cannot resurrect them.
 Hosts must bound callback ingress when implementing an adapter.
@@ -135,3 +136,27 @@ requires a font supported by Compose's generic aliases, such as DejaVu Sans/Mono
 
 [Exact checks, retained failures and synthetic screenshots](docs/measurements/compose-local-2026-11-07.json).
 The Matrix observer and HRIS integration remain open; there is no published package yet.
+
+## Buffered transport observations
+
+An adapter receiving buffered native events uses `openObservation()` and
+`beginObserved(session, request, startedAtEpochMillis)`. The resulting handle accepts
+`observedResponse` and `observedComplete` with durations measured by the transport.
+Queue/FFI delay therefore does not become request duration. Local `begin`/`finish`
+handles cannot be mixed with this externally timed API.
+
+Header arrival and body completion are separate. A real HTTP200 followed by a body
+failure retains that200 and reports the transfer failure. Completion with missing
+headers leaves status unavailable; it never fabricates success or remains pending.
+`observedLoss(session, positiveDelta)` records a saturated loss count and conservatively
+marks active external transfers incomplete. Clear fences buffered starts as well as
+finishes/loss; the host must discard the old producer buffer and obtain a new session.
+Close permanently erases the store. Native adapters must still bound their input queue
+and attempt-handle map and explicitly close their native subscription.
+
+Current local validation:126 cases across core66, Ktor39 and Compose21 on JVM,
+Android host and Wasm. Six cases exercise actual desktop Compose UI. Android AARs
+and Apple main/test klibs compile; Apple runtime remains blocked by CI billing.
+The first streaming-fixture failure and corrected capture-on/off byte-read check are
+retained in the [exact evidence](docs/measurements/observed-time-local-2026-11-07.json).
+This API is ready for adapter implementation; it does not itself subscribe to Matrix.

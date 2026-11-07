@@ -376,33 +376,42 @@ class KtorNetworkInspectorTest {
 
     @Test
     fun failedBodyRemainsAConsumerFailureAfterTheResponseHeadersWereObserved() = runTest {
-        val store = NetworkTraceStore()
-        val channel = ByteChannel(autoFlush = true)
-        val ready = CompletableDeferred<Unit>()
-        val client =
-            HttpClient(MockEngine { respond(channel, HttpStatusCode.OK) }) {
-                install(KtorNetworkInspector) { recorder = store }
-            }
-        try {
-            supervisorScope {
-                val request = async {
-                    client.prepareGet("https://example.test/body-failure").execute { response ->
-                        ready.complete(Unit)
-                        response.bodyAsChannel().readRemaining().readString()
-                    }
+        for (capture in listOf(false, true)) {
+            val store = NetworkTraceStore()
+            val channel = ByteChannel(autoFlush = true)
+            val ready = CompletableDeferred<Unit>()
+            val client =
+                HttpClient(MockEngine { respond(channel, HttpStatusCode.OK) }) {
+                    if (capture) install(KtorNetworkInspector) { recorder = store }
                 }
-                ready.await()
-                channel.close(IOException("private streaming diagnostic"))
-                assertFailsWith<IOException> { request.await() }
-                assertEquals(
-                    NetworkOutcome.Response(200),
-                    store.snapshots.value.traces.single().outcome,
-                )
+            try {
+                supervisorScope {
+                    val request = async {
+                        client.prepareGet("https://example.test/body-failure").execute { response ->
+                            val body = response.bodyAsChannel()
+                            assertEquals(7.toByte(), body.readByte())
+                            ready.complete(Unit)
+                            // A real read observes the failure even when it arrives before this
+                            // suspension; readRemaining on an already closed empty stream may not.
+                            body.readByte()
+                        }
+                    }
+                    channel.writeByte(7)
+                    ready.await()
+                    channel.close(IOException("private streaming diagnostic"))
+                    assertFailsWith<IOException> { request.await() }
+                    if (capture)
+                        assertEquals(
+                            NetworkOutcome.Response(200),
+                            store.snapshots.value.traces.single().outcome,
+                        )
+                    else assertTrue(store.snapshots.value.traces.isEmpty())
+                }
+            } finally {
+                channel.cancel()
+                client.close()
+                store.close()
             }
-        } finally {
-            channel.cancel()
-            client.close()
-            store.close()
         }
     }
 

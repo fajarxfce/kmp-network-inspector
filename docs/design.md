@@ -1,5 +1,28 @@
 # Design
 
+## Buffered observation timing — 7 November2026
+
+The store now separates ingestion from transport time. A generation-scoped external
+session fences delayed starts, responses, body completions and loss reports after clear
+or close. Handles remain store-owned opaque identities; local-clock handles cannot be
+finished through externally timed methods. Invalid/reversed time, foreign handles and
+late stages do not overwrite retained observations.
+
+Response status/time-to-headers and body-transfer result/duration are distinct facts.
+Body failure preserves the actual HTTP response. A successful transfer without a
+response observation has unavailable status and incomplete capture. Completed rows
+are preferred for eviction; a response whose body is still in progress stays active.
+Producer loss marks active external rows conservatively and increments a saturated
+counter. It never changes the original transport outcome. Start receipt order remains
+stable, including when producer timestamps or completion order differ.
+
+The viewer/filter expose these distinctions. Core66, Ktor39 and Compose21 cases pass
+locally, with six desktop UI cases. The initial Ktor streaming fixture exposed an empty
+`readRemaining` race; the corrected fixture reads actual bytes with capture both off
+and on before triggering the failure. All limitations and fresh/reused report counts
+are in [the measurement](measurements/observed-time-local-2026-11-07.json).
+The actual Matrix adapter, ABI/binding distribution and application integration remain.
+
 The host installs an explicitly owned bounded recorder. Adapters submit transport
 facts to that recorder; the viewer observes immutable snapshots. Capture must never
 wait for the viewer and must not extend the lifetime of a response, Activity, SDK

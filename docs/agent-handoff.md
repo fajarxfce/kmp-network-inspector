@@ -1,5 +1,36 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## Current continuation — 7 November2026,19:20UTC
+
+External observed-time/transfer API is locally accepted in this commit. A generation
+session fences delayed buffered starts as well as response/completion/loss, preserving
+native timestamps and separate header/body timing. Missing headers remain unavailable;
+body failure keeps actual HTTP status. Loss is explicit, bounded and conservative.
+Viewer/filter distinguish these states. No native adapter or app integration yet.
+
+Strict-1 (37446) REAPED:56.266s,29 unchanged inputs, all66 core cases passed. Android
+Ktor failed its empty-stream readRemaining fixture. Corrected fixture performs actual
+byte reads and verifies capture enabled/disabled. Strict-2 (27288) REAPED:104.013s,
+29 unchanged inputs,60 fresh Ktor/Compose cases; same-source core66 reports reused.
+All126 reports have zero failures/errors/skips. Android AAR and Apple main/test klibs
+compile; two synthetic screenshots were reopened. [Evidence](measurements/observed-time-local-2026-11-07.json).
+No Apple/runtime/browser UI claim; private CI billing and visibility question remain.
+
+Rust observer source bce66311 is accepted/pushed on Mobile's isolated SDK branch.
+15 Rust cases, native FFI and Wasm checks pass. Sole heavy job93078 now builds the
+first ARM64 candidate/generated binding in
+`/home/fajar/hris/.worktrees/matrix-sdk-http-observer-2026-11-07/.work/http-observer-2026-11-07/android-arm64-1`.
+Rust inputs are FROZEN until reaped; no other compiler/emulator may overlap. No binding
+or ABI result yet. SDK4 and frozen inventories remain unchanged. No SDK5 publication.
+
+Next: bounded Matrix adapter preserving native IDs/attempts, timestamp/loss/close
+semantics; generated binding and paired native target verification; actual Mobile
+capture and overhead, then validated phone update and reusable Starter integration.
+Phone/original stopped Bima emulator remain55. Mobile bb106154 bubble first-layout
+fix is accepted but not installed; composer keyboard and latency remain open.
+Continue the original54-group communications scope. Earlier job statuses below are
+historical. Do not rerun unchanged blocked CI or change visibility without an answer.
+
 ## First Compose CI — 7 November2026,18:58UTC
 
 Viewer implementationf71f308c9530657c393514e2b930c6015c3a737a is pushed. First run

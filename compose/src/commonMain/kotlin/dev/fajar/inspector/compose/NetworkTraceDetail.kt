@@ -16,6 +16,7 @@ import dev.fajar.inspector.NetworkFailure
 import dev.fajar.inspector.NetworkOutcome
 import dev.fajar.inspector.NetworkSource
 import dev.fajar.inspector.NetworkTrace
+import dev.fajar.inspector.NetworkTransfer
 import kotlin.time.Instant
 
 /** The host supplies the current selected trace; null erases details after clear/eviction. */
@@ -44,7 +45,7 @@ fun NetworkTraceDetail(trace: NetworkTrace?, modifier: Modifier = Modifier) {
                     style = MaterialTheme.typography.titleLarge,
                     fontFamily = FontFamily.Monospace,
                 )
-                TraceOutcome(trace.outcome)
+                TraceOutcome(trace)
             }
         }
         item("source") { TraceField("Source", sourceLabel(request.source)) }
@@ -59,8 +60,27 @@ fun NetworkTraceDetail(trace: NetworkTrace?, modifier: Modifier = Modifier) {
             )
         }
         item("duration") {
-            TraceField("Duration", trace.durationMillis?.let(::durationLabel) ?: "Pending")
+            TraceField(
+                if (trace.outcome is NetworkOutcome.Response) "Time to response" else "Duration",
+                trace.durationMillis?.let(::durationLabel) ?: "Pending",
+            )
         }
+        trace.transfer?.let { transfer ->
+            item("transfer") {
+                TraceField(
+                    "Transfer",
+                    when (transfer) {
+                        NetworkTransfer.InProgress -> "Receiving response"
+                        is NetworkTransfer.Complete ->
+                            "${transfer.failure?.let(::failureLabel) ?: "Complete"} (${durationLabel(transfer.durationMillis)})"
+                    },
+                )
+            }
+        }
+        if (trace.incomplete)
+            item("incomplete") {
+                Text("Capture incomplete", color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
         item("bytes") {
             TraceField("Observed response bytes", trace.responseBytes?.toString() ?: "Not recorded")
         }
@@ -129,23 +149,17 @@ private fun TraceField(label: String, value: String) {
 }
 
 @Composable
-internal fun TraceOutcome(outcome: NetworkOutcome?) {
+internal fun TraceOutcome(trace: NetworkTrace) {
+    val outcome = trace.outcome
     val failed =
         outcome is NetworkOutcome.Failed ||
             (outcome is NetworkOutcome.Response && outcome.status >= 400)
     val label =
         when (outcome) {
-            null -> "Pending"
+            null ->
+                if (trace.transfer is NetworkTransfer.Complete) "Status unavailable" else "Pending"
             is NetworkOutcome.Response -> "HTTP ${outcome.status}"
-            is NetworkOutcome.Failed ->
-                when (outcome.category) {
-                    NetworkFailure.DNS -> "DNS failure"
-                    NetworkFailure.CONNECTION -> "Connection failed"
-                    NetworkFailure.TLS -> "TLS failure"
-                    NetworkFailure.TIMEOUT -> "Timeout"
-                    NetworkFailure.CANCELLED -> "Cancelled"
-                    NetworkFailure.UNKNOWN -> "Transport failed"
-                }
+            is NetworkOutcome.Failed -> failureLabel(outcome.category)
         }
     Text(
         label,
@@ -164,3 +178,13 @@ internal fun sourceLabel(source: NetworkSource) =
 internal fun durationLabel(milliseconds: Long): String =
     if (milliseconds < 1_000) "$milliseconds ms"
     else "${milliseconds / 1_000}.${(milliseconds % 1_000).toString().padStart(3, '0')} s"
+
+internal fun failureLabel(failure: NetworkFailure): String =
+    when (failure) {
+        NetworkFailure.DNS -> "DNS failure"
+        NetworkFailure.CONNECTION -> "Connection failed"
+        NetworkFailure.TLS -> "TLS failure"
+        NetworkFailure.TIMEOUT -> "Timeout"
+        NetworkFailure.CANCELLED -> "Cancelled"
+        NetworkFailure.UNKNOWN -> "Transport failed"
+    }

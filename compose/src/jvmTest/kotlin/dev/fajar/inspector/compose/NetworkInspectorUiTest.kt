@@ -135,4 +135,53 @@ class NetworkInspectorUiTest {
             outcome,
             if (outcome == null) null else 124,
         )
+
+    @Test
+    fun bodyFailureKeepsTheHttpStatusAndShowsTheSeparateTransferFailure() {
+        compose.setContent {
+            MaterialTheme {
+                Surface(Modifier.size(375.dp, 780.dp)) {
+                    NetworkTraceDetail(
+                        trace(1, NetworkOutcome.Response(200))
+                            .copy(
+                                transfer = NetworkTransfer.Complete(300, NetworkFailure.CONNECTION)
+                            )
+                    )
+                }
+            }
+        }
+        compose.onNodeWithText("HTTP 200").assertIsDisplayed()
+        compose
+            .onNodeWithText("Connection failed", substring = true)
+            .performScrollTo()
+            .assertIsDisplayed()
+    }
+
+    @Test
+    fun completedTransferWithoutHeadersIsUnavailableAndNotPending() {
+        compose.setContent {
+            MaterialTheme {
+                Surface(Modifier.size(375.dp, 640.dp)) {
+                    NetworkTraceList(
+                        NetworkTraceSnapshot(
+                            listOf(
+                                trace(1)
+                                    .copy(
+                                        transfer = NetworkTransfer.Complete(20),
+                                        incomplete = true,
+                                    )
+                            )
+                        ),
+                        NetworkTraceFilter(),
+                        {},
+                        {},
+                    )
+                }
+            }
+        }
+        compose.onNodeWithText("Status unavailable").assertIsDisplayed()
+        compose.onNodeWithText("Capture incomplete").assertIsDisplayed()
+        compose.onNodeWithText("Pending").assertDoesNotExist()
+        compose.onNodeWithText("HTTP 200").assertDoesNotExist()
+    }
 }
