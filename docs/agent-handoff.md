@@ -13,6 +13,9 @@ The Android instrumentation fixture compiles:device-2/32912 passed16.104s/38 sta
 It has five real JNI/loopback scenarios but NONE have executed yet. Device-3/27627
 passed17.211s/38 stable inputs after keepDebugSymbols. The rebuilt APK contains the
 exact accepted native hash. All local compiler jobs are reaped; no emulator is running.
+Device-4/42013 is also REAPED:19.273s/38 stable inputs. The fixture now explicitly
+calls Instrumentation.start from onCreate and reports a controlled failed scenario/type.
+Its APK still contains the exact ARM64 native hash; no installation or execution yet.
 [Exact evidence](measurements/matrix-android-binding-local-2026-11-07.json).
 
 The module uses an explicitly unpublished ARM64 candidate coordinate. Its local mirror

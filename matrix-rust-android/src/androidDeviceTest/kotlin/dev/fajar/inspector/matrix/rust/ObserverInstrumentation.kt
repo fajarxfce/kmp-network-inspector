@@ -24,6 +24,11 @@ import org.matrix.rustcomponents.sdk.SlidingSyncVersionBuilder
 
 /** Real JNI/HTTP fixture. It never signs in, opens HRIS data, or contacts a remote server. */
 class ObserverInstrumentation : Instrumentation() {
+    override fun onCreate(arguments: Bundle?) {
+        super.onCreate(arguments)
+        start()
+    }
+
     override fun onStart() {
         val result = JSONObject()
         var success = false
@@ -33,14 +38,19 @@ class ObserverInstrumentation : Instrumentation() {
                     LoopbackFixture().use { fixture ->
                         val client = buildClient(fixture.url)
                         try {
+                            result.put("activeScenario", "original-response")
                             originalResponse(client, fixture)
                             result.put("originalResponseAndCapture", true)
+                            result.put("activeScenario", "pending-close")
                             pendingClose(client)
                             result.put("pendingReadStoppedAndDisposed", true)
+                            result.put("activeScenario", "replacement")
                             replacement(client)
                             result.put("replacementClosesExactOldHandle", true)
+                            result.put("activeScenario", "cancellation")
                             cancellationDuringRequest(client, fixture)
                             result.put("captureCancellationPreservesRequest", true)
+                            result.put("activeScenario", "bounded-capture")
                             boundedUnconsumedCapture(client, fixture)
                             result.put("boundedCapturePreservesAllRequests", true)
                         } finally {
@@ -49,10 +59,12 @@ class ObserverInstrumentation : Instrumentation() {
                     }
                 }
             }
+            result.remove("activeScenario")
             success = true
-        } catch (_: Throwable) {
+        } catch (failure: Throwable) {
             // Do not emit native errors, request data or stack traces through instrumentation.
             result.put("failed", true)
+            result.put("failureType", failure.javaClass.simpleName.take(80))
         } finally {
             result.put("passed", success)
             finish(
