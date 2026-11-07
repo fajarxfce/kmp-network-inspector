@@ -1,10 +1,15 @@
-# Continuation — 7 November 2026, 17:04 UTC
+# Continuation — 7 November 2026, 17:22 UTC
 
 The metadata-only core is locally accepted in this commit. Five common Kotlin
 source/test files, KMP Gradle scaffold, pinned wrapper/checksums, npm lock and first
 portable/Apple CI are included. Core has14 actual passing cases on JVM,14 Android
-host and14 Wasm browser, zero failures/errors/skips. First Apple simulator CI remains
-pending; declared/cross-compiled targets are not runtime acceptance.
+host and14 Wasm browser, zero failures/errors/skips. First CI42394553310 on ac0fa6f failed before any portable/Apple steps ran. GitHub
+reported failed account payments or an increased spending limit requirement. Zero
+CI tests executed; declared/cross-compiled Apple targets are not runtime acceptance.
+[First CI evidence](measurements/core-first-ci-2026-11-07.json). The user was asked
+whether to make this new library public for free CI; the answer is still pending.
+Do not change repository visibility without that answer or rerun unchanged blocked
+CI. This documentation-only checkpoint skips CI; it does not change core acceptance.
 
 Bootstrap56466 passed31.758s. First strict52497 failed before tests because default
 Yarn setup tried adding a project repository under FAIL_ON_PROJECT_REPOS. Switched

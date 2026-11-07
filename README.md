@@ -58,7 +58,9 @@ No request is captured just by constructing a store.
 
 Local validation:14 tests each on JVM, Android host and an actual Wasm browser,
 zero failures/errors/skips; Android AAR and multiplatform assembly pass with strict
-checksums. Apple simulator acceptance is pending the first CI run. See the
+checksums. Apple simulator acceptance is blocked: the first private-repository CI could not
+start because GitHub reported an account billing/spending-limit problem. No CI tests
+ran. See the [CI evidence](docs/measurements/core-first-ci-2026-11-07.json) and the
 [exact checks and initial build failures](docs/measurements/core-local-2026-11-07.json).
 Run `./gradlew :core:jvmTest :core:testAndroidHostTest :core:wasmJsBrowserTest :core:assemble`
 on Linux with JDK21, Android SDK36, Node24 and Chrome. Apple tests use macOS/Xcode26.3.
