@@ -43,7 +43,7 @@ if (attempt != null) recorder.finish(attempt, NetworkOutcome.Response(200))
 recorder.close()
 ```
 
-The example is a suspending caller; real adapter implementations are still pending.
+The example is a suspending caller; the optional Ktor adapter is described below.
 Each attempt remains one row, sorted by start time. Durations use a monotonic clock.
 Clear fences old handles; close cannot reopen. Capacity is 1–500 requests. Completed
 rows are evicted first, with an eviction count; late completion cannot resurrect them.

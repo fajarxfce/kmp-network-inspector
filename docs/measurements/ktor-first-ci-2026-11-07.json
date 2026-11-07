@@ -1,0 +1,47 @@
+{
+  "source": "fadf22ed87783e4692d0b5289fab005b36982e17",
+  "runId": 42398651350,
+  "runUrl": "https://github.com/fajarxfce/kmp-network-inspector/actions/runs/42398651350",
+  "recordedAt": "2026-11-07T18:00:14.843714+00:00",
+  "testsExecuted": false,
+  "repositoryVisibility": "private",
+  "jobs": [
+    {
+      "id": 128481431630,
+      "name": "apple",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-11-07T17:55:07Z",
+      "completed_at": "2026-11-07T17:55:09Z",
+      "steps": [],
+      "annotations": [
+        {
+          "annotation_level": "failure",
+          "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+          "title": ""
+        },
+        {
+          "annotation_level": "notice",
+          "message": "Due to capacity constraints, jobs targeting macOS arm64 runners may experience longer queue times.",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "id": 128481431870,
+      "name": "portable",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-11-07T17:55:07Z",
+      "completed_at": "2026-11-07T17:55:10Z",
+      "steps": [],
+      "annotations": [
+        {
+          "annotation_level": "failure",
+          "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+          "title": ""
+        }
+      ]
+    }
+  ]
+}

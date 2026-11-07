@@ -1,5 +1,16 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## First Ktor CI — 7 November 2026, 18:00 UTC
+
+Implementation fadf22ed87783e4692d0b5289fab005b36982e17 is pushed. First CI42398651350
+failed before either job executed any step: the same GitHub billing/spending-limit
+restriction as core. Local39 adapter and42 core cases remain accepted; zero Apple
+runtime/CI acceptance is added. [Exact annotations](measurements/ktor-first-ci-2026-11-07.json).
+Repository remains private; visibility question is pending. No unchanged rerun.
+SDK observer design84f60d4d is pushed on its isolated Mobile branch; no observer code.
+Mobile APK55 remains sole heavy job7746; original emulator STOPPED54, phone53.
+
+
 ## Latest Ktor acceptance — 7 November 2026, 17:54 UTC
 
 Three common Kotlin source/test files add the optional Ktor3.3.3 module. Metadata
