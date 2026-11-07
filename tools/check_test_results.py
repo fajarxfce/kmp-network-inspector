@@ -7,11 +7,11 @@ import xml.etree.ElementTree as ET
 
 root = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
-parser.add_argument("--module", choices=["core", "ktor", "compose"], default="core")
+parser.add_argument("--module", choices=["core", "ktor", "compose", "matrix"], default="core")
 parser.add_argument("targets", nargs="+")
 args = parser.parse_args()
 targets = args.targets
-expected_common = {"core": 22, "ktor": 13, "compose": 5}[args.module]
+expected_common = {"core": 23, "ktor": 13, "compose": 5, "matrix": 13}[args.module]
 assert targets and set(targets) <= {
     "jvmTest", "testAndroidHostTest", "wasmJsBrowserTest", "iosSimulatorArm64Test"
 }

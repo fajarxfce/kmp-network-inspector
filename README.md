@@ -2,7 +2,7 @@
 
 A transport-independent network inspector for Kotlin Multiplatform applications.
 
-**Status: metadata core, Ktor adapter and Compose viewer locally verified; Matrix bridge in progress. No library release or application integration yet.**
+**Status: metadata core, Ktor adapter, portable Matrix collector and Compose viewer locally verified. Native Matrix bindings and application integration remain in progress. No library release yet.**
 
 The intended modules are a bounded event/store API, Ktor instrumentation, a Matrix
 Rust SDK observer adapter and an optional Compose Multiplatform viewer. Target
@@ -57,7 +57,7 @@ or IPv6 literals, not credential-bearing authorities. Path segments remain visib
 so an adapter must remove any endpoint-specific secret path segments before calling it.
 No request is captured just by constructing a store.
 
-Local validation:14 tests each on JVM, Android host and an actual Wasm browser,
+Initial core validation:14 tests each on JVM, Android host and an actual Wasm browser,
 zero failures/errors/skips; Android AAR and multiplatform assembly pass with strict
 checksums. Apple simulator acceptance is blocked: the first private-repository CI could not
 start because GitHub reported an account billing/spending-limit problem. No CI tests
@@ -126,7 +126,7 @@ pending records become responses. Rows wrap for larger text without narrowing th
 endpoint behind a status column. Details show actual status, timing, bounded metadata
 and explicit unavailable fields. This version captures no body content or query values.
 
-Local checks passed16 viewer-module cases: four filter cases on each of JVM,
+Initial checks passed16 viewer-module cases: four filter cases on each of JVM,
 Android host and a Wasm browser, plus four desktop Compose interaction/layout cases.
 Android AAR, Wasm code and Apple device/simulator main/test klibs compile. Android and
 Apple device UI and browser UI runtime are **not yet verified**. Apple CI remains
@@ -160,3 +160,41 @@ and Apple main/test klibs compile; Apple runtime remains blocked by CI billing.
 The first streaming-fixture failure and corrected capture-on/off byte-read check are
 retained in the [exact evidence](docs/measurements/observed-time-local-2026-11-07.json).
 This API is ready for adapter implementation; it does not itself subscribe to Matrix.
+
+## Portable Matrix collector
+
+The optional `matrix` module translates `MatrixHttpSubscription` batches from an actual
+SDK HTTP observer into the store. It is the portable collector and binding contract;
+an implementation of that subscription must still connect it to the platform SDK.
+Operation logs are not a substitute for HTTP events.
+
+```kotlin
+// diagnosticsScope is owned and supervised by the host, independently of message delivery.
+val captureJob = diagnosticsScope.launch {
+    captureMatrixHttp(subscription, recorder)
+}
+// Stop observation and release its native handle; retained partial requests remain explicit.
+captureJob.cancelAndJoin()
+// Clear before starting a fresh subscription. Never refeed the previous native buffer.
+recorder.clear()
+```
+
+Imports are in `dev.fajar.inspector.matrix`. Each batch contains at most 32 observations.
+Correlation retains 256 active handles by default, configurable from 1 to 500. A bounded
+replay window of twice that capacity admits concurrent starts arriving out of order;
+very old delayed starts are discarded and counted. Attempt numbers and transport times
+are preserved. Cumulative native loss is counted by delta, and discarded observations
+are also reported. Counters saturate instead of wrapping.
+
+Stopping collection closes the exact subscription and marks unfinished captures
+unavailable. It does not fabricate timeout, cancellation, HTTP success or chat delivery.
+The binding implementation must stop native ingress and dispose its handle. Source
+failures propagate to the host's diagnostics job; keep it separate from delivery jobs.
+Foreign/late IDs, oversized batches, regressing counters and sources that return empty
+non-progress batches cannot grow memory or create a busy read loop.
+
+Current checks pass **168 fresh cases**: core69, Ktor39, Compose21 and Matrix39.
+Matrix's 13 scenarios run on JVM, Android host and a real Wasm browser using bounded
+subscription fixtures. Android AARs and Apple main/test klibs compile. Actual generated
+native binding integration, Apple runtime, HRIS capture/overhead and publication remain.
+[Exact evidence](docs/measurements/matrix-bridge-local-2026-11-07.json).

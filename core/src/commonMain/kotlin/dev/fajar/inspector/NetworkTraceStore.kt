@@ -72,6 +72,13 @@ class NetworkTraceStore(
         return beginAt(request, session, startedAtEpochMillis)
     }
 
+    /** A buffered reader checks this after each read. Its host still cancels a suspended read. */
+    suspend fun isObservationOpen(session: NetworkObservationSession): Boolean =
+        mutex.withLock {
+            currentCoroutineContext().ensureActive()
+            session.owner === owner && session.generation == generation && !state.value.closed
+        }
+
     private suspend fun beginAt(
         request: NetworkRequest,
         session: NetworkObservationSession?,
@@ -99,6 +106,7 @@ class NetworkTraceStore(
                     entries.values
                         .firstOrNull {
                             it.transfer is NetworkTransfer.Complete ||
+                                it.transfer == NetworkTransfer.Unavailable ||
                                 (it.transfer == null && it.outcome != null)
                         }
                         ?.id ?: entries.keys.first()
@@ -242,6 +250,21 @@ class NetworkTraceStore(
                     traces = entries.values.toList().asReversed(),
                     droppedObservations = previous + count.coerceAtMost(Long.MAX_VALUE - previous),
                 )
+            true
+        }
+    }
+
+    /** Capture ended or its correlation was discarded. This is not transport cancellation. */
+    suspend fun observedIncomplete(capture: NetworkCapture): Boolean {
+        if (capture.owner !== owner || capture.started != null) return false
+        return mutex.withLock {
+            currentCoroutineContext().ensureActive()
+            if (state.value.closed || capture.generation != generation) return@withLock false
+            val existing = entries[capture.id] ?: return@withLock false
+            if (existing.transfer != NetworkTransfer.InProgress) return@withLock false
+            entries[capture.id] =
+                existing.copy(transfer = NetworkTransfer.Unavailable, incomplete = true)
+            state.value = state.value.copy(traces = entries.values.toList().asReversed())
             true
         }
     }

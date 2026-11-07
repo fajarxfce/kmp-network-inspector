@@ -27,6 +27,8 @@ data class NetworkRequest(
     val endpoint: NetworkEndpoint,
     val headers: List<NetworkHeader> = emptyList(),
     val metadataTruncated: Boolean = false,
+    /** One-based transport attempt, when the adapter can observe it. */
+    val attemptNumber: Long? = null,
 ) {
     override fun toString() = "NetworkRequest([redacted])"
 }
@@ -51,6 +53,9 @@ sealed interface NetworkOutcome {
 sealed interface NetworkTransfer {
     data object InProgress : NetworkTransfer
 
+    /** Observation ended without a terminal transport event; no failure/duration is inferred. */
+    data object Unavailable : NetworkTransfer
+
     data class Complete(val durationMillis: Long, val failure: NetworkFailure? = null) :
         NetworkTransfer
 }
@@ -66,7 +71,7 @@ data class NetworkTrace(
     val responseBytes: Long? = null,
     val responseHeadersTruncated: Boolean = false,
     val transfer: NetworkTransfer? = null,
-    /** The producer reported loss, or completion arrived without the response observation. */
+    /** Producer loss, a missing response, or observation ending before the terminal event. */
     val incomplete: Boolean = false,
 ) {
     override fun toString() = "NetworkTrace([redacted])"

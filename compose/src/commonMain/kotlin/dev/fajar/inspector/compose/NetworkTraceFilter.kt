@@ -18,7 +18,8 @@ data class NetworkTraceFilter(
             when (status) {
                 NetworkTraceStatus.ALL -> true
                 NetworkTraceStatus.PENDING ->
-                    outcome == null && trace.transfer !is NetworkTransfer.Complete
+                    outcome == null &&
+                        (trace.transfer == null || trace.transfer == NetworkTransfer.InProgress)
                 NetworkTraceStatus.HTTP_ERROR ->
                     outcome is NetworkOutcome.Response && outcome.status >= 400
                 NetworkTraceStatus.TRANSPORT_FAILURE ->

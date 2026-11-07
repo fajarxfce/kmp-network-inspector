@@ -13,6 +13,7 @@ class NetworkCapturePolicy {
         )
             return null
         if (endpoint.port != null && endpoint.port !in 1..65535) return null
+        if (value.attemptNumber != null && value.attemptNumber < 1) return null
         val path = endpoint.path.take(2_048).substringBefore('?').substringBefore('#')
         if (!path.startsWith('/') || path.any(Char::isISOControl)) return null
         val capturedHeaders = headers(value.headers)

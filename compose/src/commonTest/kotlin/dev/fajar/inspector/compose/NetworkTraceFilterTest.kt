@@ -40,10 +40,15 @@ class NetworkTraceFilterTest {
         val httpError = NetworkTraceFilter(status = NetworkTraceStatus.HTTP_ERROR)
         assertTrue(transport.includes(bodyFailure))
         assertFalse(transport.includes(missingHeaders))
-        listOf(bodyFailure, missingHeaders).forEach {
-            assertFalse(pending.includes(it))
-            assertFalse(httpError.includes(it))
-        }
+        listOf(
+                bodyFailure,
+                missingHeaders,
+                trace().copy(transfer = NetworkTransfer.Unavailable, incomplete = true),
+            )
+            .forEach {
+                assertFalse(pending.includes(it))
+                assertFalse(httpError.includes(it))
+            }
     }
 
     @Test

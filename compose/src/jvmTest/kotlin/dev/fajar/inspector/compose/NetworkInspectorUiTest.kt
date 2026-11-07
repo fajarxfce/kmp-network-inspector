@@ -159,19 +159,15 @@ class NetworkInspectorUiTest {
 
     @Test
     fun completedTransferWithoutHeadersIsUnavailableAndNotPending() {
+        var selected by
+            mutableStateOf(
+                trace(1).copy(transfer = NetworkTransfer.Complete(20), incomplete = true)
+            )
         compose.setContent {
             MaterialTheme {
                 Surface(Modifier.size(375.dp, 640.dp)) {
                     NetworkTraceList(
-                        NetworkTraceSnapshot(
-                            listOf(
-                                trace(1)
-                                    .copy(
-                                        transfer = NetworkTransfer.Complete(20),
-                                        incomplete = true,
-                                    )
-                            )
-                        ),
+                        NetworkTraceSnapshot(listOf(selected)),
                         NetworkTraceFilter(),
                         {},
                         {},
@@ -179,6 +175,11 @@ class NetworkInspectorUiTest {
                 }
             }
         }
+        compose.onNodeWithText("Status unavailable").assertIsDisplayed()
+        compose.onNodeWithText("Capture incomplete").assertIsDisplayed()
+        compose.onNodeWithText("Pending").assertDoesNotExist()
+        compose.onNodeWithText("HTTP 200").assertDoesNotExist()
+        compose.runOnIdle { selected = selected.copy(transfer = NetworkTransfer.Unavailable) }
         compose.onNodeWithText("Status unavailable").assertIsDisplayed()
         compose.onNodeWithText("Capture incomplete").assertIsDisplayed()
         compose.onNodeWithText("Pending").assertDoesNotExist()

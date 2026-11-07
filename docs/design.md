@@ -1,5 +1,32 @@
 # Design
 
+## Portable Matrix collection — 7 November 2026
+
+The optional `matrix` module now owns the common subscription contract and collector.
+The host owns its supervised diagnostics job; the library allocates no background scope
+or timer. One reader consumes bounded batches and correlates native diagnostic IDs with
+opaque store handles. Those IDs never become Matrix transaction IDs or acknowledgements.
+The still-required platform adapter must map actual SDK observer records and dispose
+the native subscription; these common tests do not establish native integration.
+
+Active correlation is bounded to 1–500 handles (default256). A replay window covering
+twice that many diagnostic IDs prevents stale duplicate starts without an unbounded
+completed-ID set. Concurrent starts may arrive out of order within that window. A valid
+start delayed beyond the window is deliberately discarded and counted. Correlation
+pressure ends the displaced capture as unavailable; a late finish cannot restore it.
+
+Native cumulative counters contribute only their deltas; malformed/discarded events
+also contribute to the saturated observation-loss count. Stop/failure/cancellation
+closes the source and ends known unfinished observations without inventing a transport
+failure. Body status remains independent of header timing. Clear requires cancel/join,
+discarding the old native buffer, clearing the store and opening a fresh subscription.
+A source exception must stay inside the host-owned diagnostics lifetime, never cancel
+the application's transport owner.
+
+All168 cases executed freshly and passed, including39 Matrix cases on JVM/Android host/
+Wasm and six actual desktop UI cases. Android assembly and Apple klib compilation pass.
+[Evidence and target limitations](measurements/matrix-bridge-local-2026-11-07.json).
+
 ## Buffered observation timing — 7 November2026
 
 The store now separates ingestion from transport time. A generation-scoped external

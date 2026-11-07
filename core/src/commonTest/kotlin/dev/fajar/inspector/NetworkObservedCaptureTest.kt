@@ -8,6 +8,33 @@ import kotlin.time.TestTimeSource
 import kotlinx.coroutines.test.runTest
 
 class NetworkObservedCaptureTest {
+    @Test
+    fun stoppedObservationPreservesHeadersAndCannotBeMistakenForTransportCancellation() = runTest {
+        val store = NetworkTraceStore()
+        val other = NetworkTraceStore()
+        val session = assertNotNull(store.openObservation())
+        assertTrue(store.isObservationOpen(session))
+        assertFalse(other.isObservationOpen(session))
+        val capture =
+            assertNotNull(store.beginObserved(session, request.copy(attemptNumber = 2), 1))
+        assertTrue(store.observedResponse(capture, 200, 4))
+        assertFalse(other.observedIncomplete(capture))
+        assertTrue(store.observedIncomplete(capture))
+        assertFalse(store.observedComplete(capture, 5, failure = NetworkFailure.CANCELLED))
+        assertFalse(store.observedIncomplete(capture))
+        val trace = store.snapshots.value.traces.single()
+        assertEquals(NetworkOutcome.Response(200), trace.outcome)
+        assertEquals(NetworkTransfer.Unavailable, trace.transfer)
+        assertEquals(4L, trace.durationMillis)
+        assertEquals(2L, trace.request.attemptNumber)
+        assertTrue(trace.incomplete)
+        val local = assertNotNull(store.begin(request))
+        assertFalse(store.observedIncomplete(local))
+        store.clear()
+        assertFalse(store.isObservationOpen(session))
+        assertFalse(store.observedIncomplete(capture))
+    }
+
     private val request =
         NetworkRequest(
             NetworkSource.MATRIX,

@@ -1,5 +1,47 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## Current continuation — 7 November 2026, 19:44 UTC
+
+The portable Matrix subscription/collector is locally accepted in this commit. It
+preserves actual transport IDs/attempts/times, bounds correlation/replay, reports
+loss and closes the exact source on stop/cancellation/failure. Unfinished observation
+is unavailable, never a fabricated request cancellation. Actual generated SDK adapters
+are still required. Keep the diagnostic job supervised separately from delivery.
+
+Lock-1 (80797) REAPED:19.568s, intentional two npm workspace links only. Strict-1
+(70948) REAPED:161.923s on33 unchanged inputs, all168 cases fresh, zero failures/errors/
+skips: core69/Ktor39/Compose21/Matrix39. Android AAR and Apple main/test klibs compile.
+No actual Apple or native/browser UI acceptance. [Evidence](measurements/matrix-bridge-local-2026-11-07.json).
+First external-time CI42405812195 ondfebf666 ran zero steps due to GitHub billing.
+[Annotations](measurements/observed-time-first-ci-2026-11-07.json). Repo remains private;
+the public-visibility question is unanswered. No release or application integration.
+
+Rust ARM64 first generation (93078) REAPED:1085.305s,836 unchanged inputs. Native ELF
+139025528B SHA256582925c360212fdbcea69ec8499395f43d676cc8e8d8f25fc07edfe45a9f6609,
+four16KiB LOAD alignments, expected native entry points. Nine Kotlin files generated,
+eight identical toSDK4. The actual subscription class has two close() declarations
+(UniFFI AutoCloseable and exported native close), so this pair is REJECTED before
+Kotlin compilation or runtime. Do not package it or edit generated code.
+
+Only exported FFI close was renamed to stop; native subscription close is unchanged.
+FFI-stop-1 (16230) passed18.950s on unchanged inputs and is REAPED. Sole heavy job22819
+now rebuilds/regenerates ARM64 in
+`/home/fajar/hris/.worktrees/matrix-sdk-http-observer-2026-11-07/.work/http-observer-2026-11-07/android-arm64-2`.
+Rust source is FROZEN until reaped. Its current FFI file differs from accepted patch
+bce66311; regenerate/verify the patch and record the collision/fix on the isolated SDK
+branch. No SDK5 release. The fresh Kotlin wrapper is
+`/home/fajar/hris/.worktrees/matrix-kotlin-http-observer-2026-11-07` atc1664f7, currently
+clean. Preserve both original frozen inventories and every original Bima key/queue ID.
+
+Mobile recoverye5eb5c6a and primarybb106154 are pushed. Phone and stopped original
+emulator remain55; viewport fix awaits56, composer keyboard/latency remain open.
+95 first CI control and both native artifacts are audited (native measurement awaits
+its next Mobile commit). Bothbb106 first runs have now started; original records are
+in Mobile `.work/chat-new-message-position-2026-11-07/bb-first-start.json`.
+Main/Group0f496a11/e626f773 are pushed. Continue native adapters/paired target checks,
+real capture/overhead, validated install, Starter integration and original54-group
+communications scope. Earlier running-job statements below are historical.
+
 ## Current continuation — 7 November2026,19:20UTC
 
 External observed-time/transfer API is locally accepted in this commit. A generation

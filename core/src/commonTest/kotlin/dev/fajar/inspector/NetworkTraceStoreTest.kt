@@ -149,6 +149,7 @@ class NetworkTraceStoreTest {
     fun malformedTransportMetadataDoesNotCreateOrCompleteARequest() = runTest {
         val store = NetworkTraceStore()
         assertNull(store.begin(request.copy(method = "GET\r\nAuthorization")))
+        assertNull(store.begin(request.copy(attemptNumber = 0)))
         assertNull(
             store.begin(request.copy(endpoint = request.endpoint.copy(host = "user:password@host")))
         )

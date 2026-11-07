@@ -49,6 +49,9 @@ fun NetworkTraceDetail(trace: NetworkTrace?, modifier: Modifier = Modifier) {
             }
         }
         item("source") { TraceField("Source", sourceLabel(request.source)) }
+        request.attemptNumber?.let { number ->
+            item("attempt") { TraceField("Attempt", number.toString()) }
+        }
         item("host") { TraceField("Host", endpoint.host) }
         item("scheme") { TraceField("Protocol", endpoint.scheme) }
         endpoint.port?.let { port -> item("port") { TraceField("Port", port.toString()) } }
@@ -62,7 +65,9 @@ fun NetworkTraceDetail(trace: NetworkTrace?, modifier: Modifier = Modifier) {
         item("duration") {
             TraceField(
                 if (trace.outcome is NetworkOutcome.Response) "Time to response" else "Duration",
-                trace.durationMillis?.let(::durationLabel) ?: "Pending",
+                trace.durationMillis?.let(::durationLabel)
+                    ?: if (trace.transfer == NetworkTransfer.Unavailable) "Not recorded"
+                    else "Pending",
             )
         }
         trace.transfer?.let { transfer ->
@@ -71,6 +76,7 @@ fun NetworkTraceDetail(trace: NetworkTrace?, modifier: Modifier = Modifier) {
                     "Transfer",
                     when (transfer) {
                         NetworkTransfer.InProgress -> "Receiving response"
+                        NetworkTransfer.Unavailable -> "Not fully recorded"
                         is NetworkTransfer.Complete ->
                             "${transfer.failure?.let(::failureLabel) ?: "Complete"} (${durationLabel(transfer.durationMillis)})"
                     },
@@ -157,7 +163,12 @@ internal fun TraceOutcome(trace: NetworkTrace) {
     val label =
         when (outcome) {
             null ->
-                if (trace.transfer is NetworkTransfer.Complete) "Status unavailable" else "Pending"
+                if (
+                    trace.transfer is NetworkTransfer.Complete ||
+                        trace.transfer == NetworkTransfer.Unavailable
+                )
+                    "Status unavailable"
+                else "Pending"
             is NetworkOutcome.Response -> "HTTP ${outcome.status}"
             is NetworkOutcome.Failed -> failureLabel(outcome.category)
         }
