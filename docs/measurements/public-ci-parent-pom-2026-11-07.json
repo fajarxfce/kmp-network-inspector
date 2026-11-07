@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-07T23:46:27.803019+00:00",
+  "failedRuns": [
+    42426252305,
+    42426524737
+  ],
+  "failure": "Fresh Gradle plugin classpath lacks one guava-parent POM checksum; no product tests ran.",
+  "canonicalUrl": "https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/33.3.1-jre/guava-parent-33.3.1-jre.pom",
+  "sha256": "55441db27e8869dfefe053059bdf478bdc7e95585642bf391f0023345fd56287",
+  "bytes": 20206,
+  "pomCoordinatesVerified": true,
+  "matchesPreviouslyAcceptedMobileAndStarterMetadata": true,
+  "change": "Add this one exact missing POM; strict dependency verification remains enabled.",
+  "nextRun": "Pending push; no successful public CI claimed yet."
+}
