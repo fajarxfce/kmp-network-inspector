@@ -1,5 +1,19 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## Parent continuation — 7 November 2026, 18:14 UTC
+
+Mobile recovery f7ba99f5 records validated/installed release55; primary95e35b9d has
+pending first CI. Phone and original stopped Bima emulator are55, keys/data retained.
+Offline pending/draft preview and automatic original-message reconnect pass. Keyboard
+and initial bubble clipping remain open. Sole heavy local job9523 runs the Mobile UI
+regression baseline: two new-message first-layout cases reproduce the old failure,
+older viewport anchoring passes; remaining quality tasks still running. No inspector
+compiler may overlap. Use the current Mobile handoff for subsequent job ownership;
+earlier parent statuses below are historical. Main/Group4f53bcb6/183e3989 are pushed.
+This library still needs its viewer and actual Matrix observer/adapter; no release or
+app integration exists. The public-visibility question remains unanswered.
+
+
 ## First Ktor CI — 7 November 2026, 18:00 UTC
 
 Implementation fadf22ed87783e4692d0b5289fab005b36982e17 is pushed. First CI42398651350
