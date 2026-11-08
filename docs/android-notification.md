@@ -1,7 +1,9 @@
 # Android notification shortcut
 
 The optional adapter observes `NetworkInspection` in the host-owned scope. It
-posts a silent ongoing notification only while the current capture has requests.
+posts a silent ongoing notification after the current capture has requests. After
+process restart, initial empty capture preserves a prior OS shortcut until explicit
+reset/clear/disposal or new capture; it never creates a new notification for empty data.
 The host provides localized static copy, an icon and an immutable explicit
 activity PendingIntent. The adapter does not choose navigation or prompt for
 permission, start a foreground service, or change transport/session behavior.
@@ -19,11 +21,14 @@ may retain the OS notification after process death; its PendingIntent must open
 the host's activity and route to the shared viewer after navigation is available.
 The library keeps no Activity reference and owns no global background lifetime.
 
-Five instrumentation scenarios exercise the real OS: capture/reset/late results,
-parent cancellation, construction in a cancelled scope, and capture closure while
-the parent remains live, and a late old completion after owner replacement. The HRIS consumer separately exercises background and
-cold-process notification taps. Compilation is not proof those runtime checks
-have passed; exact acceptance is recorded alongside their actual results.
+Six instrumentation scenarios passed on the real Android OS: capture/reset/late
+results, parent cancellation, construction in a cancelled scope, capture closure while
+the parent remains live, late old completion after replacement, and retained notification
+through initial empty capture after process restart. The consumer also passed actual
+background and cold-process notification taps. See the
+[exact runtime and independent public CI evidence](measurements/android-notification-runtime-2026-11-08.json).
+Hosts whose background services restore identity should attach the adapter on Activity
+resume so background-only session restoration cannot retire the retained shortcut.
 
 Core, Ktor, Matrix contracts and viewer remain multiplatform. This module is an
 Android OS adapter; Apple/desktop/browser notification shortcuts are separate work.

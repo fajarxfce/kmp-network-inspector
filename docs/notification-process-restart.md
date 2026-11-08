@@ -16,7 +16,8 @@ Six instrumentation cases now include a seeded prior OS notification observed by
 a new adapter with an empty recorder. A synchronous dispatcher removes scheduling
 ambiguity from the initial-state assertion; explicit reset, new capture replacement
 and disposal then exercise the actual NotificationManager. Real application process
-restart and notification taps remain a separate consumer acceptance step.
+restart and notification taps also passed separately in the consumer; see
+[actual acceptance](measurements/android-notification-runtime-2026-11-08.json).
 
 The correction follows a real consumer failure: an Android background service
 restarted the application before its retained shortcut was tapped, and the initial

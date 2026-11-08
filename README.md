@@ -4,7 +4,7 @@ A transport-independent network inspector for Kotlin Multiplatform applications.
 
 The repository became public on 7 November 2026 with explicit owner approval.
 Earlier private CI billing failures are retained as historical evidence; first public
-Apple checks are pending. No published artifact or Apple Matrix binding is implied.
+Apple portable checks now pass with verified reports. No published artifact or Apple Matrix binding is implied.
 
 **Status: metadata core, Ktor adapter, Compose viewer, Android Matrix binding and an Android consumer are verified. Apple Matrix binding, overhead measurement and distribution remain in progress. No library release yet.**
 

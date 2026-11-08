@@ -1,0 +1,334 @@
+{
+  "sourceCommit": "6433dc3c23512b881648b5e5bcd769b2123ad971",
+  "publicCi": {
+    "at": "2026-11-08T02:19:30.086016+00:00",
+    "runId": 42436844884,
+    "url": "https://github.com/fajarxfce/kmp-network-inspector/actions/runs/42436844884",
+    "commit": "6433dc3c23512b881648b5e5bcd769b2123ad971",
+    "conclusion": "success",
+    "artifacts": [
+      {
+        "id": 13599734373,
+        "name": "portable-results",
+        "sha256": "13061981f9575a699368c950929ae232d3a2e7d8ac451b0946e937ae67b54312",
+        "bytes": 194864,
+        "counts": {
+          "tests": 213,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "reports": {
+          "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+            "sha256": "5124daa707409e557644e64043d729267c7b1af770d2a167dcfe51404e4656b5",
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkObservedCaptureTest.xml": {
+            "sha256": "bcd3874df4571aa44e38bb47dddd84183a0dfe16f7e9b607d3e6668e6a8a5aeb",
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkInspectionTest.xml": {
+            "sha256": "38ba59baa6054419b057719b830cbf45ddcf00e11e9e1810fd0e7c6fd6b3b0b3",
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+            "sha256": "0f25af01e94cfd21c22e6edd35f9b5c8d9dfaa91ef6743be173c45abfc24db52",
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+            "sha256": "d5a08da3831d8d381206d22d71535a72c0039088bf81681620af584a101f8288",
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkInspectionTest.xml": {
+            "sha256": "72ecadc3ef1de4ad1bd41a4a5d8f8c55b4cf0a89e30c193fde0ab9b8cf330226",
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkObservedCaptureTest.xml": {
+            "sha256": "27abd1f40c47898268a6c0e721d058c8c185e24d2a2fdcc82954048a6139053c",
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+            "sha256": "150e1e9ddd4836257c19ba9a96fbc5b97dc948ad565ca2d9aa1896561cf682e6",
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+            "sha256": "5c3933627b25b8b4a450fa68ef83ad6fbfbc8d140f5b48ecd1725b694893db70",
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkInspectionTest.xml": {
+            "sha256": "18321cb103d95d64b72939061dfe67214d268976a3311574170a340c510140b5",
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkObservedCaptureTest.xml": {
+            "sha256": "31585388321350f9d2af7a9568b4bad9c33744c3cdf6cd011c8b09302e2ae6cc",
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+            "sha256": "7024918551d8ff80cee194eb930b7c864e74b23a38063c9666ef68df187795ef",
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "ktor/build/test-results/jvmTest/TEST-dev.fajar.inspector.ktor.KtorInspectionLifetimeTest.xml": {
+            "sha256": "46c07562ceb07428154be467d3161b94d218a1ac72d256dba0b10173a2f3936a",
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "ktor/build/test-results/jvmTest/TEST-dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+            "sha256": "ecd4f72c272d84e8916b3c83b118e51843280ffda036401d10adbddc538c6cc7",
+            "tests": 13,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "ktor/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.ktor.KtorInspectionLifetimeTest.xml": {
+            "sha256": "708d945e2b2090c8f18223b0aecb57202b746764d3a0f4dfb4ab86cf012f35a0",
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "ktor/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+            "sha256": "888ce7f363e545020c8b986b8dd3c95c1edcedee77eff4a9005d51c7930eaf3d",
+            "tests": 13,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "ktor/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.ktor.KtorInspectionLifetimeTest.xml": {
+            "sha256": "e7569f9e9169bc27e3bdc682c09f42e85de3147e65d5f7db3be219da3024089f",
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "ktor/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+            "sha256": "12d13507f67acabeaad4e95a2e2fd8660bc680160e85744100e008a492195b0e",
+            "tests": 13,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "compose/build/test-results/jvmTest/TEST-dev.fajar.inspector.compose.NetworkInspectorUiTest.xml": {
+            "sha256": "a16b96c1fb994900bac939abd45fedb1728332c918716c9628c424862cbf5cb3",
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "compose/build/test-results/jvmTest/TEST-dev.fajar.inspector.compose.NetworkTraceFilterTest.xml": {
+            "sha256": "69ba7065788c2bfa2fc3f0f48e68f80a04122c315fded211d05e7a1b0d2839d3",
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "compose/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.compose.NetworkTraceFilterTest.xml": {
+            "sha256": "c374039497bb611dc0991515bc218320f3ad93ba567c3e71bca717ef0babad5d",
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "compose/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.compose.NetworkTraceFilterTest.xml": {
+            "sha256": "1a02e4e87115ddd51b3a6e3f568880b939c9af6af60ccbaef7a5d5d7b04b2a93",
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "matrix/build/test-results/jvmTest/TEST-dev.fajar.inspector.matrix.MatrixHttpCaptureTest.xml": {
+            "sha256": "e23fccbe593eebf6358d8dbf88f25611f1ca2a699e08fec5e0342a802747c945",
+            "tests": 13,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "matrix/build/test-results/jvmTest/TEST-dev.fajar.inspector.matrix.MatrixInspectionCaptureTest.xml": {
+            "sha256": "bccfb4a7148257f7e13b684a6f6a7701bb5d52c49e585f08aad4e48f97b75185",
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "matrix/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.matrix.MatrixHttpCaptureTest.xml": {
+            "sha256": "bfa918b6e43d34fad5adfefe730036f42663a0fb20b8608b08aff89b670ed65e",
+            "tests": 13,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "matrix/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.matrix.MatrixInspectionCaptureTest.xml": {
+            "sha256": "ad299631c51071ad0b4a4c698a60b185b842afef910cc0de38b0d52792d2a0b4",
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "matrix/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.matrix.MatrixHttpCaptureTest.xml": {
+            "sha256": "307ecfe3b50b35ff88a4ced311b053d159c2f639ba47313150ee0b113d725350",
+            "tests": 13,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "matrix/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.matrix.MatrixInspectionCaptureTest.xml": {
+            "sha256": "67ce1cc7b3466fc3fd565073a30f1f7d7751918a7c37c2d6be64b3a2d98da31b",
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        }
+      },
+      {
+        "id": 13599129412,
+        "name": "apple-results",
+        "sha256": "0915c4cf77570a36f021d663f34f2babba936d9df2f83e2b390d372dd11a0af7",
+        "bytes": 47371,
+        "counts": {
+          "tests": 69,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "reports": {
+          "core/build/test-results/iosSimulatorArm64Test/TEST-iosSimulatorArm64Test.dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+            "sha256": "1cf9ead0b3151e7cb44c454f30006672521e58e25dc398093ce4a90418a05d9b",
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "core/build/test-results/iosSimulatorArm64Test/TEST-iosSimulatorArm64Test.dev.fajar.inspector.NetworkInspectionTest.xml": {
+            "sha256": "e1917707eddc3d5e929f33cf78bb2f33ab6d0f09af02befed1c2d16a0afb1f08",
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "core/build/test-results/iosSimulatorArm64Test/TEST-iosSimulatorArm64Test.dev.fajar.inspector.NetworkObservedCaptureTest.xml": {
+            "sha256": "80bfc7e09ac617e3afccafdcd29c44a1946e84b46bd0f5f7a917d51f8deb8161",
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "core/build/test-results/iosSimulatorArm64Test/TEST-iosSimulatorArm64Test.dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+            "sha256": "3e4f3638b07ab9e9e57098ed8352d638ed51657ed2fa48d750dfabd00a5f0c23",
+            "tests": 9,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "ktor/build/test-results/iosSimulatorArm64Test/TEST-iosSimulatorArm64Test.dev.fajar.inspector.ktor.KtorInspectionLifetimeTest.xml": {
+            "sha256": "ff80d9cc58883c77e87690196ef274f942f5d3cad17e20b57459555cffd9bbfe",
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "ktor/build/test-results/iosSimulatorArm64Test/TEST-iosSimulatorArm64Test.dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+            "sha256": "5e9dbd596cdc4bd2ab40646ec522b01b4ded1e6b3bc7a47acc1d00c2e07dd6d2",
+            "tests": 13,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "compose/build/test-results/iosSimulatorArm64Test/TEST-iosSimulatorArm64Test.dev.fajar.inspector.compose.NetworkTraceFilterTest.xml": {
+            "sha256": "684a350c8234c18940b3276962adb67f31b62cf3221278ee55c35ffebe287174",
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "matrix/build/test-results/iosSimulatorArm64Test/TEST-iosSimulatorArm64Test.dev.fajar.inspector.matrix.MatrixHttpCaptureTest.xml": {
+            "sha256": "dccedba2a8b4e7c404c5a3ccbd4fa37764a072d3b10e0e76c1500c40ace2a253",
+            "tests": 13,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "matrix/build/test-results/iosSimulatorArm64Test/TEST-iosSimulatorArm64Test.dev.fajar.inspector.matrix.MatrixInspectionCaptureTest.xml": {
+            "sha256": "f1878f75c2fc785a6b7d35b5ba2567b0c1f613088b1d41ed96c88a784652d8fe",
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        }
+      }
+    ],
+    "nativeNotificationOsTestsIncluded": false,
+    "appleNativeMatrixBridgeIncluded": false
+  },
+  "androidRuntime": {
+    "passed": 6,
+    "failed": 0,
+    "actualAndroidOs": true,
+    "serial": "emulator-5562",
+    "startedAt": "2026-11-08T02:07:41.396092+00:00",
+    "elapsedSeconds": 1.233,
+    "apkSha256": "6ac1b8eff39ef983938ceb17661dd99da63fdd918ac18879372dfb7ce1439648",
+    "scope": [
+      "capture/reset/disposal and late results",
+      "parent cancellation",
+      "already-cancelled parent",
+      "capture closure with live parent",
+      "late old completion after replacement",
+      "initial empty capture retains prior process shortcut until explicit reset"
+    ],
+    "phoneTouched": false,
+    "fixtureRemoved": true
+  },
+  "consumer": {
+    "sourceCommit": "c9dd7f8257481983cfc0bcd4d7174d5c5d974f01",
+    "versionCode": 60,
+    "backgroundNotificationTap": true,
+    "coldNotificationTap": true,
+    "coldTapStartedDifferentProcess": true,
+    "priorProcessBackgroundServiceRestartCovered": true,
+    "clearVerified": true,
+    "currentOwnDefaultKeyStatus": 404,
+    "evidence": "https://github.com/fajarxfce/hris-mobile/blob/feat/chat-send-timing-20261107/docs/measurements/network-inspector-notification-device-2026-11-08.json"
+  },
+  "appleNativeMatrixBindingAccepted": false,
+  "captureOverheadAccepted": false,
+  "published": false
+}

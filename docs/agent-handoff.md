@@ -1,5 +1,23 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## Android notification accepted in consumer; current public CI verified — 8 November 2026, 02:20 UTC
+
+6433dc3 passed all six actual Android notification OS cases on the owned ARM64 emulator.
+Mobile c9dd7f82/build 60 passed background and cold-process notification taps, guarded
+shared navigation, actual Matrix/Ktor detail and Clear, with original account data intact.
+Its Android host attaches the adapter on Activity resume, preserving a retained shortcut
+while a background service restores the session. Initial empty capture retains an existing
+OS shortcut; explicit reset/clear/close/cancellation still remove it. Prior cancelled-start
+and cold-process failures remain recorded. [Actual runtime and CI evidence](measurements/android-notification-runtime-2026-11-08.json).
+
+Public CI 42436844884 at the exact same library commit is green; downloaded artifacts
+match GitHub SHA-256 digests. Reports contain 213 portable and 69 Apple cases with zero
+failures/errors/skips. CI compiles the Android fixture; the six OS runs above are separate.
+Apple native Matrix binding, capture overhead and artifact distribution remain open.
+The user phone received validated build 60 without UI automation/data reset. Starter
+integration follows now. One owned local compiler OR emulator; no active emulator.
+Do not touch unrelated gradlew.bat changes in the separate CI worktree.
+
 ## Public CI accepted — 8 November 2026, 00:29 UTC
 
 Run42428950305 on91320f7 succeeded in both jobs. Downloaded artifact ZIPs match
