@@ -3,6 +3,7 @@ package dev.fajar.inspector.notification
 import android.app.Activity
 import android.app.Instrumentation
 import android.app.Notification
+import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
@@ -28,8 +29,9 @@ class NotificationInstrumentation : Instrumentation() {
                 cancelledParentCannotPostShortcut()
                 closedCaptureRemovesShortcutWithoutCancellingParent()
                 lateCompletionCannotRemoveReplacementShortcut()
+                emptyStartupRetainsPriorShortcutUntilExplicitReset()
             }
-            result.putString("stream", "NetworkInspectorNotification: 5 passed\n")
+            result.putString("stream", "NetworkInspectorNotification: 6 passed\n")
             finish(Activity.RESULT_OK, result)
         } catch (failure: Throwable) {
             result.putString(
@@ -135,6 +137,56 @@ class NotificationInstrumentation : Instrumentation() {
             "GET",
             NetworkEndpoint("https", "fixture.invalid", path = "/private-path"),
         )
+
+    private suspend fun emptyStartupRetainsPriorShortcutUntilExplicitReset() {
+        val manager = context.getSystemService(NotificationManager::class.java)
+        val channelId = "network-inspector-fixture"
+        if (Build.VERSION.SDK_INT >= 26) {
+            manager.createNotificationChannel(
+                NotificationChannel(
+                        channelId,
+                        "Fixture inspector",
+                        NotificationManager.IMPORTANCE_LOW,
+                    )
+                    .apply {
+                        setSound(null, null)
+                        setShowBadge(false)
+                    }
+            )
+        }
+        val builder =
+            if (Build.VERSION.SDK_INT >= 26) Notification.Builder(context, channelId)
+            else Notification.Builder(context)
+        // Seed the OS-owned notification left by a previous process, without a second live owner.
+        manager.notify(
+            channelId,
+            1,
+            builder
+                .setSmallIcon(android.R.drawable.stat_notify_sync)
+                .setContentTitle("Prior process")
+                .setOngoing(true)
+                .build(),
+        )
+        await { active()?.extras?.getString(Notification.EXTRA_TITLE) == "Prior process" }
+        val inspection = NetworkInspection()
+        val job = SupervisorJob()
+        // Run the initial empty publication synchronously so the retention check has no race.
+        val notification = shortcut(inspection, CoroutineScope(job + Dispatchers.Unconfined))
+        try {
+            check(!notification.refresh())
+            check(active()?.extras?.getString(Notification.EXTRA_TITLE) == "Prior process")
+            inspection.reset()
+            await { active() == null }
+            requireNotNull(inspection.recorders.value).begin(request())
+            await { active()?.extras?.getString(Notification.EXTRA_TITLE) == "Fixture inspector" }
+            notification.close()
+            await { active() == null }
+        } finally {
+            notification.close()
+            inspection.close()
+            job.cancelAndJoin()
+        }
+    }
 
     private suspend fun lateCompletionCannotRemoveReplacementShortcut() {
         val pending = java.util.concurrent.ConcurrentLinkedQueue<Runnable>()

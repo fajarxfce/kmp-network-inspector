@@ -35,6 +35,8 @@ class NetworkInspectorNotification(
     private val application = context.applicationContext
     private val manager = application.getSystemService(NotificationManager::class.java)
     private val guard = Any()
+    private val initialRecorder = inspection.recorders.value
+    private var observedRequests = false
     private var closed = false
     private val observation: Job
 
@@ -67,10 +69,16 @@ class NetworkInspectorNotification(
         synchronized(guard) {
             if (closed) return@synchronized false
             try {
-                if (inspection.recorders.value?.snapshots?.value?.traces.isNullOrEmpty()) {
-                    manager.cancel(channelId, NOTIFICATION_ID)
+                val recorder = inspection.recorders.value
+                if (recorder?.snapshots?.value?.traces.isNullOrEmpty()) {
+                    // A background service can recreate the process before the shortcut is tapped.
+                    // Initial empty memory is not a user Clear or an account replacement.
+                    if (recorder == null || recorder !== initialRecorder || observedRequests) {
+                        manager.cancel(channelId, NOTIFICATION_ID)
+                    }
                     return@synchronized false
                 }
+                observedRequests = true
                 if (
                     !manager.areNotificationsEnabled() ||
                         (Build.VERSION.SDK_INT >= 33 &&
