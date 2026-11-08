@@ -1,5 +1,23 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## First public Apple runtime evidence — 8 November 2026, 00:15 UTC
+
+Run42427888790 on26e43a6 successfully ran all Gradle checks, then failed the stale
+exact-count auditor (core expected23 but ran28). Downloaded artifact digests match
+GitHub:69actual Apple simulator cases and213portable cases, zero failures/errors/
+skips across core/Ktor/Compose/portableMatrix. Exact counts are corrected to28/17/5/19
+(+6Compose JVM UI); the auditor passes all8invocations on those actual artifacts.
+See public-ci-report-counts measurement. Retain original failed workflow status;
+this does not prove an Apple native Matrix binding or iPhone application runtime.
+
+This correction was prepared in the isolated public-CI worktree because the root
+library and Mobile notification candidate are frozen under Mobile focused-1/52684.
+Push this commit, then fast-forward root only AFTER that build is reaped. Preserve
+its uncommitted Android-notification module and README/workflow changes. The worktree
+has an unrelated gradlew.bat line-ending delta; do not stage/reset it. Original
+phone/emulator remain58; backend3a7909a6 secret-storage GET is now live at schema116.1.
+Continue notification59 actual OS/tap acceptance and pending-message diagnosis.
+
 ## Public CI checksum follow-up — 8 November 2026, 00:05 UTC
 
 Run42426760171 on34974bd failed both jobs at the missing serialization1.6.2 BOM

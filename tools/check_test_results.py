@@ -11,7 +11,7 @@ parser.add_argument("--module", choices=["core", "ktor", "compose", "matrix"], d
 parser.add_argument("targets", nargs="+")
 args = parser.parse_args()
 targets = args.targets
-expected_common = {"core": 23, "ktor": 13, "compose": 5, "matrix": 13}[args.module]
+expected_common = {"core": 28, "ktor": 17, "compose": 5, "matrix": 19}[args.module]
 assert targets and set(targets) <= {
     "jvmTest", "testAndroidHostTest", "wasmJsBrowserTest", "iosSimulatorArm64Test"
 }
