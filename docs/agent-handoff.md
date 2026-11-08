@@ -1,5 +1,15 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## Public CI checksum follow-up — 8 November 2026, 00:05 UTC
+
+Run42426760171 on34974bd failed both jobs at the missing serialization1.6.2 BOM
+POM. Its Maven Central bytes match accepted Mobile/Starter checksums; only that
+verified POM is added, with strict verification retained. No Apple runtime
+acceptance is claimed. Android notification shortcut is the current host request;
+Mobile58 remains installed. Backend secret-storage probe testing runs separately
+as the sole local compiler, with no emulator. Continue both corrections and the
+notification shortcut; see Mobile/Platform current evidence.
+
 ## Public repository authorized — 7 November 2026, 23:39 UTC
 
 The user explicitly answered “Jadikan public”. Repository visibility is now PUBLIC,

@@ -1,0 +1,11 @@
+{
+  "at": "2026-11-08T00:01:51.656417+00:00",
+  "failedRun": 42426760171,
+  "runSource": "34974bde148b85996ef10e8e85733a75d8133d59",
+  "bothJobsFailedDependencyVerification": true,
+  "coordinate": "org.jetbrains.kotlinx:kotlinx-serialization-bom:1.6.2",
+  "url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-bom/1.6.2/kotlinx-serialization-bom-1.6.2.pom",
+  "sha256": "7b0e1d75ee8621499cf95430ca12fdaa32f4a7f920d5c301bfe95fa187f27337",
+  "strictVerificationRetained": true,
+  "runtimeAcceptance": false
+}
