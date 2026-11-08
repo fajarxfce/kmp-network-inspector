@@ -283,3 +283,20 @@ A pending UI poll at2.876s and sent poll at5.071s measure different boundaries. 
 not an overhead benchmark or proof that message latency is solved. Apple library
 binding, independent Starter integration and publication remain open.
 [Exact consumer evidence](docs/measurements/android-consumer-2026-11-07.json).
+
+## Android notification shortcut (candidate)
+
+The optional `android-notification` module posts a silent, ongoing shortcut after
+capture has a request. Supply `NetworkInspectorNotification` with an application
+context, `NetworkInspection`, an owned coroutine scope, a small icon, localized
+copy, and an immutable explicit `PendingIntent.getActivity` for your own viewer.
+It does not start a foreground service or request notification permission. Use one owner per channel ID. Call
+`refresh()` on foreground/permission changes and `close()` on host disposal.
+Android 13+ needs the host's ordinary notification permission; a blocked channel
+is respected. Closing capture or its scope removes the shortcut and rejects late
+posts. Clear hides it until new capture exists. No endpoint, account, message, or
+body is put in the notification. The viewer, recorder and transport APIs remain
+multiplatform; this optional OS adapter is Android-specific.
+
+Implementation and actual OS/consumer acceptance are in progress. No Apple,
+desktop or browser notification shortcut is claimed by this module.

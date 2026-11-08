@@ -42,4 +42,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "kmp-network-inspector"
 
-include(":core", ":ktor", ":compose", ":matrix", ":matrix-rust-android")
+include(":core", ":ktor", ":compose", ":matrix", ":matrix-rust-android", ":android-notification")

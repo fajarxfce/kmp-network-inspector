@@ -40,6 +40,7 @@ jobs:
           :ktor:jvmTest :ktor:testAndroidHostTest :ktor:wasmJsBrowserTest :ktor:assemble
           :compose:jvmTest :compose:testAndroidHostTest :compose:wasmJsBrowserTest :compose:assemble
           :matrix:jvmTest :matrix:testAndroidHostTest :matrix:wasmJsBrowserTest :matrix:assemble
+          :android-notification:assemble :android-notification:assembleAndroidDeviceTest
           --no-daemon --no-parallel --max-workers=1
       - run: python3 tools/check_test_results.py jvmTest testAndroidHostTest wasmJsBrowserTest
       - run: python3 tools/check_test_results.py --module ktor jvmTest testAndroidHostTest wasmJsBrowserTest
