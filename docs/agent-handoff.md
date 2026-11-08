@@ -1,5 +1,21 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## Public CI accepted — 8 November 2026, 00:29 UTC
+
+Run42428950305 on91320f7 succeeded in both jobs. Downloaded artifact ZIPs match
+GitHub's SHA-256 digests; all XML reports were parsed:69 Apple simulator cases and
+213 JVM/Android-host/Wasm cases, zero failures/errors/skips. Device Apple klibs also
+compile. [Exact reports](measurements/public-ci-success-2026-11-08.json).
+This covers the portable core/Ktor/Compose/Matrix bridge contract, not an Apple
+native Matrix binding or iPhone application. SDK5 and library remain unpublished.
+
+The root library checkout still runs Mobile focused-1 with frozen notification
+candidate sources; fast-forward it to this docs commit only after that job is reaped.
+The candidate Android shortcut still needs cancellation fixes and actual device tests.
+Phone/original emulator remain58; no59 build or installation exists. Continue Mobile
+notification acceptance, pending-request diagnosis and generic Starter port. Preserve
+this worktree's unrelated gradlew.bat line-ending delta.
+
 ## First public Apple runtime evidence — 8 November 2026, 00:15 UTC
 
 Run42427888790 on26e43a6 successfully ran all Gradle checks, then failed the stale
