@@ -34,7 +34,7 @@ class NotificationInstrumentation : Instrumentation() {
         } catch (failure: Throwable) {
             result.putString(
                 "stream",
-                "NetworkInspectorNotification failed: ${failure.javaClass.simpleName}\n",
+                "NetworkInspectorNotification failed: ${failure.stackTraceToString()}\n",
             )
             finish(Activity.RESULT_CANCELED, result)
         }

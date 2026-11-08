@@ -57,6 +57,8 @@ class NetworkInspectorNotification(
             }
         // Also retire when an already-cancelled owner prevented the body from starting.
         observation.invokeOnCompletion { closeNotification() }
+        // A cancelled launch may still be waiting for dispatch before completion callbacks run.
+        if (!observation.isActive) closeNotification()
     }
 
     /** Recheck after foreground entry or a permission change; never prompts for permission. */
