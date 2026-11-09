@@ -1,5 +1,25 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## PublishedSDK6 public CI accepted — 9 November 2026, 09:26 UTC
+
+CI42591111996 on742a2d1c2285c720cef80ea3913195f3ece388cc SUCCESS. Downloaded
+artifact ZIP hashes match GitHub metadata; parsed reports prove226 portable cases
+(including13 Android native-adapter host cases) and69 Apple simulator cases,
+zero failures/errors/skips. Native instrumentation fixture compiles; it was not
+executed. Public SDK resolution succeeds without a mirror. [Evidence](measurements/published-sdk6-ci-success-2026-11-09.json).
+First42589272966 remains FAILED due missing coroutine BOM trust; its separate
+213portable/69Apple passing reports were also verified. No relabelling that failure.
+
+Library product source is742a2d1; this commit records evidence only. Original root
+/home/fajar/hris/kmp-network-inspector still2b849217/frozen for Mobile86 build/native
+proof. Do not switch it until those jobs are done. The SDK6 worktree's unrelated
+gradlew.bat delta remains untouched. No local library compiler ran; hosted checks
+provide current target evidence. Consumer CI may pin exact742a2d1 in isolated
+checkouts now; later fast-forward root and update Mobile/Starter integrations.
+Native Apple Matrix binding, capture overhead and inspector artifact publication
+remain open. Mobile2293ff05 source/runtime-retention tests pass; APK86 build94519
+is running. Phone stays83 until actual native86 acceptance, install-only/no phone UI.
+
 ## SDK6 CI checksum follow-up — 9 November 2026, 09:07 UTC
 
 PublicCI42589272966 atb8b46b3 reaches Android adapter compilation, then portable

@@ -18,7 +18,12 @@ Applications should pin a verified repository revision when using a composite bu
 Apple portable simulator tests do not establish an Apple Matrix native binding.
 Independent capture overhead measurements and binary publication remain open.
 
-XML, workflow structure and checksum provenance are verified; actual hosted
-source/target validation is pending. See the [checkpoint](measurements/published-sdk6-ci-2026-11-09.json).
-Keep the original root
-inspector checkout unchanged while Mobile diagnostic85 is being validated.
+PublicCI42591111996 at742a2d1 passes226 portable/Android host/browser cases and69
+actual Apple simulator cases, with no failures/errors/skips. Downloaded report
+artifacts match GitHub's SHA-256 digests. This includes all13 Android SDK adapter
+host cases and compiles its native fixture; JNI execution is separate evidence.
+[Verified reports](measurements/published-sdk6-ci-success-2026-11-09.json).
+The first run's missing compiler-BOM checksum failure is retained; its verified
+Maven Central bytes match the accepted Mobile and Starter trust entries.
+Keep the original root inspector checkout unchanged until Mobile86 native proof
+is complete, then adopt this revision and pin it in consumer CI.

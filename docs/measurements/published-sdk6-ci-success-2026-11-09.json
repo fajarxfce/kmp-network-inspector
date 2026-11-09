@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-09T09:24:18.793221+00:00",
+  "runId": 42591111996,
+  "headSha": "742a2d1c2285c720cef80ea3913195f3ece388cc",
+  "runConclusion": "success",
+  "artifacts": {
+    "portable-results": {
+      "id": 13661278472,
+      "sha256": "c529ff91e9f9abc4ae1aad5733d2d2176e43e2f062c697450381191356e135b6",
+      "counts": {
+        "tests": 226,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "apple-results": {
+      "id": 13661901374,
+      "sha256": "58fac6f574f753286d7dfc0cc1d279e335647a582f29007db5aec089ee6a5f85",
+      "counts": {
+        "tests": 69,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "publicResolution": true,
+  "localMirrorUsed": false,
+  "androidAdapterHostTests": 13,
+  "androidNativeFixtureCompiled": true,
+  "androidNativeFixtureExecuted": false,
+  "applePortableSimulatorTests": 69,
+  "appleNativeMatrixBindingAccepted": false,
+  "inspectorBinaryPublished": false
+}
