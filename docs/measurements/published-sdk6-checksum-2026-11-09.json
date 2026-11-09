@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-09T09:07:02.252818+00:00",
+  "failedRun": 42589272966,
+  "failedJob": 129066617421,
+  "failure": "Missing trust entry for kotlinx-coroutines-bom1.7.3 POM during Android adapter compilation",
+  "sha256": "4e5d1900e6379ef3f5970d04a8f30529adc82f859e8cc107c21ce8149ef666c4",
+  "mavenCentralStatus": 200,
+  "matchesMobileAndStarter": true,
+  "strictVerificationRetained": true,
+  "runtimeSourceChanged": false,
+  "newCiStatus": "pending"
+}

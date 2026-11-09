@@ -1,5 +1,19 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## SDK6 CI checksum follow-up — 9 November 2026, 09:07 UTC
+
+PublicCI42589272966 atb8b46b3 reaches Android adapter compilation, then portable
+fails on missing kotlinx-coroutines-bom1.7.3 POM trust entry. This is not a checksum
+mismatch or an adapter test failure. Its Maven Central bytes match BOTH accepted
+Mobile and Starter digests; add only that verified POM, keeping strict verification.
+[Evidence](measurements/published-sdk6-checksum-2026-11-09.json). Apple job still running.
+Push this correction, dispatch check.yml on the new exact head, and inspect actual
+reports/artifact hashes. Preserve the original failed run; no new target pass yet.
+The failed first log download was gh's terminal-escape guard. The retry wrote only
+to a private file with explicit allowance and stripped escape codes before display.
+Do not stage/reset gradlew.bat. Root inspector2b849217 remains unchanged; Mobile85
+native observation completed and is being analyzed. No local library compiler ran.
+
 ## PublishedSDK6 dependency and CI coverage prepared — 9 November 2026
 
 The isolated feat/sdk6-distribution-20261109 worktree pins the immutable published
