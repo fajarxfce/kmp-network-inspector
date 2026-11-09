@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-07T23:39:23.535640+00:00",
+  "repository": {
+    "nameWithOwner": "fajarxfce/kmp-network-inspector",
+    "url": "https://github.com/fajarxfce/kmp-network-inspector",
+    "visibility": "PUBLIC"
+  },
+  "authorization": "User explicitly answered Jadikan public to the pending visibility question on 7 November 2026.",
+  "priorVisibility": "PRIVATE",
+  "historyReview": {
+    "blobs": 143,
+    "credentialPatternMatches": 0,
+    "privateWorkTracked": false
+  },
+  "operation": "gh repo edit fajarxfce/kmp-network-inspector --visibility public --accept-visibility-change-consequences",
+  "verified": true,
+  "releasePublished": false,
+  "ciBoundary": "Visibility block removed; next first current-branch PR checks have not yet run. Historical billing failures retained."
+}

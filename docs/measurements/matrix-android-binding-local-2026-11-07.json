@@ -1,0 +1,214 @@
+{
+  "date": "2026-11-07",
+  "scope": "Generated Android binding adapter host tests and ARM64 instrumentation compilation; no device execution yet",
+  "candidate": {
+    "version": "26.10.23-hris.5-arm64-candidate",
+    "aarSha256": "cebc6829be3de4b38552664a7ece06244b0ee5f454bd2bf6a0f9a5aa9c1ce621",
+    "nativeSha256": "c08b1e214951d542d59f3d24ae4d53321d5c49e55e0f08e4380f9cce82607093",
+    "wrapperSourcesUnchanged": true,
+    "published": false,
+    "shippingSDK4Unchanged": true
+  },
+  "runs": {
+    "strict-1": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        "-PmatrixSdkRepository=/home/fajar/hris/kmp-network-inspector/.work/matrix-android-2026-11-07/sdk-repository",
+        ":matrix-rust-android:testAndroidHostTest",
+        ":matrix-rust-android:assemble"
+      ],
+      "startedAt": "2026-11-07T20:05:24.392345+00:00",
+      "seconds": 29.797,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 36,
+      "freshReports": {}
+    },
+    "strict-2": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        "-PmatrixSdkRepository=/home/fajar/hris/kmp-network-inspector/.work/matrix-android-2026-11-07/sdk-repository",
+        ":matrix-rust-android:testAndroidHostTest",
+        ":matrix-rust-android:assemble"
+      ],
+      "startedAt": "2026-11-07T20:06:30.639923+00:00",
+      "seconds": 22.364,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 36,
+      "freshReports": {
+        "matrix-rust-android/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.matrix.rust.MatrixRustHttpSubscriptionTest.xml": {
+          "tests": 12,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0
+        }
+      }
+    },
+    "strict-3": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        "-PmatrixSdkRepository=/home/fajar/hris/kmp-network-inspector/.work/matrix-android-2026-11-07/sdk-repository",
+        ":matrix-rust-android:testAndroidHostTest",
+        ":matrix-rust-android:assemble"
+      ],
+      "startedAt": "2026-11-07T20:07:29.838920+00:00",
+      "seconds": 19.312,
+      "exitCode": 0,
+      "sourcesUnchanged": true,
+      "sourceCount": 36,
+      "freshReports": {
+        "matrix-rust-android/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.matrix.rust.MatrixRustHttpSubscriptionTest.xml": {
+          "tests": 13,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      }
+    },
+    "device-1": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        "-PmatrixSdkRepository=/home/fajar/hris/kmp-network-inspector/.work/matrix-android-2026-11-07/sdk-repository",
+        ":matrix-rust-android:assembleAndroidDeviceTest"
+      ],
+      "startedAt": "2026-11-07T20:10:01.922010+00:00",
+      "seconds": 40.059,
+      "exitCode": 1,
+      "sourcesUnchanged": true,
+      "sourceCount": 38,
+      "freshReports": {}
+    },
+    "device-2": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        "-PmatrixSdkRepository=/home/fajar/hris/kmp-network-inspector/.work/matrix-android-2026-11-07/sdk-repository",
+        ":matrix-rust-android:assembleAndroidDeviceTest"
+      ],
+      "startedAt": "2026-11-07T20:11:16.039386+00:00",
+      "seconds": 16.104,
+      "exitCode": 0,
+      "sourcesUnchanged": true,
+      "sourceCount": 38,
+      "freshReports": {}
+    },
+    "device-3": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        "-PmatrixSdkRepository=/home/fajar/hris/kmp-network-inspector/.work/matrix-android-2026-11-07/sdk-repository",
+        ":matrix-rust-android:assembleAndroidDeviceTest"
+      ],
+      "startedAt": "2026-11-07T20:13:26.857527+00:00",
+      "seconds": 17.211,
+      "exitCode": 0,
+      "sourcesUnchanged": true,
+      "sourceCount": 38,
+      "freshReports": {}
+    },
+    "device-4": {
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./gradlew",
+        "--no-daemon",
+        "--no-parallel",
+        "--max-workers=1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m",
+        "-Pkotlin.compiler.execution.strategy=in-process",
+        "--stacktrace",
+        "--dependency-verification",
+        "strict",
+        "-PmatrixSdkRepository=/home/fajar/hris/kmp-network-inspector/.work/matrix-android-2026-11-07/sdk-repository",
+        ":matrix-rust-android:assembleAndroidDeviceTest"
+      ],
+      "startedAt": "2026-11-07T20:15:57.100835+00:00",
+      "seconds": 19.273,
+      "exitCode": 0,
+      "sourcesUnchanged": true,
+      "sourceCount": 38,
+      "freshReports": {}
+    }
+  },
+  "hostCases": 13,
+  "hostFailures": 0,
+  "runtimeAccepted": false,
+  "published": false,
+  "limitations": [
+    "Dependency remains a local ARM64 candidate. This branch is not the published library or SDK.",
+    "Strict-1 lacked two inherited coroutines module checksums; accepted Mobile checksums were reused without bypassing strict verification.",
+    "Strict-2 had one fixture identity assertion fail because coroutine debug recovery copies standard exceptions. A fixture with its own state verifies original failure identity in strict-3.",
+    "Device-1 compiled Kotlin but lacked AAPT2 checksums; accepted Mobile tooling checksums were reused.",
+    "Device-2 built a stripped ARM64 APK. After keepDebugSymbols, device-3 rebuilt successfully and the embedded SDK native hash exactly matches the accepted candidate.",
+    "Thirteen passing host cases do not establish actual JNI behavior, Apple acceptance, or delivery latency.",
+    "Device-4 explicitly starts Instrumentation from onCreate and returns only controlled scenario/type diagnostics. It compiles, but actual invocation still requires a matching device ABI."
+  ],
+  "deviceApk": {
+    "sha256": "0e3e05e784563e009d6b194e5577ba70b74f6dc7aded53b6841a672a129e7676",
+    "bytes": 240561238,
+    "native": {
+      "arm64-v8a": "c08b1e214951d542d59f3d24ae4d53321d5c49e55e0f08e4380f9cce82607093"
+    },
+    "installed": false,
+    "executed": false
+  }
+}

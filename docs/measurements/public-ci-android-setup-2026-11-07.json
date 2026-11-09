@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-07T23:43:16.030357+00:00",
+  "runId": 42426252305,
+  "headSha": "d78c0a67f281423f73d995d93576827023811b57",
+  "jobId": 128565059816,
+  "failedStep": "android-actions/setup-android@v3",
+  "cause": "The action defaults to packages tools platform-tools; SDK manager no longer provides the obsolete tools package. Failed to find package tools.",
+  "testsExecuted": false,
+  "fix": "Explicitly install platform-tools; the next existing step installs platform android-36 and build-tools 36.0.0.",
+  "appleJob": "Continues independently on the original source; not cancelled.",
+  "replacementRun": "Pending push of this workflow correction."
+}

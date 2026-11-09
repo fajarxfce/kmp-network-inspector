@@ -2,7 +2,11 @@
 
 A transport-independent network inspector for Kotlin Multiplatform applications.
 
-**Status: metadata core, Ktor adapter, portable Matrix collector and Compose viewer locally verified. Native Matrix bindings and application integration remain in progress. No library release yet.**
+The repository became public on 7 November 2026 with explicit owner approval.
+Earlier private CI billing failures are retained as historical evidence; first public
+Apple portable checks now pass with verified reports. No published artifact or Apple Matrix binding is implied.
+
+**Status: metadata core, Ktor adapter, Compose viewer, Android Matrix binding and an Android consumer are verified. Apple Matrix binding, overhead measurement and distribution remain in progress. No library release yet.**
 
 The intended modules are a bounded event/store API, Ktor instrumentation, a Matrix
 Rust SDK observer adapter and an optional Compose Multiplatform viewer. Target
@@ -59,9 +63,9 @@ No request is captured just by constructing a store.
 
 Initial core validation:14 tests each on JVM, Android host and an actual Wasm browser,
 zero failures/errors/skips; Android AAR and multiplatform assembly pass with strict
-checksums. Apple simulator acceptance is blocked: the first private-repository CI could not
-start because GitHub reported an account billing/spending-limit problem. No CI tests
-ran. See the [CI evidence](docs/measurements/core-first-ci-2026-11-07.json) and the
+checksums. The initial private-repository CI could not start because GitHub reported
+an account billing/spending-limit problem; no tests ran in that attempt. Subsequent
+public CI passed the portable Apple simulator suites. See the [CI evidence](docs/measurements/core-first-ci-2026-11-07.json) and the
 [exact checks and initial build failures](docs/measurements/core-local-2026-11-07.json).
 Run `./gradlew :core:jvmTest :core:testAndroidHostTest :core:wasmJsBrowserTest :core:assemble`
 on Linux with JDK21, Android SDK36, Node24 and Chrome. Apple tests use macOS/Xcode26.3.
@@ -129,8 +133,8 @@ and explicit unavailable fields. This version captures no body content or query 
 Initial checks passed16 viewer-module cases: four filter cases on each of JVM,
 Android host and a Wasm browser, plus four desktop Compose interaction/layout cases.
 Android AAR, Wasm code and Apple device/simulator main/test klibs compile. Android and
-Apple device UI and browser UI runtime are **not yet verified**. Apple CI remains
-blocked by the private repository's billing restriction. Linux desktop rendering
+Apple device UI and browser UI runtime are **not yet verified**. The initial private Apple CI was
+blocked by billing; subsequent public CI passed the portable simulator suites. Linux desktop rendering
 requires a font supported by Compose's generic aliases, such as DejaVu Sans/Mono
 (`fonts-dejavu-core` on Ubuntu, `ttf-dejavu` on Arch).
 
@@ -156,7 +160,8 @@ and attempt-handle map and explicitly close their native subscription.
 
 Current local validation:126 cases across core66, Ktor39 and Compose21 on JVM,
 Android host and Wasm. Six cases exercise actual desktop Compose UI. Android AARs
-and Apple main/test klibs compile; Apple runtime remains blocked by CI billing.
+and Apple main/test klibs compile. Public CI subsequently passed the portable Apple
+simulator suites; these checks do not prove an Apple native Matrix binding.
 The first streaming-fixture failure and corrected capture-on/off byte-read check are
 retained in the [exact evidence](docs/measurements/observed-time-local-2026-11-07.json).
 This API is ready for adapter implementation; it does not itself subscribe to Matrix.
@@ -198,3 +203,104 @@ Matrix's 13 scenarios run on JVM, Android host and a real Wasm browser using bou
 subscription fixtures. Android AARs and Apple main/test klibs compile. Actual generated
 native binding integration, Apple runtime, HRIS capture/overhead and publication remain.
 [Exact evidence](docs/measurements/matrix-bridge-local-2026-11-07.json).
+
+## Experimental generated Android binding
+
+`matrix-rust-android` adds generated Android bindings on top of the portable
+Matrix collector. It pins the published four-ABI SDK **26.10.23-hris.6** with strict
+AAR and Ivy checksums. The default repository downloads the immutable
+[SDK release](https://github.com/fajarxfce/hris-mobile/releases/tag/matrix-sdk-26.10.23-hris.6);
+no local candidate repository is required. CI includes the adapter's 13 Android
+host cases and compiles its JNI fixture. This inspector library itself remains
+an unpublished source dependency; see [distribution](docs/sdk-distribution.md).
+
+Thirteen Android host cases and five real x86_64 JNI/loopback scenarios pass. They
+cover native metadata/timing, stop/disposal, replacement, preserving an active request
+when capture is cancelled, and preserving all100 requests when the capture queue fills.
+[Evidence and limits](docs/measurements/matrix-android-native-2026-11-07.json).
+Those original SDK5 tests are historical evidence. Mobile subsequently validated
+the Android integration; the Apple native bridge remains open.
+
+The host opens `client.observeNetworkRequests()` and passes it to `captureMatrixHttp`
+in an owned, supervised diagnostics coroutine. Create the subscription inside that
+coroutine so a never-started job cannot leak it. Cancel/join collection before clearing
+the store or disposing the client. The adapter stops/disposes only its own subscription;
+it does not authenticate, start sync, retry, or turn HTTP status into delivery receipts.
+
+The device fixture is assembled with `:matrix-rust-android:assembleAndroidDeviceTest`.
+`-PmatrixObserverTestAbi=x86_64` limits the test APK to the selected ABI. Read the package
+from compiled output metadata; Android library tests use `dev.fajar.inspector.matrix.rust.test`.
+Its runner is `dev.fajar.inspector.matrix.rust.ObserverInstrumentation`. It uses only an
+owned loopback server and no HRIS account or data. Compile before starting the emulator.
+
+## Reset and application ownership
+
+`NetworkInspection` owns a replaceable recorder without allocating a coroutine or
+transport. Use it when the host offers Clear or changes accounts. Reset closes and
+erases the previous store before publishing a new one. Closing cannot be undone by
+a late reset. Request IDs belong to a recorder: reset the viewer's selection when
+the recorder changes.
+
+```kotlin
+val inspection = NetworkInspection(capacity = 200)
+val client = HttpClient(yourEngine) {
+    install(KtorNetworkInspector) {
+        recorderProvider = { inspection.recorders.value }
+    }
+}
+// Each actual Matrix client has its own supervised, client-owned lifetime.
+val capture = sdkClientScope.launch {
+    captureMatrixHttp(inspection) { matrixClient.observeNetworkRequests() }
+}
+// Clear or account replacement: buffered/late old events cannot populate the new store.
+inspection.reset()
+// Application disposal ends collection and releases the subscription; never the SDK client.
+inspection.close()
+capture.join()
+```
+
+The Ktor provider is a nonblocking lookup evaluated once per engine attempt. Each
+attempt retains its original recorder through completion, retry and redirect. Null
+skips capture; provider failures cannot alter the request. A fixed `recorder` remains
+supported; configure exactly one option.
+
+The Matrix overload cancels and joins the previous collector before creating a fresh
+subscription. Source failure waits for a reset without a retry loop. Closing the
+inspection ends collection. The host must still cancel and join a client's capture
+before destroying that native client. Android `observeNetworkRequests` is in the
+optional `matrix-rust-android` module, now pinned to the published SDK6 release.
+
+All226 JVM/Android-host/Wasm cases pass freshly; Apple klibs and the six-case native
+fixture compile. All six actual x86_64 JNI scenarios now pass, including reset during a gated request. [Native evidence and retained fixture failures](docs/measurements/inspection-lifetime-native-2026-11-07.json). [Exact evidence](docs/measurements/inspection-lifetime-local-2026-11-07.json).
+
+## Android consumer acceptance
+
+HRIS Mobile build57 uses the separate library checkout and verified SDK5 candidate.
+Actual Ktor/API and Rust Matrix HTTP requests appear in one bounded viewer. Source and
+search filters, detail/back and Clear pass on the owned emulator; original encrypted
+chat history and its preview remain readable after a cold offline restart. The same
+APK is installed on the authorized phone without driving its UI or resetting data.
+Nine screenshots and three sampled video storyboards were inspected.
+
+One captured Matrix attempt took239ms to headers and240ms through its59-byte response.
+A pending UI poll at2.876s and sent poll at5.071s measure different boundaries. This is
+not an overhead benchmark or proof that message latency is solved. Apple library
+binding, independent Starter integration and publication remain open.
+[Exact consumer evidence](docs/measurements/android-consumer-2026-11-07.json).
+
+## Android notification shortcut (candidate)
+
+The optional `android-notification` module posts a silent, ongoing shortcut after
+capture has a request. Supply `NetworkInspectorNotification` with an application
+context, `NetworkInspection`, an owned coroutine scope, a small icon, localized
+copy, and an immutable explicit `PendingIntent.getActivity` for your own viewer.
+It does not start a foreground service or request notification permission. Use one owner per channel ID. Call
+`refresh()` on foreground/permission changes and `close()` on host disposal.
+Android 13+ needs the host's ordinary notification permission; a blocked channel
+is respected. Closing capture or its scope removes the shortcut and rejects late
+posts. Clear hides it until new capture exists. No endpoint, account, message, or
+body is put in the notification. The viewer, recorder and transport APIs remain
+multiplatform; this optional OS adapter is Android-specific.
+
+Implementation and actual OS/consumer acceptance are in progress. No Apple,
+desktop or browser notification shortcut is claimed by this module.

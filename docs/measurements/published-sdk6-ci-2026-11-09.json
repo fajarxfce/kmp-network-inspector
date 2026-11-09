@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-09T08:53:26.574980+00:00",
+  "scope": "Published dependency and CI coverage; adapter runtime code unchanged",
+  "baseCommit": "2b8492170ff30915f9a6694d7d1bf8f076e74e3c",
+  "sdkVersion": "26.10.23-hris.6",
+  "sdkReleaseId": 438835525,
+  "aarSha256": "a4aa1e2cb3136c0531bb35f7f06df10582c84c1974ce4e5fda7099d0ab533bb3",
+  "ivySha256": "69ea030963275ce080991e658172934441b73558e9de4d8e7ae3976b2f18558a",
+  "artifactProvenance": "Immutable release digests match the accepted Mobile SDK6 consumer and its native83 result; source5 descriptor returns404",
+  "configurationChecks": {
+    "strictXmlParsed": true,
+    "workflowParsed": true,
+    "manualEntryPointPresent": true,
+    "androidAdapterHostReportAudited": true,
+    "declaredAndroidHostCases": 13,
+    "diffCheckPassed": true
+  },
+  "newDependencySourceChecksExecuted": false,
+  "hostedCiStatus": "pending",
+  "localValidationStatus": "not started; one Mobile compiler active",
+  "nativeObserverCodeChanged": false,
+  "authOrRetryBehaviorChanged": false,
+  "appleMatrixBindingAccepted": false,
+  "inspectorArtifactPublished": false,
+  "next": "Push this exact source and run the public portable/Apple workflow; require actual226 portable and69 Apple cases. Preserve old root inputs during Mobile85 validation."
+}

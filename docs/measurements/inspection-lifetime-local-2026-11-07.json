@@ -1,0 +1,293 @@
+{
+  "at": "2026-11-07T21:08:35.361756+00:00",
+  "baseCommit": "9e710f0a001be0ea4feaa00a5f1e08577d0f3856",
+  "build": {
+    "command": [
+      "xvfb-run",
+      "-a",
+      "./gradlew",
+      "--no-daemon",
+      "--no-parallel",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx1536m",
+      "-Pkotlin.compiler.execution.strategy=in-process",
+      "--stacktrace",
+      "--dependency-verification",
+      "strict",
+      ":core:jvmTest",
+      ":core:testAndroidHostTest",
+      ":core:wasmJsBrowserTest",
+      ":core:assemble",
+      ":ktor:jvmTest",
+      ":ktor:testAndroidHostTest",
+      ":ktor:wasmJsBrowserTest",
+      ":ktor:assemble",
+      ":compose:jvmTest",
+      ":compose:testAndroidHostTest",
+      ":compose:wasmJsBrowserTest",
+      ":compose:assemble",
+      ":matrix:jvmTest",
+      ":matrix:testAndroidHostTest",
+      ":matrix:wasmJsBrowserTest",
+      ":matrix:assemble",
+      ":matrix-rust-android:testAndroidHostTest",
+      ":matrix-rust-android:assembleAndroidDeviceTest",
+      "-PmatrixObserverTestAbi=x86_64",
+      "-PmatrixSdkRepository=/home/fajar/hris/kmp-network-inspector/.work/matrix-android-2026-11-07/sdk-repository"
+    ],
+    "startedAt": "2026-11-07T21:03:15.308059+00:00",
+    "seconds": 191.568,
+    "exitCode": 0,
+    "sourcesUnchanged": true,
+    "sourceCount": 42,
+    "freshReports": {
+      "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkInspectionTest.xml": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkObservedCaptureTest.xml": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/jvmTest/TEST-dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkInspectionTest.xml": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkObservedCaptureTest.xml": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkInspectionTest.xml": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkObservedCaptureTest.xml": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkTraceStoreTest.xml": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.NetworkCapturePolicyTest.xml": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "ktor/build/test-results/jvmTest/TEST-dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "ktor/build/test-results/jvmTest/TEST-dev.fajar.inspector.ktor.KtorInspectionLifetimeTest.xml": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "ktor/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.ktor.KtorInspectionLifetimeTest.xml": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "ktor/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "ktor/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.ktor.KtorNetworkInspectorTest.xml": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "ktor/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.ktor.KtorInspectionLifetimeTest.xml": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "compose/build/test-results/jvmTest/TEST-dev.fajar.inspector.compose.NetworkInspectorUiTest.xml": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "compose/build/test-results/jvmTest/TEST-dev.fajar.inspector.compose.NetworkTraceFilterTest.xml": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "compose/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.compose.NetworkTraceFilterTest.xml": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "compose/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.compose.NetworkTraceFilterTest.xml": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "matrix/build/test-results/jvmTest/TEST-dev.fajar.inspector.matrix.MatrixHttpCaptureTest.xml": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "matrix/build/test-results/jvmTest/TEST-dev.fajar.inspector.matrix.MatrixInspectionCaptureTest.xml": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "matrix/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.matrix.MatrixInspectionCaptureTest.xml": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "matrix/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.matrix.MatrixHttpCaptureTest.xml": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "matrix/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.matrix.MatrixInspectionCaptureTest.xml": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "matrix/build/test-results/wasmJsBrowserTest/TEST-wasmJsBrowserTest.dev.fajar.inspector.matrix.MatrixHttpCaptureTest.xml": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "matrix-rust-android/build/test-results/testAndroidHostTest/TEST-dev.fajar.inspector.matrix.rust.MatrixRustHttpSubscriptionTest.xml": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "counts": {
+    "tests": 226,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "hostCasesExecutedFresh": true,
+  "sourceSha256": {
+    "gradlew": "aed171fb114f82e6eaea4970a245a200e0582a7dcc8ec0891ca41b6e4a62b754",
+    "gradlew.bat": "fedad02c18e266ec094995a5751b7fe1eb6e74f66bf75db64fae2e50eb22c234",
+    "settings.gradle.kts": "722ffa788481756883fc0b3cf1ed8caea398a1bf3615d8ace3aad32ff94623bd",
+    "build.gradle.kts": "0b56e130bd58ca4fa2ab4364ee5358a5e79f27b1c6edb53d690a86dd031bba49",
+    "gradle.properties": "69da74989640e551626bd359470a8ad0119996d6bd59c3558b97ab48a067ec7f",
+    "gradle/libs.versions.toml": "a4f1d5b4dcf309101333912106c8226c504d49add46f64e9e4dbda7c06901a96",
+    "gradle/verification-metadata.xml": "369484c0b62320cb3e0b14ced45baec740a2c9effc1a18227825a54643a76492",
+    "core/build.gradle.kts": "72809a2e12f2c9de5e5d165e7e1b8cb6c917d24bce962027a7e22b2c8d4b7a33",
+    "tools/check_test_results.py": "513a64c7d80e9440e38e1f4c53c29bbcd6e330b00e45635ad4f3fe8372ece1c6",
+    "ktor/build.gradle.kts": "6f4cdb1a7afaa9118573af0ed121b00784f76b7a528925453b3b1927fd19d157",
+    "compose/build.gradle.kts": "326da00c8b451e6efb4de63ba5719cc3c045bddeadea9e310cb94cc9a530e6fd",
+    "matrix/build.gradle.kts": "d0b35bda35bf29a4583ee01c6916d12261582621b0f6c5636ae055306a3c68d3",
+    "matrix-rust-android/build.gradle.kts": "cfe0951416e5ae18a9ba19f5bc0f476d7535ec6f32ceee535a59c03f2e4c1070",
+    "matrix-rust-android/src/androidDeviceTest/kotlin/dev/fajar/inspector/matrix/rust/ObserverInstrumentation.kt": "79f3bc38ae0d7a1978d425b04af606e1d2d6b63977b058f75d9563876313d483",
+    "matrix-rust-android/src/androidHostTest/kotlin/dev/fajar/inspector/matrix/rust/MatrixRustHttpSubscriptionTest.kt": "fc122551ec95c3fe5c5d8169c89cd75b06c3c4ece375775100a4295d9b86ab93",
+    "matrix-rust-android/src/androidMain/kotlin/dev/fajar/inspector/matrix/rust/MatrixRustHttpSubscription.kt": "6cf00501e83d55d946e793cbbe4907d152cd92f6526f8c716d6e1466f690a032",
+    "matrix/src/commonTest/kotlin/dev/fajar/inspector/matrix/MatrixHttpCaptureTest.kt": "856e7197ac58f386f1b334a0f6b75c27601010c32be47d174e3622cf313180c1",
+    "matrix/src/commonTest/kotlin/dev/fajar/inspector/matrix/MatrixInspectionCaptureTest.kt": "c53679179030f325db52dfc18bd3f05e8603192f0baa63a3a4d02deb84d22e7a",
+    "matrix/src/commonMain/kotlin/dev/fajar/inspector/matrix/MatrixHttpSubscription.kt": "0c95f4b069cd2f30184dfe0faa2280696f89f518c4a4f1d813f7ce2591a27932",
+    "matrix/src/commonMain/kotlin/dev/fajar/inspector/matrix/MatrixHttpCapture.kt": "3d6e48c37789e30dacae1991cb14a8311fd044568351cad0706cfb9c7d60f909",
+    "matrix/src/commonMain/kotlin/dev/fajar/inspector/matrix/MatrixInspectionCapture.kt": "852743b613dd686840ccbd526925ce59412d85c4c3891c472215b510f3ca7d73",
+    "compose/src/jvmTest/kotlin/dev/fajar/inspector/compose/NetworkInspectorUiTest.kt": "a82571e1bead75e085cd951a6581b7beddab146c2500535d5baf33b3ee989b3b",
+    "compose/src/commonTest/kotlin/dev/fajar/inspector/compose/NetworkTraceFilterTest.kt": "f32c1941b4747bc2373db174acfe6a933b3197be6c40b9d1b2ccc6662d849803",
+    "compose/src/commonMain/kotlin/dev/fajar/inspector/compose/NetworkTraceFilter.kt": "e1e1635a4855c3127edb42dfb9aee710c2f8f2074381a51307ffc4cd4cf18e96",
+    "compose/src/commonMain/kotlin/dev/fajar/inspector/compose/NetworkTraceList.kt": "984461bc21652433af312cdb73679881dbff2cac1b55b5884e345e249bcee32d",
+    "compose/src/commonMain/kotlin/dev/fajar/inspector/compose/NetworkTraceDetail.kt": "1211071e3d153eaf91024c26813e759f4585e71049eecb0cf21925308db0d3e8",
+    "ktor/src/commonTest/kotlin/dev/fajar/inspector/ktor/KtorNetworkInspectorTest.kt": "bd9b2cce9bb0127abf1f59e30e27024f4d85dd368af54c2e004996e5a162978c",
+    "ktor/src/commonTest/kotlin/dev/fajar/inspector/ktor/KtorInspectionLifetimeTest.kt": "d099bd09d9dd08cc7f1f1635f06012c92e688ac534c6befe01f2d23f6550b46e",
+    "ktor/src/commonMain/kotlin/dev/fajar/inspector/ktor/KtorNetworkInspector.kt": "1792524f02a524ade24a7216ee7dd906aa86bf55327c320160d2cdb0ce293b41",
+    "ktor/src/commonMain/kotlin/dev/fajar/inspector/ktor/KtorTraceMetadata.kt": "b7c15656c9078ea5af08f92490110948d26dacf4d448fa8b83bb1549f6fa7883",
+    "kotlin-js-store/wasm/package-lock.json": "462f4cc25d99d9e798f3372afdd06ae84d1654fc004a59da6e37c975621e21ba",
+    ".github/workflows/check.yml": "f4e2c3a6ac4be19fe8dde53f73ea09c3b87092e1ea74f7f77940f38b80f120c6",
+    "core/src/commonTest/kotlin/dev/fajar/inspector/NetworkTraceStoreTest.kt": "8ddf256cc78caabb596a507ca22570b4f24dfbf39a5ac8413de863998a230b81",
+    "core/src/commonTest/kotlin/dev/fajar/inspector/NetworkCapturePolicyTest.kt": "f39e950ba2ddf41644c5dcc5dd3a6baf3cafba3ec8bef8f6b9216c4034c0b431",
+    "core/src/commonTest/kotlin/dev/fajar/inspector/NetworkObservedCaptureTest.kt": "5064171421da4f69499dfa06ea80630b6fa72f5ee65b95966533036435784548",
+    "core/src/commonTest/kotlin/dev/fajar/inspector/NetworkInspectionTest.kt": "8cea0093bfbc75609e3f0e01ef24cce12905b28147e009676f41633ba85f184c",
+    "core/src/commonMain/kotlin/dev/fajar/inspector/NetworkTrace.kt": "d86094cfd5285bf34998cda8dc6b235f06689b04078aa4c6c20b285ee8734277",
+    "core/src/commonMain/kotlin/dev/fajar/inspector/NetworkCapturePolicy.kt": "f0892f19c00189a0b0d6827fe836eae4cd7970fba6c36b604792214ba9bb293d",
+    "core/src/commonMain/kotlin/dev/fajar/inspector/NetworkTraceStore.kt": "2790872613203d99d5067a726fd922b2e5a544dd997c335876a8deca747efe36",
+    "core/src/commonMain/kotlin/dev/fajar/inspector/NetworkInspection.kt": "27281a77d8a41e14f9f8c4dab62e5e1f0b9e515ec6b73fa13f750209a85aec08",
+    "gradle/wrapper/gradle-wrapper.jar": "55243ef57851f12b070ad14f7f5bb8302daceeebc5bce5ece5fa6edb23e1145c",
+    "gradle/wrapper/gradle-wrapper.properties": "13287ffad6cf3064056ddad80d95b855132348930b2dc6c91490588c55b3ac7d"
+  },
+  "additionalUnchangedManifestHashes": {
+    "matrix-rust-android/src/androidDeviceTest/AndroidManifest.xml": "fdd537520d4937752e8e35c65e36db35117a61eca958a90a0e446a1cf7dab47b"
+  },
+  "fixture": {
+    "at": "2026-11-07T21:07:32.138919+00:00",
+    "sha256": "75ead5bd55a12615550410d00c6d09c8308cb9c6afe514f88b0a1465444a4d10",
+    "bytes": 244550259,
+    "nativeLibraries": {
+      "lib/x86_64/libjnidispatch.so": "288eafff19a70e833498201071c3d724f03f32ee8ff64a14fca50b57d975db70",
+      "lib/x86_64/libmatrix_sdk_ffi.so": "03e23ca8c98038f5fc408855471e9d7278fcf7a6b38ef8013e033f7738dcd67d"
+    },
+    "nativeLibrariesIdenticalToAcceptedFixture": true,
+    "fixtureCompiled": true,
+    "newResetScenarioExecuted": false,
+    "firstArtifactAudit": "Initial expected-library map omitted the inherited libjnidispatch.so. Corrected audit compares the complete native map with the exact previously accepted APK; no native bytes changed."
+  },
+  "limitations": [
+    "New sixth JNI reset scenario compiled only; its execution is pending. Previous five native scenarios were accepted at9e710f0.",
+    "Apple main/test klibs compile; no Apple runtime or native UI/browser UI claim.",
+    "No HRIS Mobile or Starter integration, transport latency/overhead result or library release.",
+    "CI remains blocked by private-repository billing; visibility approval remains unanswered."
+  ]
+}

@@ -7,14 +7,22 @@ import xml.etree.ElementTree as ET
 
 root = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
-parser.add_argument("--module", choices=["core", "ktor", "compose", "matrix"], default="core")
+parser.add_argument(
+    "--module",
+    choices=["core", "ktor", "compose", "matrix", "matrix-rust-android"],
+    default="core",
+)
 parser.add_argument("targets", nargs="+")
 args = parser.parse_args()
 targets = args.targets
-expected_common = {"core": 23, "ktor": 13, "compose": 5, "matrix": 13}[args.module]
+expected_common = {
+    "core": 28, "ktor": 17, "compose": 5, "matrix": 19, "matrix-rust-android": 13
+}[args.module]
 assert targets and set(targets) <= {
     "jvmTest", "testAndroidHostTest", "wasmJsBrowserTest", "iosSimulatorArm64Test"
 }
+if args.module == "matrix-rust-android":
+    assert targets == ["testAndroidHostTest"], "The native binding has Android host reports only"
 results = {}
 for target in targets:
     files = list((root / args.module / "build/test-results" / target).glob("TEST-*.xml"))

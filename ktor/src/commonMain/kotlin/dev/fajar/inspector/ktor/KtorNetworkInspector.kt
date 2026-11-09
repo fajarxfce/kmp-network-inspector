@@ -15,6 +15,9 @@ class KtorNetworkInspectorConfig {
     /** The host owns and closes this store; it can be shared by several transports. */
     var recorder: NetworkTraceStore? = null
 
+    /** Optional nonblocking lookup, evaluated once per engine attempt. Null disables capture. */
+    var recorderProvider: (() -> NetworkTraceStore?)? = null
+
     /** Receives an encoded path of at most 2,049 characters. Null excludes the attempt. */
     var sanitizePath: (String) -> String? = { it }
 }
@@ -27,9 +30,20 @@ class KtorNetworkInspectorConfig {
  */
 val KtorNetworkInspector =
     createClientPlugin("KtorNetworkInspector", ::KtorNetworkInspectorConfig) {
-        val recorder = requireNotNull(pluginConfig.recorder) { "A host-owned recorder is required" }
+        require(pluginConfig.recorder == null || pluginConfig.recorderProvider == null) {
+            "Choose one host-owned recorder or provider"
+        }
+        val fixedRecorder = pluginConfig.recorder
+        val recorderProvider =
+            pluginConfig.recorderProvider
+                ?: {
+                    requireNotNull(fixedRecorder) { "A host-owned recorder is required" }
+                }
+        require(fixedRecorder != null || pluginConfig.recorderProvider != null) {
+            "A host-owned recorder or provider is required"
+        }
         val metadata = KtorTraceMetadata(pluginConfig.sanitizePath)
-        val captureKey = AttributeKey<NetworkCapture>("KmpInspectorEngineAttempt")
+        val captureKey = AttributeKey<KtorCapture>("KmpInspectorEngineAttempt")
         val beforeEngine = PipelinePhase("KmpInspectorBeforeEngine")
         val afterEngine = PipelinePhase("KmpInspectorAfterEngine")
         client.sendPipeline.insertPhaseBefore(HttpSendPipeline.Engine, beforeEngine)
@@ -40,7 +54,11 @@ val KtorNetworkInspector =
             context.attributes.remove(captureKey)
             val capture =
                 try {
-                    metadata.request(context)?.let { recorder.begin(it) }
+                    recorderProvider()?.let { recorder ->
+                        metadata.request(context)?.let { request ->
+                            recorder.begin(request)?.let { KtorCapture(recorder, it) }
+                        }
+                    }
                 } catch (failure: CancellationException) {
                     currentCoroutineContext().ensureActive()
                     null
@@ -60,7 +78,7 @@ val KtorNetworkInspector =
                 // Only a finite in-memory write survives cancellation; no I/O or child scope.
                 withContext(NonCancellable) {
                     try {
-                        recorder.finish(capture, NetworkOutcome.Failed(category))
+                        capture.recorder.finish(capture.handle, NetworkOutcome.Failed(category))
                     } catch (_: Exception) {
                         // Preserve the original transport failure, including cancellation.
                     }
@@ -75,8 +93,8 @@ val KtorNetworkInspector =
             val response = (subject as? HttpClientCall)?.response ?: return@intercept
             withContext(NonCancellable) {
                 try {
-                    recorder.finish(
-                        capture,
+                    capture.recorder.finish(
+                        capture.handle,
                         NetworkOutcome.Response(response.status.value),
                         metadata.headers(response.headers),
                     )
@@ -86,6 +104,9 @@ val KtorNetworkInspector =
             }
         }
     }
+
+/** Retains the exact store across reset, redirects, retries and body/transport failures. */
+private data class KtorCapture(val recorder: NetworkTraceStore, val handle: NetworkCapture)
 
 private fun ktorFailureCategory(failure: Throwable): NetworkFailure {
     // Ktor's request timeout cancels execution with HttpRequestTimeoutException as its cause.

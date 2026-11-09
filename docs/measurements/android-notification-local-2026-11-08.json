@@ -1,0 +1,55 @@
+{
+  "at": "2026-11-08T01:15:53.602113+00:00",
+  "acceptedCompilation": true,
+  "actualAndroidOsAcceptance": false,
+  "consumer": "HRIS Mobile full-4",
+  "consumerGate": {
+    "startedAt": "2026-11-08T01:04:19.873894+00:00",
+    "elapsedSeconds": 686.45,
+    "exitCode": 0,
+    "sourceFiles": 4436,
+    "librarySourcesUnchanged": true,
+    "sourcesUnchanged": true,
+    "freshCounts": {
+      "tests": 729,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "relevantReports": {
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.NativeLinkAppFlowTest.xml": {
+        "sha256": "3bb41cf18cc06bb675336337173393a2f3c6df259c0bb1aeac688c7011ab2f7c",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.WorkspaceLayoutTest.xml": {
+        "sha256": "d2cb200df4fe5b73e574638ea893464e1f9ac881fecb12cfd18cbe32a80d143b",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "apps/shared/build/test-results/desktopTest/TEST-dev.fajar.starter.AppFlowTest.xml": {
+        "sha256": "8763d5ab78040723b8b035acb7ad2f2ed48e6d1f6cc1a9078d3ba4578da973ff",
+        "tests": 90,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "core/identity/data/build/test-results/desktopTest/TEST-dev.fajar.starter.identity.data.PublishedSessionIdentityTest.xml": {
+        "sha256": "aa9812cc4850198943d65e1b3097dc76e4e6b68fa097ab1a67760fcc0850580e",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "casesCompiled": 5,
+  "libraryManifestSha256": "5ebd92366c6d73d00d7908e6a2625d616a1f45ff917a1c403b78fc29776f917f",
+  "publishedArtifact": false,
+  "coreTransportChanged": false,
+  "hostPendingIntentNavigationOwnsViewer": true
+}

@@ -1,6 +1,7 @@
 name: Multiplatform inspector
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
@@ -27,6 +28,8 @@ jobs:
           node-version: '24'
       - uses: gradle/actions/setup-gradle@v4
       - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
       - run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
       - run: sudo apt-get install -y fonts-dejavu-core
       - name: Check JVM, Android host and actual Wasm browser
@@ -38,11 +41,14 @@ jobs:
           :ktor:jvmTest :ktor:testAndroidHostTest :ktor:wasmJsBrowserTest :ktor:assemble
           :compose:jvmTest :compose:testAndroidHostTest :compose:wasmJsBrowserTest :compose:assemble
           :matrix:jvmTest :matrix:testAndroidHostTest :matrix:wasmJsBrowserTest :matrix:assemble
+          :matrix-rust-android:testAndroidHostTest :matrix-rust-android:assemble :matrix-rust-android:assembleAndroidDeviceTest
+          :android-notification:assemble :android-notification:assembleAndroidDeviceTest
           --no-daemon --no-parallel --max-workers=1
       - run: python3 tools/check_test_results.py jvmTest testAndroidHostTest wasmJsBrowserTest
       - run: python3 tools/check_test_results.py --module ktor jvmTest testAndroidHostTest wasmJsBrowserTest
       - run: python3 tools/check_test_results.py --module compose jvmTest testAndroidHostTest wasmJsBrowserTest
       - run: python3 tools/check_test_results.py --module matrix jvmTest testAndroidHostTest wasmJsBrowserTest
+      - run: python3 tools/check_test_results.py --module matrix-rust-android testAndroidHostTest
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -57,6 +63,8 @@ jobs:
             compose/build/reports/screenshots/
             matrix/build/test-results/
             matrix/build/reports/tests/
+            matrix-rust-android/build/test-results/
+            matrix-rust-android/build/reports/tests/
   apple:
     runs-on: macos-15
     timeout-minutes: 25
