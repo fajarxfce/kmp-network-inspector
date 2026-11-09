@@ -63,9 +63,9 @@ No request is captured just by constructing a store.
 
 Initial core validation:14 tests each on JVM, Android host and an actual Wasm browser,
 zero failures/errors/skips; Android AAR and multiplatform assembly pass with strict
-checksums. Apple simulator acceptance is blocked: the first private-repository CI could not
-start because GitHub reported an account billing/spending-limit problem. No CI tests
-ran. See the [CI evidence](docs/measurements/core-first-ci-2026-11-07.json) and the
+checksums. The initial private-repository CI could not start because GitHub reported
+an account billing/spending-limit problem; no tests ran in that attempt. Subsequent
+public CI passed the portable Apple simulator suites. See the [CI evidence](docs/measurements/core-first-ci-2026-11-07.json) and the
 [exact checks and initial build failures](docs/measurements/core-local-2026-11-07.json).
 Run `./gradlew :core:jvmTest :core:testAndroidHostTest :core:wasmJsBrowserTest :core:assemble`
 on Linux with JDK21, Android SDK36, Node24 and Chrome. Apple tests use macOS/Xcode26.3.
@@ -133,8 +133,8 @@ and explicit unavailable fields. This version captures no body content or query 
 Initial checks passed16 viewer-module cases: four filter cases on each of JVM,
 Android host and a Wasm browser, plus four desktop Compose interaction/layout cases.
 Android AAR, Wasm code and Apple device/simulator main/test klibs compile. Android and
-Apple device UI and browser UI runtime are **not yet verified**. Apple CI remains
-blocked by the private repository's billing restriction. Linux desktop rendering
+Apple device UI and browser UI runtime are **not yet verified**. The initial private Apple CI was
+blocked by billing; subsequent public CI passed the portable simulator suites. Linux desktop rendering
 requires a font supported by Compose's generic aliases, such as DejaVu Sans/Mono
 (`fonts-dejavu-core` on Ubuntu, `ttf-dejavu` on Arch).
 
@@ -160,7 +160,8 @@ and attempt-handle map and explicitly close their native subscription.
 
 Current local validation:126 cases across core66, Ktor39 and Compose21 on JVM,
 Android host and Wasm. Six cases exercise actual desktop Compose UI. Android AARs
-and Apple main/test klibs compile; Apple runtime remains blocked by CI billing.
+and Apple main/test klibs compile. Public CI subsequently passed the portable Apple
+simulator suites; these checks do not prove an Apple native Matrix binding.
 The first streaming-fixture failure and corrected capture-on/off byte-read check are
 retained in the [exact evidence](docs/measurements/observed-time-local-2026-11-07.json).
 This API is ready for adapter implementation; it does not itself subscribe to Matrix.
@@ -205,17 +206,20 @@ native binding integration, Apple runtime, HRIS capture/overhead and publication
 
 ## Experimental generated Android binding
 
-The `feat/matrix-rust-bindings-20261107` branch adds `matrix-rust-android` on top of
-our portable Matrix collector. It currently requires the **unpublished four-ABI SDK
-candidate 26.10.23-hris.5**. Local builds supply its verified artifact directory with
-`-PmatrixSdkRepository=/absolute/path/to/candidate/repository`. Main remains portable
-until distribution and cross-platform integration are ready.
+`matrix-rust-android` adds generated Android bindings on top of the portable
+Matrix collector. It pins the published four-ABI SDK **26.10.23-hris.6** with strict
+AAR and Ivy checksums. The default repository downloads the immutable
+[SDK release](https://github.com/fajarxfce/hris-mobile/releases/tag/matrix-sdk-26.10.23-hris.6);
+no local candidate repository is required. CI includes the adapter's 13 Android
+host cases and compiles its JNI fixture. This inspector library itself remains
+an unpublished source dependency; see [distribution](docs/sdk-distribution.md).
 
 Thirteen Android host cases and five real x86_64 JNI/loopback scenarios pass. They
 cover native metadata/timing, stop/disposal, replacement, preserving an active request
 when capture is cancelled, and preserving all100 requests when the capture queue fills.
 [Evidence and limits](docs/measurements/matrix-android-native-2026-11-07.json).
-No Apple native bridge or Mobile integration is accepted yet.
+Those original SDK5 tests are historical evidence. Mobile subsequently validated
+the Android integration; the Apple native bridge remains open.
 
 The host opens `client.observeNetworkRequests()` and passes it to `captureMatrixHttp`
 in an owned, supervised diagnostics coroutine. Create the subscription inside that
@@ -264,7 +268,7 @@ The Matrix overload cancels and joins the previous collector before creating a f
 subscription. Source failure waits for a reset without a retry loop. Closing the
 inspection ends collection. The host must still cancel and join a client's capture
 before destroying that native client. Android `observeNetworkRequests` is in the
-optional `matrix-rust-android` module on this candidate branch; SDK5 is not yet published.
+optional `matrix-rust-android` module, now pinned to the published SDK6 release.
 
 All226 JVM/Android-host/Wasm cases pass freshly; Apple klibs and the six-case native
 fixture compile. All six actual x86_64 JNI scenarios now pass, including reset during a gated request. [Native evidence and retained fixture failures](docs/measurements/inspection-lifetime-native-2026-11-07.json). [Exact evidence](docs/measurements/inspection-lifetime-local-2026-11-07.json).

@@ -1,5 +1,24 @@
 # Continuation — 7 November 2026, 17:22 UTC
 
+## PublishedSDK6 dependency and CI coverage prepared — 9 November 2026
+
+The isolated feat/sdk6-distribution-20261109 worktree pins the immutable published
+SDK6 AAR/Ivy digests already used by Mobile. Adapter/runtime code is unchanged.
+CI adds its13 actual Android host cases, fixture compilation and nonempty report
+auditing; workflow_dispatch permits exact-revision execution. XML, workflow and
+diff checks pass. New dependency tests/hostedCI are PENDING, not reported as passed.
+[Source checkpoint](measurements/published-sdk6-ci-2026-11-09.json).
+
+Push this atomic catalog/CI change, run public workflow check.yml at its exact head,
+and inspect226 portable plus69 Apple cases with artifact digests. One Mobile heavy
+compiler60632 is active; do not start a local library compiler/emulator alongside it.
+Optional prepared local check script lives in this worktree's
+.work/sdk6-distribution-2026-11-09/check.py and uses public resolution only.
+The original /home/fajar/hris/kmp-network-inspector remains2b849217/frozen for
+Mobile diagnostic85. Do not switch it until Mobile has completed that proof.
+This worktree has an unrelated gradlew.bat line-ending delta; do not stage/reset it.
+Inspector binary publication, native Apple Matrix binding and overhead remain open.
+
 ## Android notification accepted in consumer; current public CI verified — 8 November 2026, 02:20 UTC
 
 6433dc3 passed all six actual Android notification OS cases on the owned ARM64 emulator.
